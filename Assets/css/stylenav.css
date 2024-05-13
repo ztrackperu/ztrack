@@ -1,0 +1,23 @@
+.navbar {
+    background-color: #2b527e;
+}
+
+.nav-link{
+    color:white;
+}
+
+.offcanvas {
+    background-color: #123456; /* Color de fondo */
+}
+
+.offcanvas-body,
+.offcanvas-title,
+.navbar-nav .nav-link {
+    color: white; /* Color de texto */
+}
+
+@media (max-width: 991px) {
+    .nav-icon-hover img {
+        display: none;
+    }
+}
