@@ -113,17 +113,107 @@ body {
                         <div class="swiper-slide">
                             <div class="card" >
                                 <div class="card-body">
-                                  <h5 class="card-title">Card title 1</h5>
-                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                  <li class="list-group-item">Cras justo odio</li>
-                                  <li class="list-group-item">Dapibus ac facilisis in</li>
-                                  <li class="list-group-item">Vestibulum at eros</li>
-                                </ul>
-                                <div class="card-body">
-                                  <a href="#" class="card-link">Card link</a>
-                                  <a href="#" class="card-link">Another link</a>
+                                <div class="row ">
+                                    <div class="col-2 ">
+                                    <img class ="mt-1 p-1 "src="<?php echo base_url.'Assets'; ?>/img/on.png" alt="logo" width="45" height="45">
+                                    </div>
+                                    <div class="col-8 "><h3 class="text-center mt-3">ZGRU7020127</h3></div>
+                                    <div class="col-2 ">
+                                     <img class ="mt-1 p-1 "src="<?php echo base_url.'Assets'; ?>/img/conf.png" alt="logo" width="50" height="50">
+                                    </div>
+
+                                    <div class="col-12 "><h5 class="text-center mt-2">METRO WONG GUTIERREZ</h5> </div>
+
+                                    <div class="col-4  mt-1 p-1"><h6 class="text-center">Fecha :</h6></div>
+                                    <div class="col-8 mt-1 p-1"><h6 class="text-left"> 14:24:12  14/05/2024</h6></div>
+                                    <div class="col-3 p-2"><button type="button" class="mt-1 btn btn-block btn-outline-primary">Pe</button></div>
+                                    <div class="col-3 p-2"><button type="button" class="mt-1 btn btn-block btn-outline-secondary">Se</button></div>
+                                    <div class="col-3 p-2"><button type="button" class="mt-1 btn btn-block btn-outline-success">Suc</button> </div>
+                                    <div class="col-3 p-2"><button type="button" class="mt-1 btn btn-block btn-outline-info">Info</button></div>
+
+                                    <div class="col-4 border"><h6 class="mt-1">Parametro</h6></div>
+                                    <div class="col-4 border"><h6 class="mt-1">Valor</h6></div>
+                                    <div class="col-4 border"><h6 class="mt-1">Control</h6></div>
+                                    <div class="col-8  align-self-cente">
+                                        <div class="row ">
+                                            <div class="col-6 border"><h5 class="mt-2">Supply:</h5></div>
+                                            <div class="col-6 "><h4 class="mt-2">-20.15 C°</h4></div>
+                                            <div class="col-6 border"><h5 class="mt-2">Return :</h5> </div>
+                                            <div class="col-6 border"><h4 class="mt-2">-21.10 C°</h4></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4 border">
+                                    <div class="row ">
+                                            <div class="col-12 "><h6 class="mt-2">Set Temp :</h6></div>
+                                            <div class="col-9 p-1">  <input type="text" class="form-control" ></div>
+                                            <div class="col-3 align-self-center p-1 ">C°</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-8 border">
+                                        <div class="row ">
+                                            <div class="col-6 border"><h5 class="mt-2">Humedity:</h5></div>
+                                            <div class="col-6 border"><h4 class="mt-2"> 83.00 %</h4></div>
+                                            <div class="col-6 border"><h5 class="mt-2">Evap :</h5> </div>
+                                            <div class="col-6 border"><h4 class="mt-2">-19.12 C°</h4></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4 border">
+                                    <div class="row ">
+                                            <div class="col-12 "><h6 class="mt-2">Set Humd :</h6></div>
+                                            <div class="col-9 p-1">  <input type="text" class="form-control" ></div>
+                                            <div class="col-3 align-self-center p-1 ">%</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-4  align-self-center">
+                                        <div class="row">
+                                            
+                                                <div class="col-12 "><h4 class="mt-2">USDA :</h4></div>
+                                            </div>
+                                        </div>
+                                    <div class="col-4 border">
+                                    <div class="row">
+                                            <div class="col-3 border"><h5 class="mt-2">1</h5></div>
+                                            <div class="col-9 border"><h6 class="mt-2">-12.20 C°</h6></div>
+                                            <div class="col-3 border"><h5 class="mt-2">2</h5></div>
+                                            <div class="col-9 border"><h6 class="mt-2">-13.20 C°</h6></div>
+                                            <div class="col-3 border"><h5 class="mt-2">3</h5></div>
+                                            <div class="col-9 border"><h6 class="mt-2">-15.20 C°</h6></div>
+                                            <div class="col-3 border"><h5 class="mt-2">4</h5></div>
+                                            <div class="col-9 border"><h6 class="mt-2">-17.20 C°</h6></div>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="col-4 border">
+                                        <div class="row border">
+                                            <div class="col-12 "><h6 class="mt-2">Defrost :</h6></div>
+                                            <div class="col-12 p-1"><button type="button" class="mt-1 btn btn-block btn-success">ACTIVE</button> </div>
+                                        </div>
+                                        <div class="row border">
+                                            <div class="col-12 "><h6 class="mt-2">Ethylene :</h6></div>
+                                            <div class="col-7 p-1">  <input type="text" class="form-control" ></div>
+                                            <div class="col-5 align-self-center p-1 ">ppm</div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-8 border">
+                                        <div class="row ">
+                                            <div class="col-6 border"><h5 class="mt-2">CO2 :</h5></div>
+                                            <div class="col-6 border"><h4 class="mt-2"> 0.10 %</h4></div>
+                                            <div class="col-6 border"><h5 class="mt-2"> Ambiente :</h5> </div>
+                                            <div class="col-6 border"><h4 class="mt-2">+23.12 C°</h4></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4 border">
+                                    <div class="row ">
+                                            <div class="col-12 "><h6 class="mt-2">CO2 :</h6></div>
+                                            <div class="col-9 p-1">  <input type="text" class="form-control" ></div>
+                                            <div class="col-3 align-self-center p-1 ">%</div>
+                                        </div>
+                                    </div>
+
+
+</div>
                                 </div>
                               </div>
                         </div>
