@@ -1,21 +1,83 @@
 console.log(empresa_id);
-
+function markerOnClick(e)
+{
+    showLocation();
+}
+function showLocation(){
+    //removeActive()
+    $(".popBtnLocation").addClass("btnActive");
+    $(".popLocation").show()    
+    $(".popStatus").hide()
+    $(".popDetails").hide()
+    $(".popAlarms").hide()
+    $(".popBooking").hide()
+}
 var zgroup = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 18,
     minZoom :3,
     attribution: 'ZGROUP &copy; lupamape contributors'
 });
-  var map = L.map('map',{zoom:3, center: new L.latLng([11.04,-70]),zoomControl:false,layers:[zgroup]});
-  var markers;
-markers = new L.LayerGroup().addTo(map);
+var map = L.map('map',{zoom:3, center: new L.latLng([9.04,-70]),zoomControl:true,layers:[zgroup]});
+var markers = new L.LayerGroup().addTo(map);
 var markers1 = L.markerClusterGroup({ singleMarkerMode: true});
+map.addLayer(markers1);
 
-function elcolor(d){
-    return d==1 ?'green':
-           d==2 ?'orange':
-           d==3 ?'white':
-           'black';
+
+function elcolor(d){return d==1 ?'green': d==2 ?'orange': d==3 ?'white': 'black'; }
+function pintarCirculo(contenedor,indice){
+    estadoColor =1 ;
+    console.log(contenedor.latitud);
+    
+    var circulo = L.circleMarker([contenedor.latitud,contenedor.longitud],{
+        radius:8,
+        color :elcolor(estadoColor),
+        fillColor : elcolor(estadoColor),
+        fillOpacity :1 
+    });
+    
+     //var circulo = L.marker([contenedor.latitud,contenedor.longitud]) ;
+    tableStatus1 =`
+        <div class="card" >
+        <div class="card-body">
+        <h5 class="card-title text-center">${contenedor.nombre_contenedor} </h5>
+        <div id="pop_${contenedor.nombre_contenedor}"></div>
+        </div>
+        <div class="card-body text-center border-1">
+        <a href="#" class="card-link">Mas detalle</a>
+        <a href="#" class="card-link">Menos detalle</a>
+        </div>
+    </div>
+    ` ;
+    tableStatus = `
+
+
+        <div class="row">
+        <div class="col-6" style="color:blue;"><b>Reefer ID: </b></div>
+        <div class="col-6"><strong>${contenedor.nombre_contenedor} </strong></div>
+        </div>
+        </br>
+        <div class="row">
+        <div class="col-12"><button type="button" class="btn btn-success  btn-lg btn-block">Detalle</button></div>
+        </div>`
+            
+        ;
+        circulo.bindPopup(tableStatus1,{maxWidth : 370});
+        circulo.on('click', markerOnClick);
+        markers1.addLayer(circulo);  
+    
 }
+document.addEventListener("DOMContentLoaded", async function(){
+    try{
+        const response = await fetch(base_url + "Live/ListaDispositivoEmpresa",{method: 'GET'});
+        const data = await response.json();
+        console.log(data);
+        data.forEach((contenedor, indice) => pintarCirculo(contenedor,indice));
+        
+      
+        }catch(err){alert(err);}
+ 
+
+})
 
 async function cargar_circulos(tipo_usuario1,empresa_general1)
 {

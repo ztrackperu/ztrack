@@ -93,7 +93,7 @@ body {
                <div class="row mt-4 sm-mt-1">
                    <div class="col-sm-12 col-md-12 col-lg-8">
                         <!-- bar chart -->
-                        <div class="row  sm-mt-0">
+                        <div class="row  mt-2">
                             <div class="col-lg-12">
                                 <div class="card">
                                     <div class="card-body">
@@ -141,7 +141,7 @@ body {
                                 <div class="card-body">
                                   <a href="#" class="card-link">Card link</a>
                                   <a href="#" class="card-link">Another link</a>
-                                </div>
+                                </div>+
                               </div>
                         </div>
                         <div class="swiper-slide">
@@ -160,7 +160,7 @@ body {
                                   <a href="#" class="card-link">Another link</a>
                                 </div>
                               </div>
-                        </div>
+                        </div> 
                         <div class="swiper-slide">
                             <div class="card" >
                                 <div class="card-body">
@@ -255,12 +255,12 @@ body {
 
             <!-- map -->
             <div class="col-lg-4 sm-mt-3 ">
-                <div class="row sm-mt-0">
+                <div class="row mt-2">
                     <div class="col-md-4 col-lg-4 col-xl-4 sm-mb-3">
                     <div class="card">
                         <div class="card-body text-center">
-                        <h6>Total Revenue</h6>
-                        <h2>$10.3M</h2>
+                        <h6>Online</h6>
+                        <h4>20</h4>
                         </div>
                     </div>
                     </div>
@@ -268,8 +268,8 @@ body {
                     <div class="col-md-4 col-lg-4 col-xl-4 sm-mb-3">
                     <div class="card">
                         <div class="card-body text-center">
-                        <h6>Total Profit</h6>
-                        <h2>$5.15M</h2>
+                        <h6>Wait</h6>
+                        <h4>12</h4>
                         </div>
                     </div>
                     </div>
@@ -277,17 +277,17 @@ body {
                     <div class="col-md-4 col-lg-4 col-xl-4 sm-mb-3">
                     <div class="card">
                         <div class="card-body text-center">
-                        <h6>Total Margin %</h6>
-                        <h2>50%</h2>
+                        <h6>Offline</h6>
+                        <h4>123</h4>
                         </div>
                     </div>
                     </div>
                 </div>
 
             
-                <div class="card mt-4">
+                <div class="card mt-2">
                     <div class="card-body">
-                        <div id="map" style="width: 100%; height: 535px"></div> 
+                        <div id="map" style="width: 100%; height: 600px"></div> 
                     </div>
                 </div>
             </div>
@@ -370,15 +370,15 @@ const swiper = new Swiper(".card-slider", {
   // Responsive breakpoints
   breakpoints: {
     // when window width is >= 576px
-    500: {
+    600: {
       slidesPerView: 1,
     },
-    1000: {
+    1240: {
       slidesPerView: 2,
       spaceBetween: 10,
     },
     // when window width is >= 768px
-    1500: {
+    1900: {
       slidesPerView: 3,
       spaceBetween: 15,
     },

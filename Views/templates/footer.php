@@ -10,7 +10,8 @@
 <script>
         const base_url = '<?php echo base_url; ?>';
         const empresa_id = '<?php echo  $empresa_id= isset( $_SESSION['empresa_id'] ) ?  $_SESSION['empresa_id'] : 0 ; ?>';
-       console.log(base_url);
+        const id_ztrack = '<?php echo  $empresa_id= isset( $_SESSION['id_ztrack']) ?  $_SESSION['id_ztrack']: 0 ; ?>';
+        //console.log(base_url);
 </script>
 <?php
 if (!empty($_GET['url'])) {

@@ -30,5 +30,14 @@ class Live extends Controller
         $this->views->getView($this, "index");
 
     }
+    public function ListaDispositivoEmpresa()
+    {
+        $data = $this->model->ListaDispositivoEmpresa($_SESSION['empresa_id']);
+        $data = json_decode($data);
+        $data = $data->data;
+        echo json_encode($data, JSON_UNESCAPED_UNICODE);
+        die();
+
+    }    
 
 }
