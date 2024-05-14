@@ -86,22 +86,17 @@ body {
     
 </style>
 
-
 <div>
     <div>
         <div>
-
-            <div class="container-fluid px-4">
-            
-            <div class="row mt-4 sm-mt-1">
-            <div class="col-sm-12 col-md-12 col-lg-8">
-
-              <!-- bar chart -->
-              <div class="row  sm-mt-0">
-                <div class="col-lg-12">
-                  <div class="card">
-
-                    <div class="card-body">
+            <div class="container-fluid px-4">         
+               <div class="row mt-4 sm-mt-1">
+                   <div class="col-sm-12 col-md-12 col-lg-8">
+                        <!-- bar chart -->
+                        <div class="row  sm-mt-0">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-body">
  
 
                     <section id="cards">
@@ -136,6 +131,23 @@ body {
                             <div class="card" >
                                 <div class="card-body">
                                   <h5 class="card-title">Card title 2</h5>
+                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                  <li class="list-group-item">Cras justo odio</li>
+                                  <li class="list-group-item">Dapibus ac facilisis in</li>
+                                  <li class="list-group-item">Vestibulum at eros</li>
+                                </ul>
+                                <div class="card-body">
+                                  <a href="#" class="card-link">Card link</a>
+                                  <a href="#" class="card-link">Another link</a>
+                                </div>
+                              </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="card" >
+                                <div class="card-body">
+                                  <h5 class="card-title">Card title 6</h5>
                                   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                 </div>
                                 <ul class="list-group list-group-flush">
@@ -200,6 +212,23 @@ body {
                                 </div>
                               </div>
                         </div>
+                        <div class="swiper-slide">
+                            <div class="card" >
+                                <div class="card-body">
+                                  <h5 class="card-title">Card title 7</h5>
+                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                  <li class="list-group-item">Cras justo odio</li>
+                                  <li class="list-group-item">Dapibus ac facilisis in</li>
+                                  <li class="list-group-item">Vestibulum at eros</li>
+                                </ul>
+                                <div class="card-body">
+                                  <a href="#" class="card-link">Card link</a>
+                                  <a href="#" class="card-link">Another link</a>
+                                </div>
+                              </div>
+                        </div>
                     </div>
                     <!-- Swiper wrapper ends -->
                     <div class="arrow">
@@ -216,9 +245,6 @@ body {
         </div>
     </section>
                     
-
-
-
 
                     </div>
                   </div>
