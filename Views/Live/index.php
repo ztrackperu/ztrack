@@ -115,11 +115,11 @@ body {
                                 <div class="card-body">
                                 <div class="row ">
                                     <div class="col-2 ">
-                                    <img class ="mt-1 p-1 "src="<?php echo base_url.'Assets'; ?>/img/on.png" alt="logo" width="45" height="45">
+                                    <img class ="mt-1 p-1 "src="<?php echo base_url.'Assets'; ?>/img/on.png" alt="logo" width="40" height="40">
                                     </div>
                                     <div class="col-8 "><h4 class="text-center mt-3">ZGRU7020127</h4></div>
                                     <div class="col-2 ">
-                                     <img class ="mt-1 p-1 "src="<?php echo base_url.'Assets'; ?>/img/conf.png" alt="logo" width="50" height="50">
+                                     <img class ="mt-1 p-1 "src="<?php echo base_url.'Assets'; ?>/img/conf.png" alt="logo" width="40" height="40">
                                     </div>
 
                                     <div class="col-12 "><h5 class="text-center mt-2">METRO WONG GUTIERREZ</h5> </div>
