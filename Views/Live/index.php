@@ -117,8 +117,8 @@ body {
                                     <div class="col-2 ">
                                     <img class ="mt-1 p-1 "src="<?php echo base_url.'Assets'; ?>/img/on.png" alt="logo" width="40" height="40">
                                     </div>
-                                    <div class="col-8 "><h4 class="text-center mt-3">ZGRU7020127</h4></div>
-                                    <div class="col-2 ">
+                                    <div class="col-7 "><h4 class="text-center mt-3">ZGRU7020127</h4></div>
+                                    <div class="col-3 ">
                                      <img class ="mt-1 p-1 "src="<?php echo base_url.'Assets'; ?>/img/conf.png" alt="logo" width="40" height="40">
                                     </div>
 
@@ -131,15 +131,15 @@ body {
                                     <div class="col-3 p-2"><button type="button" class="mt-1 btn btn-block btn-outline-success">Su</button> </div>
                                     <div class="col-3 p-2"><button type="button" class="mt-1 btn btn-block btn-outline-info">In</button></div>
 
-                                    <div class="col-4 border"><h6 class="mt-1">Params</h6></div>
-                                    <div class="col-4 border"><h6 class="mt-1">Value</h6></div>
-                                    <div class="col-4 border"><h6 class="mt-1">Control</h6></div>
+                                    <div class="col-4 border"><p class="mt-1">Params</p></div>
+                                    <div class="col-4 border"><p class="mt-1">Value</p></div>
+                                    <div class="col-4 border"><p class="mt-1">Control</p></div>
                                     <div class="col-8  align-self-cente">
                                         <div class="row ">
-                                            <div class="col-6 border"><h5 class="mt-2">Supply:</h5></div>
-                                            <div class="col-6 "><h4 class="mt-2">-20.15 C°</h4></div>
-                                            <div class="col-6 border"><h5 class="mt-2">Return :</h5> </div>
-                                            <div class="col-6 border"><h4 class="mt-2">-21.10 C°</h4></div>
+                                            <div class="col-6 border"><p class="mt-2">Supply:</p></div>
+                                            <div class="col-6 "><h6 class="mt-2">-20.15 C°</h6></div>
+                                            <div class="col-6 border"><p class="mt-2">Return :</p> </div>
+                                            <div class="col-6 border"><h6 class="mt-2">-21.10 C°</h6></div>
                                         </div>
                                     </div>
                                     <div class="col-4 border">
@@ -151,10 +151,10 @@ body {
                                     </div>
                                     <div class="col-8 border">
                                         <div class="row ">
-                                            <div class="col-6 border"><h5 class="mt-2">Humedity:</h5></div>
-                                            <div class="col-6 border"><h4 class="mt-2"> 83.00 %</h4></div>
-                                            <div class="col-6 border"><h5 class="mt-2">Evap :</h5> </div>
-                                            <div class="col-6 border"><h4 class="mt-2">-19.12 C°</h4></div>
+                                            <div class="col-6 border"><p class="mt-2">Humedity:</p></div>
+                                            <div class="col-6 border"><h6 class="mt-2"> 83.00 %</h6></div>
+                                            <div class="col-6 border"><p class="mt-2">Evap :</p> </div>
+                                            <div class="col-6 border"><h6 class="mt-2">-19.12 C°</h6></div>
                                         </div>
                                     </div>
                                     <div class="col-4 border">
@@ -168,18 +168,18 @@ body {
                                     <div class="col-4  align-self-center">
                                         <div class="row">
                                             
-                                                <div class="col-12 "><h4 class="mt-2">USDA :</h4></div>
+                                                <div class="col-12 "><p class="mt-2">USDA :</p></div>
                                             </div>
                                         </div>
                                     <div class="col-4 border">
                                     <div class="row">
-                                            <div class="col-3 border"><h5 class="mt-2">1</h5></div>
+                                            <div class="col-3 border"><p class="mt-2">1</p></div>
                                             <div class="col-9 border"><h6 class="mt-2">-12.20 C°</h6></div>
-                                            <div class="col-3 border"><h5 class="mt-2">2</h5></div>
+                                            <div class="col-3 border"><p class="mt-2">2</p></div>
                                             <div class="col-9 border"><h6 class="mt-2">-13.20 C°</h6></div>
-                                            <div class="col-3 border"><h5 class="mt-2">3</h5></div>
+                                            <div class="col-3 border"><p class="mt-2">3</p></div>
                                             <div class="col-9 border"><h6 class="mt-2">-15.20 C°</h6></div>
-                                            <div class="col-3 border"><h5 class="mt-2">4</h5></div>
+                                            <div class="col-3 border"><p class="mt-2">4</p></div>
                                             <div class="col-9 border"><h6 class="mt-2">-17.20 C°</h6></div>
                                             
                                         </div>
