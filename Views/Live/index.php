@@ -117,7 +117,7 @@ body {
                                     <div class="col-2 ">
                                     <img class ="mt-1 p-1 "src="<?php echo base_url.'Assets'; ?>/img/on.png" alt="logo" width="45" height="45">
                                     </div>
-                                    <div class="col-8 "><h3 class="text-center mt-3">ZGRU7020127</h3></div>
+                                    <div class="col-8 "><h4 class="text-center mt-3">ZGRU7020127</h4></div>
                                     <div class="col-2 ">
                                      <img class ="mt-1 p-1 "src="<?php echo base_url.'Assets'; ?>/img/conf.png" alt="logo" width="50" height="50">
                                     </div>
@@ -128,11 +128,11 @@ body {
                                     <div class="col-8 mt-1 p-1"><h6 class="text-left"> 14:24:12  14/05/2024</h6></div>
                                     <div class="col-3 p-2"><button type="button" class="mt-1 btn btn-block btn-outline-primary">Pe</button></div>
                                     <div class="col-3 p-2"><button type="button" class="mt-1 btn btn-block btn-outline-secondary">Se</button></div>
-                                    <div class="col-3 p-2"><button type="button" class="mt-1 btn btn-block btn-outline-success">Suc</button> </div>
-                                    <div class="col-3 p-2"><button type="button" class="mt-1 btn btn-block btn-outline-info">Info</button></div>
+                                    <div class="col-3 p-2"><button type="button" class="mt-1 btn btn-block btn-outline-success">Su</button> </div>
+                                    <div class="col-3 p-2"><button type="button" class="mt-1 btn btn-block btn-outline-info">In</button></div>
 
-                                    <div class="col-4 border"><h6 class="mt-1">Parametro</h6></div>
-                                    <div class="col-4 border"><h6 class="mt-1">Valor</h6></div>
+                                    <div class="col-4 border"><h6 class="mt-1">Params</h6></div>
+                                    <div class="col-4 border"><h6 class="mt-1">Value</h6></div>
                                     <div class="col-4 border"><h6 class="mt-1">Control</h6></div>
                                     <div class="col-8  align-self-cente">
                                         <div class="row ">
@@ -144,9 +144,9 @@ body {
                                     </div>
                                     <div class="col-4 border">
                                     <div class="row ">
-                                            <div class="col-12 "><h6 class="mt-2">Set Temp :</h6></div>
-                                            <div class="col-9 p-1">  <input type="text" class="form-control" ></div>
-                                            <div class="col-3 align-self-center p-1 ">C°</div>
+                                            <div class="col-12 "><h6 class="mt-2">Temp :</h6></div>
+                                            <div class="col-8 p-1">  <input type="text" class="form-control" ></div>
+                                            <div class="col-4 align-self-center p-1 ">C°</div>
                                         </div>
                                     </div>
                                     <div class="col-8 border">
