@@ -18,8 +18,8 @@ body {
 /* -----Wrapper------- */
 .wrapper {
     max-width: 1670px;
-    margin: 0 auto;
-    padding: 0 15px;
+    margin: 0 1px;
+    padding: 0 5px;
 }
 /* ------- Card Slider ---------- */
 #cards {
