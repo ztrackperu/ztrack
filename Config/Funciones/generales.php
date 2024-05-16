@@ -2,11 +2,29 @@
 //envios de correo
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\Exception;
-    use PHPMailer\PHPMailer\SMTP;
+    use PHPMailer\PHPMailer\SMTP; 
 
     //genrar pdf
     use Dompdf\Dompdf;
 
+    function tempNormal($val){ 
+        if($val>=0 && $val<120){
+            $valor="+".$val ;
+        }elseif($val>-40 && $val<0){
+            if($val==-38.5){
+                $valor="NA";
+            }else{
+                $valor=$val ;
+            }
+        }else{
+            $valor="NA";
+        }
+        return $valor;
+    }
+    function porNormal($val){
+        if($val>=0 && $val<100){$valor=$val ;}else{$valor="NA";}
+        return $valor;
+    }
     function procesarNumOT($numot){
         $digitos = 10;
         $num = strval($numot);

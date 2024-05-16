@@ -19,7 +19,7 @@ body {
 .wrapper {
     max-width: 1670px;
     margin: 0 1px;
-    padding: 0 5px;
+    padding: 0 1px;
 }
 /* ------- Card Slider ---------- */
 #cards {
@@ -36,6 +36,10 @@ body {
     cursor: pointer;
 }
 
+.card-body {
+    margin: 0 2px;
+    padding: 0 2px;
+}
 .card-content img {
     border-radius: 0.5rem;
 }
@@ -94,7 +98,7 @@ body {
                    <div class="col-sm-12 col-md-12 col-lg-8">
                         <!-- bar chart -->
                         <div class="row  mt-2">
-                            <div class="col-lg-12">
+                            
                                 <div class="card">
                                     <div class="card-body">
  
@@ -108,216 +112,10 @@ body {
             <div class="swiper">
                 <div class="card-slider">
                     <!-- Additional required wrapper -->
-                    <div class="swiper-wrapper">
+                    <div  id="carruselExtra" class="swiper-wrapper">
                         <!-- Slides -->
-                        <div class="swiper-slide">
-                            <div class="card" >
-                                <div class="card-body">
-                                <div class="row ">
-                                    <div class="col-2 ">
-                                    <img class ="mt-1 p-1 "src="<?php echo base_url.'Assets'; ?>/img/on.png" alt="logo" width="40" height="40">
-                                    </div>
-                                    <div class="col-8 "><h4 class="text-center mt-3">ZGRU7020127</h4></div>
-                                    <div class="col-2 ">
-                                     <img class ="mt-1 p-1 "src="<?php echo base_url.'Assets'; ?>/img/conf.png" alt="logo" width="40" height="40">
-                                    </div>
+                        <!--<div id="carruselExtra"></div>-->
 
-                                    <div class="col-12 "><h5 class="text-center mt-2">METRO WONG GUTIERREZ</h5> </div>
-
-                                    <div class="col-4  mt-1 p-1"><h6 class="text-center">Fecha :</h6></div>
-                                    <div class="col-8 mt-1 p-1"><h6 class="text-left"> 14:24:12  14/05/2024</h6></div>
-                                    <div class="col-3 p-2"><button type="button" class="mt-1 btn btn-block btn-outline-primary">Pe</button></div>
-                                    <div class="col-3 p-2"><button type="button" class="mt-1 btn btn-block btn-outline-secondary">Se</button></div>
-                                    <div class="col-3 p-2"><button type="button" class="mt-1 btn btn-block btn-outline-success">Su</button> </div>
-                                    <div class="col-3 p-2"><button type="button" class="mt-1 btn btn-block btn-outline-info">In</button></div>
-
-                                    <div class="col-4 border"><p class="mt-1">Params</p></div>
-                                    <div class="col-4 border"><p class="mt-1">Value</p></div>
-                                    <div class="col-4 border"><p class="mt-1">Control</p></div>
-                                    <div class="col-8  align-self-cente">
-                                        <div class="row ">
-                                            <div class="col-6 border"><p class="mt-2">Supply:</p></div>
-                                            <div class="col-6 "><h6 class="mt-2">-20.15 C°</h6></div>
-                                            <div class="col-6 border"><p class="mt-2">Return :</p> </div>
-                                            <div class="col-6 border"><h6 class="mt-2">-21.10 C°</h6></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-4 border">
-                                    <div class="row ">
-                                            <div class="col-12 "><h6 class="mt-2">Temp :</h6></div>
-                                            <div class="col-8 p-1">  <input type="text" class="form-control" ></div>
-                                            <div class="col-4 align-self-center p-1 ">C°</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-8 border">
-                                        <div class="row ">
-                                            <div class="col-6 border"><p class="mt-2">Humedad:</p></div>
-                                            <div class="col-6 border"><h6 class="mt-2"> 83.00 %</h6></div>
-                                            <div class="col-6 border"><p class="mt-2">Evap :</p> </div>
-                                            <div class="col-6 border"><h6 class="mt-2">-19.12 C°</h6></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-4 border">
-                                    <div class="row ">
-                                            <div class="col-12 "><h6 class="mt-2">Set Humd :</h6></div>
-                                            <div class="col-9 p-1">  <input type="text" class="form-control" ></div>
-                                            <div class="col-3 align-self-center p-1 ">%</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-4  align-self-center">
-                                        <div class="row">
-                                            
-                                                <div class="col-12 "><p class="mt-2">USDA :</p></div>
-                                            </div>
-                                        </div>
-                                    <div class="col-4 border">
-                                    <div class="row">
-                                            <div class="col-12 border"><h6 class="mt-2">-12.20 C°</h6></div>
-                                            <!--<div class="col-3 border"><p class="mt-2">2</p></div>-->
-                                            <div class="col-12 border"><h6 class="mt-2">-13.20 C°</h6></div>
-                                            <!--<div class="col-3 border"><p class="mt-2">3</p></div>-->
-                                            <div class="col-12 border"><h6 class="mt-2">-15.20 C°</h6></div>
-                                            <!--<div class="col-3 border"><p class="mt-2">4</p></div>-->
-                                            <div class="col-12 border"><h6 class="mt-2">-17.20 C°</h6></div>
-                                            
-                                        </div>
-                                    </div>
-                                    <div class="col-4 border">
-                                        <div class="row border">
-                                            <div class="col-12 "><h6 class="mt-2">Defrost :</h6></div>
-                                            <div class="col-12 p-1"><button type="button" class="mt-1 btn btn-block btn-success">ACTIVE</button> </div>
-                                        </div>
-                                        <div class="row border">
-                                            <div class="col-12 "><h6 class="mt-2">Ethylene :</h6></div>
-                                            <div class="col-7 p-1">  <input type="text" class="form-control" ></div>
-                                            <div class="col-5 align-self-center p-1 ">ppm</div>
-
-                                        </div>
-                                    </div>
-                                    <div class="col-8 border">
-                                        <div class="row ">
-                                            <div class="col-6 border"><h5 class="mt-2">CO2 :</h5></div>
-                                            <div class="col-6 border"><h4 class="mt-2"> 0.10 %</h4></div>
-                                            <div class="col-6 border"><h5 class="mt-2"> Ambiente :</h5> </div>
-                                            <div class="col-6 border"><h4 class="mt-2">+23.12 C°</h4></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-4 border">
-                                    <div class="row ">
-                                            <div class="col-12 "><h6 class="mt-2">CO2 :</h6></div>
-                                            <div class="col-9 p-1">  <input type="text" class="form-control" ></div>
-                                            <div class="col-3 align-self-center p-1 ">%</div>
-                                        </div>
-                                    </div>
-
-
-</div>
-                                </div>
-                              </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card" >
-                                <div class="card-body">
-                                  <h5 class="card-title">Card title 2</h5>
-                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                  <li class="list-group-item">Cras justo odio</li>
-                                  <li class="list-group-item">Dapibus ac facilisis in</li>
-                                  <li class="list-group-item">Vestibulum at eros</li>
-                                </ul>
-                                <div class="card-body">
-                                  <a href="#" class="card-link">Card link</a>
-                                  <a href="#" class="card-link">Another link</a>
-                                </div>+
-                              </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card" >
-                                <div class="card-body">
-                                  <h5 class="card-title">Card title 6</h5>
-                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                  <li class="list-group-item">Cras justo odio</li>
-                                  <li class="list-group-item">Dapibus ac facilisis in</li>
-                                  <li class="list-group-item">Vestibulum at eros</li>
-                                </ul>
-                                <div class="card-body">
-                                  <a href="#" class="card-link">Card link</a>
-                                  <a href="#" class="card-link">Another link</a>
-                                </div>
-                              </div>
-                        </div> 
-                        <div class="swiper-slide">
-                            <div class="card" >
-                                <div class="card-body">
-                                  <h5 class="card-title">Card title 3</h5>
-                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                  <li class="list-group-item">Cras justo odio</li>
-                                  <li class="list-group-item">Dapibus ac facilisis in</li>
-                                  <li class="list-group-item">Vestibulum at eros</li>
-                                </ul>
-                                <div class="card-body">
-                                  <a href="#" class="card-link">Card link</a>
-                                  <a href="#" class="card-link">Another link</a>
-                                </div>
-                              </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card" >
-                                <div class="card-body">
-                                  <h5 class="card-title">Card title 4</h5>
-                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                  <li class="list-group-item">Cras justo odio</li>
-                                  <li class="list-group-item">Dapibus ac facilisis in</li>
-                                  <li class="list-group-item">Vestibulum at eros</li>
-                                </ul>
-                                <div class="card-body">
-                                  <a href="#" class="card-link">Card link</a>
-                                  <a href="#" class="card-link">Another link</a>
-                                </div>
-                              </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card" >
-                                <div class="card-body">
-                                  <h5 class="card-title">Card title 5</h5>
-                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                  <li class="list-group-item">Cras justo odio</li>
-                                  <li class="list-group-item">Dapibus ac facilisis in</li>
-                                  <li class="list-group-item">Vestibulum at eros</li>
-                                </ul>
-                                <div class="card-body">
-                                  <a href="#" class="card-link">Card link</a>
-                                  <a href="#" class="card-link">Another link</a>
-                                </div>
-                              </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card" >
-                                <div class="card-body">
-                                  <h5 class="card-title">Card title 7</h5>
-                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                  <li class="list-group-item">Cras justo odio</li>
-                                  <li class="list-group-item">Dapibus ac facilisis in</li>
-                                  <li class="list-group-item">Vestibulum at eros</li>
-                                </ul>
-                                <div class="card-body">
-                                  <a href="#" class="card-link">Card link</a>
-                                  <a href="#" class="card-link">Another link</a>
-                                </div>
-                              </div>
-                        </div>
                     </div>
                     <!-- Swiper wrapper ends -->
                     <div class="arrow">
@@ -336,7 +134,7 @@ body {
                     
 
                     </div>
-                  </div>
+                  
                 </div>
               </div>
             </div>

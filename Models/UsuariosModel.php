@@ -143,6 +143,16 @@ class UsuariosModel extends Query{
         curl_close($ch);   
         return $res;
     }
+    
+    public function ExtraerDatos($empresa)
+    {
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, urlapiMysql."/contenedores/ExtraerDatos/".$empresa);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $res = curl_exec($ch);
+        curl_close($ch);   
+        return $res;
+    }
 
 }
 ?>

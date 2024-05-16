@@ -1,4 +1,6 @@
 console.log(empresa_id);
+carruselExtra = document.getElementById("carruselExtra");
+extraerdata =[];
 function markerOnClick(e)
 {
     showLocation();
@@ -71,14 +73,93 @@ document.addEventListener("DOMContentLoaded", async function(){
         const response = await fetch(base_url + "Live/ListaDispositivoEmpresa",{method: 'GET'});
         const data = await response.json();
         console.log(data);
-        data.forEach((contenedor, indice) => pintarCirculo(contenedor,indice));
-        
-      
-        }catch(err){alert(err);}
- 
+        data.data.forEach((contenedor, indice) => pintarCirculo(contenedor,indice));
+        //insertar en texto la data 
+        //console.log(data.text);
+        carruselExtra.innerHTML  =data.text;
+        //console.log(data.extraer);
+        extraerdata = data.extraer ;
+        console.log(extraerdata);
+
+    }catch(err){alert(err);}
+    //cada 30 segundos ejecutar 
+    //setInterval(saludos, 2000);
+    setInterval( async function(){
+        /*
+        obtenerCambio().then(
+            res => procesarCambio(res)
+    ).catch(err => console.log(err));
+    */
+        try {
+            okey =  await obtenerCambio();
+            okey =JSON.parse(okey);
+            valor1 = okey.data ;
+            console.log(valor1);
+           // for (resp in okey.data){
+            //    console.log(resp);
+            //}
+            //okey =JSON.parse(okey);
+            valor1.forEach(function(res){
+                console.log(res);
+            })
+            /*
+            valor1
+
+
+            */
+            //okey1=  await procesarCambio(okey);
+
+            //console.log(okey);
+            //extraerdata[0].ultima_fecha ="pedillos";
+            //console.log(extraerdata); 
+        } catch (err) {
+            console.log(err)
+        }
+
+    }, 5000);
+    //evaluacion de la data 
+
 
 })
+function saludos(){
+    console.log("oli pablito");
+}
+async function procesarCambio(res){
+    //console.log(extraerdata);
+    console.log(res);
+    extraerdata[0].ultima_fecha ="pedillos 8";
+    console.log(extraerdata);
 
+}
+async function obtenerCambio() {
+    //extraerdata
+    data ={'data':extraerdata};
+
+    const response = await fetch(base_url + "Live/LiveData", {
+        method: "POST", // or 'PUT'
+        headers: { "Content-Type": "application/json",},
+        body: JSON.stringify(data),
+    });
+    //console.log(data);
+    const result = await response.json();
+    //extraerdata[0].ultima_fecha ="pedillos 5";
+    //si existe reemplazar la fecha con el que ya existe en extraerdata
+    //console.log(extraerdata[0].ultima_fecha)
+    //sino ejecutar en blanco 
+    /*
+    if(result){
+    extraerdata[0].ultima_fecha ="pedillos";
+    console.log(extraerdata);
+    }
+    */
+    //result1 = await procesarCambio(result);
+
+    //console.log("Success:", result);
+    return result;
+    //return "estoy viniendo de otra funcion :)";
+
+  }
+//console.log(extraerdata);
 async function cargar_circulos(tipo_usuario1,empresa_general1)
 {
     tableStatus ='';

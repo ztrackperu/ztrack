@@ -78,7 +78,12 @@ class Usuarios extends Controller{
                 $_SESSION['activo_ztrack'] = true;
                 //aqui debemos especificar  la empresa_id referencial 
                 $_SESSION['empresa_id'] = isset($resultadoUser->empresa_id) ? $resultadoUser->empresa_id : 0 ;
-                
+                // establecer parametros de los equipos asignados a telemetria para actualizacion automatica
+                $ExtraerDatos = $this->model->ExtraerDatos($_SESSION['empresa_id']);
+                $resultadoData = json_decode($ExtraerDatos);
+                $_SESSION['data'] = $resultadoData->data;
+                //$_SESSION['data'] = $this->model->ExtraerDatos($_SESSION['empresa_id']);
+
                 $msg = array('msg' => 'Bienvenido  '.$_SESSION['nombres_ztrack'].' a ztrack !', 'icono' => 'success');
             }else{
                 $msg = array('msg' => 'Usuario o contraseña incorrecta', 'icono' => 'warning');
