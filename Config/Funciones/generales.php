@@ -25,6 +25,21 @@
         if($val>=0 && $val<100){$valor=$val ;}else{$valor="NA";}
         return $valor;
     }
+    function fechaPro($val){
+        //echo $val;
+        $ultima = explode("T",$val) ;
+        $fech = explode("-",$ultima[0]);
+        //echo $ultima[0];
+        //echo " luis ";
+        //echo $fech;
+        $fech1 = $fech[2]."/".$fech[1]."/".$fech[0] ; 
+        //echo $fech1;
+        $fechita =$ultima[1]." del  ".$fech1;           
+
+        //$fech1 = $fech[2]."/".$fech[1]."/".$fech[0] ; 
+        //$fechita =$ultima[1]." del  ".$fech1;
+        return $fechita;
+    }
     function procesarNumOT($numot){
         $digitos = 10;
         $num = strval($numot);

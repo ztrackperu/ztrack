@@ -51,8 +51,6 @@ function pintarCirculo(contenedor,indice){
     </div>
     ` ;
     tableStatus = `
-
-
         <div class="row">
         <div class="col-6" style="color:blue;"><b>Reefer ID: </b></div>
         <div class="col-6"><strong>${contenedor.nombre_contenedor} </strong></div>
@@ -60,8 +58,7 @@ function pintarCirculo(contenedor,indice){
         </br>
         <div class="row">
         <div class="col-12"><button type="button" class="btn btn-success  btn-lg btn-block">Detalle</button></div>
-        </div>`
-            
+        </div>`     
         ;
         circulo.bindPopup(tableStatus1,{maxWidth : 370});
         circulo.on('click', markerOnClick);
@@ -79,86 +76,51 @@ document.addEventListener("DOMContentLoaded", async function(){
         carruselExtra.innerHTML  =data.text;
         //console.log(data.extraer);
         extraerdata = data.extraer ;
-        console.log(extraerdata);
+        //console.log(extraerdata);
 
     }catch(err){alert(err);}
-    //cada 30 segundos ejecutar 
-    //setInterval(saludos, 2000);
-    setInterval( async function(){
-        /*
-        obtenerCambio().then(
-            res => procesarCambio(res)
-    ).catch(err => console.log(err));
-    */
-        try {
-            okey =  await obtenerCambio();
-            okey =JSON.parse(okey);
-            valor1 = okey.data ;
-            console.log(valor1);
-           // for (resp in okey.data){
-            //    console.log(resp);
-            //}
-            //okey =JSON.parse(okey);
-            valor1.forEach(function(res){
-                console.log(res);
-            })
-            /*
-            valor1
-
-
-            */
-            //okey1=  await procesarCambio(okey);
-
-            //console.log(okey);
-            //extraerdata[0].ultima_fecha ="pedillos";
-            //console.log(extraerdata); 
-        } catch (err) {
-            console.log(err)
-        }
-
-    }, 5000);
-    //evaluacion de la data 
-
-
+    //cada 10 segundos ejecutar 
+    setInterval( async function(){ okey =  await obtenerCambio();}, 10000);
 })
 function saludos(){
     console.log("oli pablito");
 }
-async function procesarCambio(res){
-    //console.log(extraerdata);
-    console.log(res);
-    extraerdata[0].ultima_fecha ="pedillos 8";
-    console.log(extraerdata);
-
+//graficaM
+async function graficaM(id){
+    //console.log(id);
+ 
+    const response = await fetch(base_url + "Live/GraficaInicial/"+id, {method: "GET", });
+    const result = await response.json();
+    console.log(result);
+    return result;
 }
 async function obtenerCambio() {
-    //extraerdata
-    data ={'data':extraerdata};
-
-    const response = await fetch(base_url + "Live/LiveData", {
-        method: "POST", // or 'PUT'
-        headers: { "Content-Type": "application/json",},
-        body: JSON.stringify(data),
-    });
-    //console.log(data);
+    const response = await fetch(base_url + "Live/LiveData", {method: "GET", });
     const result = await response.json();
-    //extraerdata[0].ultima_fecha ="pedillos 5";
-    //si existe reemplazar la fecha con el que ya existe en extraerdata
-    //console.log(extraerdata[0].ultima_fecha)
-    //sino ejecutar en blanco 
-    /*
-    if(result){
-    extraerdata[0].ultima_fecha ="pedillos";
-    console.log(extraerdata);
+    if(result.length!=0){
+        result.forEach(function(res){
+            tarjeta(res);
+            //$('#fechita_'+res.telemetria_id).text(res.ultima_fecha);
+            console.log(res.telemetria_id);
+        })
     }
-    */
-    //result1 = await procesarCambio(result);
-
-    //console.log("Success:", result);
+    console.log(result);
     return result;
-    //return "estoy viniendo de otra funcion :)";
+}
+function tarjeta(res){
+    $('#fechita_'+res.telemetria_id).text(res.ultima_fecha);
+    $('#temp1_'+res.telemetria_id).text(res.temp_supply_1);
+    $('#return_'+res.telemetria_id).text(res.return_air);
+    $('#s_temp_'+res.telemetria_id).val(res.set_point);
+    $('#humd_'+res.telemetria_id).text(res.relative_humidity);
+    $('#evap_'+res.telemetria_id).text(res.evaporation_coil);
+    $('#s_humd_'+res.telemetria_id).val(res.humidity_set_point);
+    $('#cargo1_'+res.telemetria_id).text(res.cargo_1_temp);
+    $('#cargo2_'+res.telemetria_id).text(res.cargo_2_temp);
+    $('#cargo3_'+res.telemetria_id).text(res.cargo_3_temp);
+    $('#cargo4_'+res.telemetria_id).text(res.cargo_4_temp);
+}
 
-  }
 //console.log(extraerdata);
 async function cargar_circulos(tipo_usuario1,empresa_general1)
 {

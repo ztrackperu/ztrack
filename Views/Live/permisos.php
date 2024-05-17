@@ -1,4 +1,4 @@
-<?php include "Views/Templates/header1.php"; ?>
+<?php include "Views/templates/navbar.php"; ?>
 <div class="row">
     <div class="col-md-5 mx-auto">
         <div class="card">
@@ -11,4 +11,4 @@
         </div>
     </div>
 </div>
-<?php include "Views/Templates/footer1.php"; ?>
+<?php include "Views/Templates/footer.php"; ?>
