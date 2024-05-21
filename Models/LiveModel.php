@@ -65,4 +65,16 @@ class LiveModel extends Query{
         curl_close($ch);   
         return $res;
     }
+    public function DatosGraficaTabla($data)
+    {
+        $ch = curl_init();
+        $data =json_encode($data);
+        curl_setopt($ch, CURLOPT_URL, urlapiMongo."/maduradores/DatosGraficaTabla/");
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $res = curl_exec($ch);
+        curl_close($ch);   
+        return $res;
+    }
 }

@@ -44,20 +44,35 @@ class Live extends Controller
             $resultadoL = json_decode($consultaUltima);
             $resultadoL = $resultadoL->data;
             $ultimaFecha = $resultadoL[0]->ultima_fecha;
-            $cadena = array(
-                'device'=>$telemetria,
-                'ultima'=>$ultimaFecha,
-                'fechaI'=>$fechaI,
-                'fechaF'=>$fechaF
-            );
-
-
-
-
+            if($fechaI=="0" && $fechaF=="0"){
+                $cadena = array(
+                    'device'=>$telemetria,
+                    'ultima'=>$ultimaFecha,
+                );
+            }else{
+                if(fechaGrafica($fechaI,$fechaF)=="OK"){
+                    $cadena = array(
+                        'device'=>$telemetria,
+                        'ultima'=>$ultimaFecha,
+                        'fechaI'=>$fechaI,
+                        'fechaF'=>$fechaF
+                    );
+                }else{
+                    $cadena = array();
+                }
+            }
+            if(count($cadena)!=0){
+                //hacer peticion de data en el servidor 
+                $dataMadurador = $this->model->DatosGraficaTabla($cadena);
+                $resultadoMadurador = json_decode($dataMadurador);
+                $resultadoMadurador = $resultadoMadurador->data;
+            }else{
+                $resultadoMadurador ="";
+            }
         }else{
-            $telemetria =0;
+            $resultadoMadurador ="";
         }
-        echo json_encode($cadena , JSON_UNESCAPED_UNICODE);
+        echo json_encode($resultadoMadurador , JSON_UNESCAPED_UNICODE);
 
     }
     //LiveData

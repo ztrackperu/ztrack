@@ -40,6 +40,18 @@
         //$fechita =$ultima[1]." del  ".$fech1;
         return $fechita;
     }
+    function fechaGrafica($dateI,$dateF){
+        // Crear objetos DateTime a partir de las cadenas de fecha
+        $dateTime1 = new DateTime($dateI);
+        $dateTime2 = new DateTime($dateF);
+        // Comparar las fechas
+        if ($dateTime2 > $dateTime1) {
+            $f="OK";
+        } else {
+            $f="0";
+        }
+        return $f;
+    }
     function procesarNumOT($numot){
         $digitos = 10;
         $num = strval($numot);
