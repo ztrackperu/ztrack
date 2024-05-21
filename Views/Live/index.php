@@ -274,5 +274,21 @@ const swiper = new Swiper(".card-slider", {
 
 </script>
 
+<div id="interfazGrafica" align="center" class="modal  fade" tabindex="-1" role="dialog" aria-labelledby="my-modal-title" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title text-white" id="title">Data Dispositivo</h5>
+                <button class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+            <h1 align="center" id="tituloGrafica">Hola peru</h1>
+            <canvas align ="center" id="graficaFinal" style="" ></canvas>
+            </div>
+        </div>
+    </div>
+</div>
 <?php include "Views/templates/footerLive.php"; ?>
 <?php include "Views/templates/footer.php"; ?>
