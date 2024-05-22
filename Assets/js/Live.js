@@ -320,34 +320,9 @@ async function graficaMadurador1(info,cadena){
         options: {
             animation: {
                 onComplete: function () {
-                    /*
-                        var today = moment().format("DD-MM-YYYY_HH-mm-ss");
-                        //var dispositivoGrafica = info.madurador.nombre_contenedor;  
-                        console.log(X1.toBase64Image()) ;     
-                        bajarGrafica.href= X1.toBase64Image();
-                        //bajarGrafica.download =''+dispositivoGrafica+'_'+today;
-                        bajarGrafica.download ='datos'+today;
-                        //var imagen = X1.toBase64Image();
-                        //var imagen = grafica1.toDataURL("image/png");
-                        //console.log(imagen);
-                        saveImage(X1.toBase64Image(),'ZGRU1200200',47);
-                        //console.log(bajarGrafica);
-                          //bajarGrafica.click(); 
-
-                          //var data = imagen.replace(/^data:image\/png;base64,(.+)$/, '$1');
-                          //console.log(data);
-                          //var data =base64;
-                          //var request = new XMLHttpRequest();
-                         // var dispositivo1 = dispositivo;
-                          //var semana1 = semana;
-                          //request.open('POST', 'saveImageOnServer.php', true);
-                          //request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                          //request.send('imageData=' + data);
-             */
                 },
-              },
-
-            responsive : true,
+            },
+            responsive : false,
             backgroundColor: '#fff',
             interaction :{
                 mode : 'index',
@@ -484,14 +459,9 @@ async function graficaMadurador1(info,cadena){
 
             }           
         },
-        //plugins : [plugin,ChartDataLabels],
-
-            
+        //plugins : [plugin,ChartDataLabels],       
     })
-
     $("#interfazGrafica").modal("show");
-
-
 }
 
 async function graficaMadurador(info){

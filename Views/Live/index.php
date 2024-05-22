@@ -285,7 +285,7 @@ const swiper = new Swiper(".card-slider", {
             </div>
             <div class="modal-body">
             <h1 align="center" id="tituloGrafica">Hola peru</h1>
-            <canvas align ="center" id="graficaFinal" style="" ></canvas>
+            <canvas align ="center" id="graficaFinal" style="" width="1200" height="700"></canvas>
             </div>
         </div>
     </div>
