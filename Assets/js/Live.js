@@ -296,9 +296,9 @@ async function graficaMadurador1(info,cadena){
                 borderColor: info[boleto].config[2], // Color del borde
                 borderWidth: 3,// Ancho del borde
                 yAxisID : eje,
-                pointRadius: 0,
+                pointRadius: -0.2,
                 cubicInterpolationMode: 'monotone',
-                tension: 0.4,
+                tension: 0,
                 hidden :info[boleto].config[1],
                 fill: fillx,
             };
@@ -317,12 +317,13 @@ async function graficaMadurador1(info,cadena){
             datasets: dataGrafica,
         },
 
+
         options: {
             animation: {
                 onComplete: function () {
                 },
             },
-            responsive : false,
+            responsive : true,
             backgroundColor: '#fff',
             interaction :{
                 mode : 'index',
@@ -330,12 +331,28 @@ async function graficaMadurador1(info,cadena){
             },
             stacked :false,
             scales: {
+                x:{
+                    type:'time',
+                    ticks:{
+                        major:{
+                            enabled:true,
+                            width:4
+                        },
+                        font :(context)=>{
+                            console.log(context.tick && context.tick.major)
+                            const boldedTicks = context.tick && context.tick.major ? 'bold' :'';
+                            return {weight:boldedTicks}
+                        },
+                        //padding:15,
+                    }
+
+                },
 
                 y: {
                     position: 'left',
                     display: true,
                     title: {
-                        display: true,
+                        display: false,
                         text: 'temperature',
                         color: '#1a2c4e',
                         font: {     
@@ -350,11 +367,11 @@ async function graficaMadurador1(info,cadena){
                 },
                 y1: {
                     type: 'linear',
-                    display: true,
+                    display: false,
                     position: 'right',
                     beginAtZero: true,
                     title: {
-                        display: true,
+                        display: false,
                         text: 'Ethylene(ppm)',
                         color: '#1a2c4e',
                         font: { 
@@ -376,7 +393,7 @@ async function graficaMadurador1(info,cadena){
                     position: 'right',
                     beginAtZero: true,
                     title: {
-                        display: true,
+                        display: false,
                         text: 'Percentage (%)',
                         color: '#1a2c4e',
                         font: {                      
@@ -394,6 +411,11 @@ async function graficaMadurador1(info,cadena){
                 },
             },
             plugins: {
+                decimation:{
+                    enabled:true,
+                    algorithm:'lttb',
+                    samples:50
+                },
                 datalabels: {
                     color: function(context) {
                       return context.dataset.backgroundColor;
@@ -405,7 +427,7 @@ async function graficaMadurador1(info,cadena){
     
                   },
                 title: {
-                    display: true,
+                    display: false,
                     text: "prueba",
                     color: '#1a2c4e',
                     font: {                        
@@ -416,29 +438,34 @@ async function graficaMadurador1(info,cadena){
                     padding: {top: 30, left: 0, right: 0, bottom: 0}
                 },
                 zoom: {
+                    limits: {
+                        x: {min: 'original', max: 'original',minRange:2}
+                     },
                     pan :{
                         enabled :true,
                         mode: 'x',
                     },
+
+                     //minRange:10000,
                     zoom: {
                         wheel: {
                             enabled: true,
+                            speed:0.05
                         },
                         pinch: {
                             enabled: true
                         },
                         mode: 'x',
-                        drag :{
-                            enabled: false,
-                        },
-                        scaleMode :'x',
+
+                        //scaleMode :'x',
                     }
                 },
                 customCanvasBackgroundColor : {
                     color :'#fff',
                 },
                 legend : {
-                    position :'right',
+                    display:false,
+                    position :'top',
                     align : 'center',
                     labels : {
                         boxWidth :20 ,
