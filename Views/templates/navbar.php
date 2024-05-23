@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
-    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <!--<meta name="viewport" content="width=device-width, user-scalable=no">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
     <link rel="stylesheet" href="<?php echo base_url; ?>Assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?php echo base_url; ?>Assets/css/navbar-1.css">
     <link rel="stylesheet" href="<?php echo base_url; ?>Assets/css/stylenav.css" />

@@ -481,7 +481,7 @@ async function graficaMadurador1(info,cadena){
                             enabled: true
                         },
                         drag:{
-                            enabled:true
+                            enabled:false
                         },
 
                         mode: 'x',
