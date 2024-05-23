@@ -357,7 +357,7 @@ async function graficaMadurador1(info,cadena){
             const sdiv = document.createElement('div');
             sdiv.style.paddingLeft = '2px';
             sdiv.style.paddingRight = '2px';
-            sdiv.className = "col-4 col-lg-1 col-sm-2";
+            sdiv.className = "col-4 col-lg-1 col-md-2 col-sm-3";
             //sdiv.addClass('col-xs-6 col-1 ');
             //sdiv.class = 'col-xs-6 col-1 ';
             sdiv.id = item.text;
