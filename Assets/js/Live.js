@@ -350,7 +350,7 @@ async function graficaMadurador1(info,cadena){
                             width:4
                         },
                         font :(context)=>{
-                            console.log(context.tick && context.tick.major)
+                            //console.log(context.tick && context.tick.major)
                             const boldedTicks = context.tick && context.tick.major ? 'bold' :'';
                             return {weight:boldedTicks}
                         },
