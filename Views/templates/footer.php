@@ -6,6 +6,7 @@
 <script src="<?php echo base_url; ?>Assets/js/sweetalert2.all.min.js"></script>
 <script src="<?php echo base_url; ?>Assets/js/select2.min.js"></script>
 <script src="<?php echo base_url; ?>Assets/js/axios.min.js"></script>
+<script src="<?php echo base_url; ?>Assets/js/hammer.min.js"></script>
 <script src="<?php echo base_url; ?>Assets/js/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
