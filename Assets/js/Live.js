@@ -289,6 +289,10 @@ async function graficaMadurador1(info,cadena){
             }else if(info[boleto].config[3]==3){eje = "y2";
             }else{eje="y1";}
             if(info[boleto].config[3]==4){fillx=true;}else{fillx=false;}
+            nombrelabel =info[boleto].config[0] ;
+            if(nombrelabel.includes('Set') || info[boleto].config[3]==4){
+                displayX =false;
+            }else{displayX ='auto';}
             obj = {
                 label : info[boleto].config[0],
                 data : info[boleto].data,
@@ -296,11 +300,18 @@ async function graficaMadurador1(info,cadena){
                 borderColor: info[boleto].config[2], // Color del borde
                 borderWidth: 3,// Ancho del borde
                 yAxisID : eje,
-                pointRadius: -0.2,
+                pointRadius: 0,
                 cubicInterpolationMode: 'monotone',
-                tension: 0,
+                tension: -0.2,
                 hidden :info[boleto].config[1],
                 fill: fillx,
+                datalabels: {
+                    display: displayX,
+                    clip :'true',
+                    clamp :'true',
+                    align: 'start',  
+                    //anchor:'start' 
+                  },
             };
             dataGrafica.push(obj);
         }
@@ -355,12 +366,19 @@ async function graficaMadurador1(info,cadena){
                         display: false,
                         text: 'temperature',
                         color: '#1a2c4e',
+                        //reverse:true,
                         font: {     
                             size: 20,
                             style: 'normal',
                             lineHeight: 1.2
                         },
                         padding: {top: 30, left: 0, right: 0, bottom: 0}
+                    },
+                    ticks:{
+                        color:"blue",
+                        callback :(value,index,ticks) =>{
+                            return `${value}C\u00B0`;
+                        }
                     },
                     suggestedMin: 0,
                     suggestedMax: 20
@@ -402,6 +420,12 @@ async function graficaMadurador1(info,cadena){
                             lineHeight: 1.2
                         },
                         padding: {top: 30, left: 0, right: 0, bottom: 0}
+                    },
+                    ticks:{
+                        color:"red",
+                        callback :(value,index,ticks) =>{
+                            return `${value}\u2052`;
+                        }
                     },
                     grid: {
                         drawOnChartArea: false, // only want the grid lines for one axis to show up
@@ -486,7 +510,7 @@ async function graficaMadurador1(info,cadena){
 
             }           
         },
-        //plugins : [plugin,ChartDataLabels],       
+        plugins : [ChartDataLabels],       
     })
     $("#interfazGrafica").modal("show");
 }
