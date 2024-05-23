@@ -2,6 +2,7 @@ console.log(empresa_id);
 const grafica1 = document.getElementById("graficaFinal");
 carruselExtra = document.getElementById("carruselExtra");
 extraerdata =[];
+
 function markerOnClick(e)
 {
     showLocation();
@@ -323,10 +324,11 @@ async function graficaMadurador1(info,cadena){
 
     const getOrCreateLegendList = (chart, id) => {
         const legendContainer = document.getElementById(id);
-        let listContainer = legendContainer.querySelector('ul');
+        let listContainer = legendContainer.querySelector('div');
       
         if (!listContainer) {
-          listContainer = document.createElement('ul');
+          listContainer = document.createElement('div');
+          listContainer.className = "row justify-content-center row-cols-1 row-cols-sm-2 row-cols-md-4 ";
           listContainer.style.display = 'flex';
           listContainer.style.flexDirection = 'row';
           listContainer.style.margin = 0;
@@ -353,8 +355,18 @@ async function graficaMadurador1(info,cadena){
       
           items.forEach(item => {
             const sdiv = document.createElement('div');
-            //sdiv[item].addClass('col-xs-6 col-1 ');
-            //sdiv.style.class = 'col-xs-6 col-1 ';
+            sdiv.className = "col ";
+            //sdiv.addClass('col-xs-6 col-1 ');
+            //sdiv.class = 'col-xs-6 col-1 ';
+            sdiv.id = item.text;
+            cambio ="'"+item.text+"'";
+            papa=document.querySelector('Set Point');
+            //papa.className='col-xs-6 col-1';
+            //$(cambio).addClass('col-xs-6 col-1 ');
+            //$(cambio).addClass('col-xs-6 col-1 ');
+
+            //sdiv[item.text].addClass('col-xs-6 col-1 ');
+
             //sdiv.style.cursor = 'pointer';
             //sdiv.style.display = 'flex';
             //sdiv.style.flexDirection = 'row';
@@ -397,6 +409,8 @@ async function graficaMadurador1(info,cadena){
             textContainer.style.textDecoration = item.hidden ? 'line-through' : '';
       
             const text = document.createTextNode(item.text);
+            //const text = document.createTextNode("o");
+
             
             textContainer.appendChild(text);
       

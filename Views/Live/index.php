@@ -87,6 +87,20 @@ body {
     opacity: 1;
     outline: none;
 }
+
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 330px,
+  md: 500px,
+  lg: 1024px
+);
+
+$container-max-widths: (
+  sm: 320px,
+  md: 480px,
+  lg: 960px
+);
     
 </style>
 
@@ -274,8 +288,8 @@ const swiper = new Swiper(".card-slider", {
 
 </script>
 
-<div id="interfazGrafica" align="center" class="modal  fade" tabindex="-1" role="dialog" aria-labelledby="my-modal-title" aria-hidden="true">
-    <div class="modal-dialog modal-xl" role="document">
+<div id="interfazGrafica" align="center"class="modal animated bounceIn" tabindex="-1" role="dialog" aria-labelledby="my-modal-title" aria-hidden="true">
+    <div class="modal-dialog modal-xl " role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary text-white">
                 <h5 class="modal-title text-white" id="title">Data Dispositivo</h5>
@@ -285,11 +299,11 @@ const swiper = new Swiper(".card-slider", {
             </div>
             <div class="modal-body">
             <h1 align="center" id="tituloGrafica">Hola peru</h1>
-            <div class="container "> 
-                <div class="row">
-                    <div id="legend-container"></div>
-                 </div> 
-            </div> 
+            <!--<div class="container "> -->
+             
+                    <div id="legend-container" class="container"></div>
+                 
+            <!--</div> -->
             <canvas align ="center" id="graficaFinal" style="" width="1200" height="700"></canvas>
             </div>
         </div>
