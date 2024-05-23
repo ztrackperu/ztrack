@@ -470,6 +470,7 @@ async function graficaMadurador1(info,cadena){
                         mode: 'x',
                     },
 
+
                      //minRange:10000,
                     zoom: {
                         wheel: {
@@ -479,6 +480,10 @@ async function graficaMadurador1(info,cadena){
                         pinch: {
                             enabled: true
                         },
+                        drag:{
+                            enabled:true
+                        },
+
                         mode: 'x',
 
                         //scaleMode :'x',
