@@ -93,23 +93,23 @@ body {
 <div>
     <div>
         <div>
-            <div class="container-fluid px-4">         
-               <div class="row mt-4 sm-mt-1">
+            <div class="container-fluid px-3">         
+               <div class="row mt-1 sm-mt-1 " style='padding-top:10px ;'>
                    <div class="col-sm-12 col-md-12 col-lg-8">
                         <!-- bar chart -->
                         <div class="row  mt-2">
                             
-                                <div class="card">
+                                <div class="card" style='padding-right:5px ; padding-left:5px;'>
                                     <div class="card-body">
  
 
-                    <section id="cards">
+                    <section id="cards" style='padding-top:15px ;' >
         <div class="wrapper">
             <h2>
                 <strong>Equipos disponibles ztrack</strong>
             </h2>
             <!-- Slider main container -->
-            <div class="swiper">
+            <div class="swiper" style='padding-top:15px ;' >
                 <div class="card-slider">
                     <!-- Additional required wrapper -->
                     <div  id="carruselExtra" class="swiper-wrapper">
@@ -285,6 +285,11 @@ const swiper = new Swiper(".card-slider", {
             </div>
             <div class="modal-body">
             <h1 align="center" id="tituloGrafica">Hola peru</h1>
+            <div class="container "> 
+                <div class="row">
+                    <div id="legend-container"></div>
+                 </div> 
+            </div> 
             <canvas align ="center" id="graficaFinal" style="" width="1200" height="700"></canvas>
             </div>
         </div>

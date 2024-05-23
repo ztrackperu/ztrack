@@ -176,10 +176,10 @@ class Live extends Controller
 $valR ='"'.$val->nombre_contenedor.'"';
 $text.="
 <div class='swiper-slide'>
-    <div class='card' >
+    <div class='card'  >
         <div class='card-body'>
             <div class='container '>
-                <div class='row '>
+                <div class='row ' style='padding-right:5px ; padding-left:5px;'>
                     <div class='col-2' style='padding-right:5px ; padding-left:5px;'>
                         <img class ='mt-1 p-1'src='{$url}/Assets/img/on.png' alt='logo' width='40' height='40'>
                     </div>
