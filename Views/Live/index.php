@@ -289,7 +289,7 @@ const swiper = new Swiper(".card-slider", {
             <h1 align="center" id="tituloGrafica">Hola peru</h1>
             <!--<div class="container "> -->
              
-                    <div id="legend-container" class="container"></div>
+                    <div id="legend-container" class="container" style="padding-left: 2px;padding-right: 2px;"></div>
                  
             <!--</div> -->
             <canvas align ="center" id="graficaFinal" style="" width="1200" height="700"></canvas>

@@ -328,7 +328,7 @@ async function graficaMadurador1(info,cadena){
       
         if (!listContainer) {
           listContainer = document.createElement('div');
-          listContainer.className = "row justify-content-center row-cols-1 row-cols-sm-2 row-cols-md-4 ";
+          listContainer.className = "row justify-content-center row-cols-4 row-cols-sm-4 row-cols-md-4 ";
           listContainer.style.display = 'flex';
           listContainer.style.flexDirection = 'row';
           listContainer.style.margin = 0;
@@ -355,20 +355,21 @@ async function graficaMadurador1(info,cadena){
       
           items.forEach(item => {
             const sdiv = document.createElement('div');
-            sdiv.className = "col ";
+            sdiv.style.paddingLeft = '2px';
+            sdiv.style.paddingRight = '2px';
+            sdiv.className = "col-4 col-lg-1 col-sm-2";
             //sdiv.addClass('col-xs-6 col-1 ');
             //sdiv.class = 'col-xs-6 col-1 ';
             sdiv.id = item.text;
             cambio ="'"+item.text+"'";
-            papa=document.querySelector('Set Point');
+            //papa=document.querySelector('Set Point');
             //papa.className='col-xs-6 col-1';
             //$(cambio).addClass('col-xs-6 col-1 ');
             //$(cambio).addClass('col-xs-6 col-1 ');
 
             //sdiv[item.text].addClass('col-xs-6 col-1 ');
+            //style="padding-left: 2px;padding-right: 2px;"
 
-            //sdiv.style.cursor = 'pointer';
-            //sdiv.style.display = 'flex';
             //sdiv.style.flexDirection = 'row';
             //sdiv.style.marginLeft = '10px';
 
@@ -407,9 +408,13 @@ async function graficaMadurador1(info,cadena){
             textContainer.style.margin = 0;
             textContainer.style.padding = 0;
             textContainer.style.textDecoration = item.hidden ? 'line-through' : '';
-      
-            const text = document.createTextNode(item.text);
-            //const text = document.createTextNode("o");
+            tx = item.text;
+            tx1=tx.split(' ');
+            //const text = document.createTextNode(item.text);
+            if(tx1[0].length >7){
+                tx1[0]=tx1[0].substr(-20, 8);
+            }
+            const text = document.createTextNode(tx1[0]);
 
             
             textContainer.appendChild(text);
