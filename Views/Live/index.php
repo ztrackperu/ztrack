@@ -89,19 +89,7 @@ body {
 }
 
 
-$grid-breakpoints: (
-  xs: 0,
-  sm: 330px,
-  md: 500px,
-  lg: 1024px
-);
-
-$container-max-widths: (
-  sm: 320px,
-  md: 480px,
-  lg: 960px
-);
-    
+ 
 </style>
 
 <div>
@@ -297,7 +285,7 @@ const swiper = new Swiper(".card-slider", {
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" style="padding-left: 2px;padding-right: 2px;">
             <h1 align="center" id="tituloGrafica">Hola peru</h1>
             <!--<div class="container "> -->
              
