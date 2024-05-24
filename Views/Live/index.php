@@ -286,7 +286,18 @@ const swiper = new Swiper(".card-slider", {
                 </button>
             </div>
             <div class="modal-body" style="padding-left: 2px;padding-right: 2px;">
-            <h1 align="center" id="tituloGrafica">Hola peru</h1>
+            <h1 align="center" id="tituloGrafica">TEST123456-7</h1>
+            <div class="row justify-content-center" style="padding: 10px;">
+                <div class="col-12 col-lg-2">
+                    <h5>Search by Date :</h5>
+                </div>
+                <div class="col-6 col-lg-2">
+                    <input class='form-control' type="datetime-local">	
+                </div>
+                <div class="col-6 col-lg-2">
+                    <input class='form-control' type="datetime-local">
+                </div>
+            </div>
             <!--<div class="container "> -->
              
                     <div id="legend-container" class="container" style="padding-left: 2px;padding-right: 2px;"></div>
