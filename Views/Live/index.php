@@ -288,8 +288,8 @@ const swiper = new Swiper(".card-slider", {
             <div class="modal-body" style="padding-left: 2px;padding-right: 2px;">
             <h1 align="center" id="tituloGrafica">TEST123456-7</h1>
             <div class="row justify-content-center" style="padding: 10px;">
-                <div class="col-8 col-lg-2"  style="padding: 5px;">
-                    <h5>Search by Date :</h5>
+                <div class="col-8 col-lg-2 align-self-center" >
+                    <h5 >Search by Date :</h5>
                 </div>
                 <div class="col-4 col-lg-2" style="padding: 5px;">
                     <select class="form-select" aria-label="Default select example">
@@ -303,8 +303,8 @@ const swiper = new Swiper(".card-slider", {
                 <div class="col-6 col-lg-2" style="padding: 5px;">
                     <input class='form-control' type="datetime-local">
                 </div>
-                <div class="col-12 col-lg-3" style="padding: 5px;">
-                    <button type="button" class="btn btn-primary btn-lg btn-block">Block level </button>
+                <div class="col-12 col-lg-3" >
+                    <button type="button"  class="btn btn-primary  btn-lg btn-block">Search </button>
                 </div>
             </div>
             <!--<div class="container "> -->
