@@ -42,15 +42,19 @@
     }
     function fechaGrafica($dateI,$dateF){
         // Crear objetos DateTime a partir de las cadenas de fecha
-        $dateTime1 = new DateTime($dateI);
-        $dateTime2 = new DateTime($dateF);
-        // Comparar las fechas
-        if ($dateTime2 > $dateTime1) {
-            $f="OK";
-        } else {
-            $f="0";
+        $dateInicial = new DateTime($dateI);
+        $dateFinal = new DateTime($dateF);
+        if($dateFinal<$dateInicial){
+            $dif="mal";
+        }else{
+            //si paso 2 años decir que deb contactarse con el administrador
+            $interval = $dateInicial->diff($dateFinal);
+            $colosal = $interval->format('%Y');
+            if($colosal>=2){ $dif="rango";
+            }else{ $dif="ok";}
         }
-        return $f;
+        return $dif;
+
     }
     function procesarNumOT($numot){
         $digitos = 10;

@@ -287,8 +287,8 @@ const swiper = new Swiper(".card-slider", {
             </div>
             <div class="modal-body" style="padding-left: 2px;padding-right: 2px;">
             <h1 align="center" id="tituloGrafica">TEST123456-7</h1>
-            <div class="row justify-content-center" style="padding: 10px; margin-top:5px;">
-                <div class="col-8 col-lg-2 align-self-center" >
+            <div class="row justify-content-center align-self-center" style="padding: 10px; margin-top:5px;">
+                <div class="col-8 col-lg-2 align-self-end" >
                     <h5 >Search by Date :</h5>
                 </div>
                 <div class="col-4 col-lg-2" style="padding-right: 15px; margin-top:5px;">
@@ -298,13 +298,13 @@ const swiper = new Swiper(".card-slider", {
                     </select>
                 </div>
                 <div class="col-6 col-lg-2" style="padding-left: 15px; margin-top:5px;">
-                    <input class='form-control '  type="datetime-local">	
+                    <input class='form-control'  id="fechaInicial" type="datetime-local">	
                 </div>
                 <div class="col-6 col-lg-2" style="padding-right: 15px;margin-top:5px;">
-                    <input class='form-control' type="datetime-local">
+                    <input class='form-control' id="fechaFin" type="datetime-local">
                 </div>
                 <div class="col-12 col-lg-3" style="margin-top:5px;">
-                    <button type="button"  class="btn btn-primary  btn-lg btn-block">Search </button>
+                    <button type="button"  id="fechaPer" onclick="procesarFecha()" class="btn btn-primary  btn-lg btn-block">Search </button>
                 </div>
             </div>
             <!--<div class="container "> -->

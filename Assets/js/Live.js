@@ -3,6 +3,10 @@ const grafica1 = document.getElementById("graficaFinal");
 carruselExtra = document.getElementById("carruselExtra");
 extraerdata =[];
 
+let tituloGrafica = document.getElementById('tituloGrafica');
+let fechaInicial = document.getElementById('fechaInicial');
+let fechaFin = document.getElementById('fechaFin');
+
 function markerOnClick(e)
 {
     showLocation();
@@ -67,6 +71,28 @@ function pintarCirculo(contenedor,indice){
         markers1.addLayer(circulo);  
     
 }
+async function procesarFecha(){
+    contenedor =tituloGrafica.textContent ;
+    fechaInicialx=fechaInicial.value;
+    fechaFinx=fechaFin.value;
+    if(fechaInicialx==''|| fechaFinx==''){alert("No se seleccionado las fechas");
+    }else{
+        //console.log("vamos a analizar");
+        conj= contenedor+"/"+fechaInicialx+"/"+fechaFinx;
+        const response = await fetch(base_url + "Live/GraficaInicial/"+conj,{method: 'GET'});
+        const data = await response.json();
+        if(data=="mal"){alert("Fecha Inicial mayor a Fecha Mayor!");}
+        else if(data=="rango"){alert("Búsqueda fuera de Rango , contacta al Administrador");}
+        else{
+            //aqui recibimos la infro procesada y lista pa mostrar en la grafica 
+            console.log(data);
+            graph = await graficaMadurador1(data.graph,data.cadena);
+
+        }
+        //console.log(data);
+    }
+
+}
 document.addEventListener("DOMContentLoaded", async function(){
     try{
         const response = await fetch(base_url + "Live/ListaDispositivoEmpresa",{method: 'GET'});
@@ -90,8 +116,11 @@ function saludos(){
 //graficaM
 async function graficaM(id){
     //console.log(id);
+    tituloGrafica.textContent =id;
     const response = await fetch(base_url + "Live/GraficaInicial/"+id, {method: "GET", });
     const result = await response.json();
+    //reemplazar el nombre de la grafica 
+
     //console.log(result);
     graph = await graficaMadurador1(result.graph,result.cadena);
     return result;

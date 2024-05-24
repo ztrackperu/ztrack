@@ -32,6 +32,37 @@ class Live extends Controller
         $this->views->getView($this, "index");
 
     }
+    public function ProcesarFecha($param){
+        if($param!=""){
+            $pros = explode(",",$param);
+            $dateInicial = new DateTime($pros[1]);
+            $dateFinal = new DateTime($pros[2]);
+            if($dateFinal<$dateInicial){
+                $dif="mal";
+            }else{
+                //si paso 2 años decir que deb contactarse con el administrador
+                $interval = $dateInicial->diff($dateFinal);
+                $colosal = $interval->format('%Y');
+                if($colosal>=2){
+                    $dif="rango";
+                }else{
+                    $dif="ok";
+                    //$dif = $this->GraficaInicial($param);
+                    //enviar informacion pa su procesamiento 
+
+
+                }
+                //$dif =$colosal;
+            }
+            //$interval = $datetime1->diff($datetime2);
+            $resultadoMadurador ="esta es la cadena , Dispositivo : ".$pros[0]." ,FechaInicial : ".$pros[1]." ,FechaFinal : ".$pros[2]." ,condicion : ".$dif;
+
+        }else{
+            $resultadoMadurador ="";
+        }
+        echo json_encode($dif , JSON_UNESCAPED_UNICODE);
+
+    }
     public function GraficaInicial($param){
     
         if($param!=""){
@@ -50,7 +81,7 @@ class Live extends Controller
                     'ultima'=>$ultimaFecha,
                 );
             }else{
-                if(fechaGrafica($fechaI,$fechaF)=="OK"){
+                if(fechaGrafica($fechaI,$fechaF)=="ok"){
                     $cadena = array(
                         'device'=>$telemetria,
                         'ultima'=>$ultimaFecha,
@@ -67,7 +98,7 @@ class Live extends Controller
                 $resultadoMadurador = json_decode($dataMadurador);
                 $resultadoMadurador = $resultadoMadurador->data;
             }else{
-                $resultadoMadurador ="";
+                $resultadoMadurador =fechaGrafica($fechaI,$fechaF);
             }
         }else{
             $resultadoMadurador ="";
