@@ -44,7 +44,8 @@
         // Crear objetos DateTime a partir de las cadenas de fecha
         $dateInicial = new DateTime($dateI);
         $dateFinal = new DateTime($dateF);
-        if($dateFinal<$dateInicial){
+        //$actual = new DateTime("now");
+        if($dateFinal<$dateInicial ){
             $dif="mal";
         }else{
             //si paso 2 años decir que deb contactarse con el administrador
