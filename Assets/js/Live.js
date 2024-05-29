@@ -477,6 +477,7 @@ async function graficaMadurador1(info,cadena){
                 },
             },
             responsive : true,
+            //aspectRatio:3|1,
             backgroundColor: '#fff',
             interaction :{
                 mode : 'index',

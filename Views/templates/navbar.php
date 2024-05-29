@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="<?php echo base_url; ?>Assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?php echo base_url; ?>Assets/css/navbar-1.css">
     <link rel="stylesheet" href="<?php echo base_url; ?>Assets/css/stylenav.css" />
-    <link rel="stylesheet" href="<?php echo base_url; ?>Assets/css/main.css" />
+    <!--<link rel="stylesheet" href="<?php echo base_url; ?>Assets/css/main.css" />-->
     <link rel="stylesheet" href="<?php echo base_url; ?>Assets/css/dataTables.dataTables.min.css">
     <link rel="stylesheet" href="<?php echo base_url; ?>Assets/css/select2.min.css"  />
     <title>ZTRACK | LIVE TELEMATIC</title>

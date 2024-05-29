@@ -276,8 +276,60 @@ const swiper = new Swiper(".card-slider", {
 
 </script>
 
-<div id="interfazGrafica" align="center"class="modal animated bounceIn" tabindex="-1" role="dialog" aria-labelledby="my-modal-title" aria-hidden="true">
-    <div class="modal-dialog modal-xl " role="document">
+
+
+
+
+<div id="interfazGrafica" class="modal animated bounceIn show" tabindex="-1" data-bs-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl  modal-dialog-centered">
+    <div class="modal-content ">
+      <div class="modal-header">
+        <div style="margin-top:10px; margin-left:15px">
+            <h1 align="center" id="tituloGrafica">TEST123456-7</h1>
+        </div>
+        <div style="padding: 5px; margin-top:10px; margin-right:10px">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+      </div>
+      <div class="modal-body">
+        
+                <div class="row justify-content-center align-self-center" style="padding: 10px; margin-top:5px;">
+                    <div class="col-8 col-lg-3 align-self-end" >
+                        <h5 >Search by Date :</h5>
+                    </div>
+                    <div class="col-4 col-lg-2" style="padding-right: 15px; margin-top:5px;">
+                        <select class="form-select" aria-label="Default select example">
+                            <option value="C" selected>C°</option>
+                            <option value="F">F°</option>
+                        </select>
+                    </div>
+                    <div class="col-6 col-lg-2" style="padding-left: 15px; margin-top:5px;">
+                        <input class='form-control'  id="fechaInicial" type="datetime-local">	
+                    </div>
+                    <div class="col-6 col-lg-2" style="padding-right: 15px;margin-top:5px;">
+                        <input class='form-control' id="fechaFin" type="datetime-local">
+                    </div>
+                    <div class="col-12 col-lg-2" style="margin-top:5px;">
+                        <button type="button"  id="fechaPer" onclick="procesarFecha()" class="btn btn-primary  btn-lg btn-block">Search </button>
+                    </div>
+                </div>
+                <!--<div class="container "> -->
+                <div id="legend-container" class="container" style="padding-left: 2px;padding-right: 2px;"></div> 
+                <!--</div> -->
+                
+                <canvas align ="center" id="graficaFinal" style="" width="1200" height="700"></canvas>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Graph</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="interfazGrafica1" align="center"class="modal modal-fullscreen" tabindex="-1" role="dialog" aria-labelledby="my-modal-title" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen"  role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary text-white">
                 <h5 class="modal-title text-white" id="title">Data Dispositivo</h5>
@@ -286,33 +338,31 @@ const swiper = new Swiper(".card-slider", {
                 </button>
             </div>
             <div class="modal-body" style="padding-left: 2px;padding-right: 2px;">
-            <h1 align="center" id="tituloGrafica">TEST123456-7</h1>
-            <div class="row justify-content-center align-self-center" style="padding: 10px; margin-top:5px;">
-                <div class="col-8 col-lg-2 align-self-end" >
-                    <h5 >Search by Date :</h5>
+                <h1 align="center" id="tituloGrafica1">TEST123456-7</h1>
+                <div class="row justify-content-center align-self-center" style="padding: 10px; margin-top:5px;">
+                    <div class="col-8 col-lg-2 align-self-end" >
+                        <h5 >Search by Date :</h5>
+                    </div>
+                    <div class="col-4 col-lg-2" style="padding-right: 15px; margin-top:5px;">
+                        <select class="form-select" aria-label="Default select example">
+                            <option value="C" selected>C°</option>
+                            <option value="F">F°</option>
+                        </select>
+                    </div>
+                    <div class="col-6 col-lg-2" style="padding-left: 15px; margin-top:5px;">
+                        <input class='form-control'  id="fechaInicial1" type="datetime-local">	
+                    </div>
+                    <div class="col-6 col-lg-2" style="padding-right: 15px;margin-top:5px;">
+                        <input class='form-control' id="fechaFin1" type="datetime-local">
+                    </div>
+                    <div class="col-12 col-lg-2 col-md-3" style="margin-top:5px;">
+                        <button type="button"  id="fechaPer1" onclick="procesarFecha()" class="btn btn-primary  btn-lg btn-block">Search </button>
+                    </div>
                 </div>
-                <div class="col-4 col-lg-2" style="padding-right: 15px; margin-top:5px;">
-                    <select class="form-select" aria-label="Default select example">
-                        <option value="C" selected>C°</option>
-                        <option value="F">F°</option>
-                    </select>
-                </div>
-                <div class="col-6 col-lg-2" style="padding-left: 15px; margin-top:5px;">
-                    <input class='form-control'  id="fechaInicial" type="datetime-local">	
-                </div>
-                <div class="col-6 col-lg-2" style="padding-right: 15px;margin-top:5px;">
-                    <input class='form-control' id="fechaFin" type="datetime-local">
-                </div>
-                <div class="col-12 col-lg-3" style="margin-top:5px;">
-                    <button type="button"  id="fechaPer" onclick="procesarFecha()" class="btn btn-primary  btn-lg btn-block">Search </button>
-                </div>
-            </div>
-            <!--<div class="container "> -->
-             
-                    <div id="legend-container" class="container" style="padding-left: 2px;padding-right: 2px;"></div>
-                 
-            <!--</div> -->
-            <canvas align ="center" id="graficaFinal" style="" width="1200" height="700"></canvas>
+                <!--<div class="container "> -->
+                <div id="legend-container" class="container" style="padding-left: 2px;padding-right: 2px;"></div>   
+                <!--</div> -->
+                <canvas align ="center" id="graficaFinal1" style="" width="1200" height="500"></canvas>
             </div>
         </div>
     </div>
