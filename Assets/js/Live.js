@@ -478,6 +478,16 @@ async function graficaMadurador1(info,cadena,temp,temp1){
           });
         }
       };
+      const textCenter = {
+        id:'textCenter',
+        afterDatasetsDraw(chart,args,plugins){
+            const {ctx,chartArea:{top,bottom,left,right,width,height}}=chart;
+            ctx.save();
+            ctx.font = 'bold 15px sans-serif';
+            ctx.fillStyle ='grey';
+            ctx.fillText(tituloGrafica.textContent,(width*45)/100 ,(height*9)/10);
+        }
+      }
     X1 =new Chart(grafica1, {
         type: 'line',// Tipo de gráfica
         data: {
@@ -677,7 +687,7 @@ async function graficaMadurador1(info,cadena,temp,temp1){
 
             }           
         },
-        plugins : [ChartDataLabels,htmlLegendPlugin],       
+        plugins : [ChartDataLabels,htmlLegendPlugin,textCenter],       
     })
     $("#interfazGrafica").modal("show");
 }
