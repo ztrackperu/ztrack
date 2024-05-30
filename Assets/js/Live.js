@@ -3,6 +3,9 @@ const grafica1 = document.getElementById("graficaFinal");
 carruselExtra = document.getElementById("carruselExtra");
 extraerdata =[];
 todo={};
+//durante 2 segundos
+setInterval( async function(){ $(".loader").fadeOut("fast"); }, 1000);
+    //$(".loader").fadeOut("fast");
 
 let tituloGrafica = document.getElementById('tituloGrafica');
 let fechaInicial = document.getElementById('fechaInicial');
@@ -148,6 +151,7 @@ function saludos(){
 //graficaM
 async function graficaM(id){
     //console.log(id);
+    setInterval( async function(){ $(".loader").fadeOut("fast"); }, 1000);
     tituloGrafica.textContent =id;
     const response = await fetch(base_url + "Live/GraficaInicial/"+id, {method: "GET", });
     const result = await response.json();
@@ -533,7 +537,7 @@ async function graficaMadurador1(info,cadena,temp,temp1){
                         color: '#212529',
                         font: { 
                             size: 20,
-                            style: 'bold',
+                            style: 'normal',
                             lineHeight: 1.1
                         },
                         padding: {top: -5, left: 0, right: 0, bottom: 0}

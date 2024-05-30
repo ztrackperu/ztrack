@@ -88,10 +88,20 @@ body {
     outline: none;
 }
 
+.loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('http://161.132.206.104/img/j.gif') 50% 50% no-repeat #fff;
+    opacity: 0.90;
+}
 
  
 </style>
-
+<div class="loader"></div>
 <div>
     <div>
         <div>
@@ -275,10 +285,6 @@ const swiper = new Swiper(".card-slider", {
 });
 
 </script>
-
-
-
-
 
 <div id="interfazGrafica" class="modal animated bounceIn show" tabindex="-1" data-bs-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl  modal-dialog-centered">

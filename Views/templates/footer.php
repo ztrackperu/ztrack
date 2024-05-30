@@ -30,6 +30,14 @@ if (!empty($_GET['url'])) {
     }
 }else{
     echo '<script src="'. base_url . 'Assets/js/funciones.js"></script>';
-} ?>
+} 
+
+?>
+<script>
+//$(window).load(function() {
+    //$(".loader").fadeOut("fast");
+//});
+
+</script>
 </body>
 </html>
