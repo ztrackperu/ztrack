@@ -2,10 +2,12 @@ console.log(empresa_id);
 const grafica1 = document.getElementById("graficaFinal");
 carruselExtra = document.getElementById("carruselExtra");
 extraerdata =[];
+todo={};
 
 let tituloGrafica = document.getElementById('tituloGrafica');
 let fechaInicial = document.getElementById('fechaInicial');
 let fechaFin = document.getElementById('fechaFin');
+let temp_c_f = document.getElementById('temp_c_f');
 
 function markerOnClick(e)
 {
@@ -30,7 +32,27 @@ var markers = new L.LayerGroup().addTo(map);
 var markers1 = L.markerClusterGroup({ singleMarkerMode: true});
 map.addLayer(markers1);
 
-
+function dato_procesado(data,temp1){
+    data2=[];
+    data.forEach(function(num){
+        if(num){num = temp1==1 ? (parseInt(((num*9)/5+32)*100))/100: (parseInt((((num-32)*5)/9)*100))/100;}
+        data2.push(num);
+    })
+    return data2;
+}
+function c_f(temp,data=0){
+    if(data==0){
+        res = temp==0 ? 'C' :'F';
+        temp_c_f.value=temp;
+    }else{res= temp==0 ? data: parseInt((data*9)/5 +32);}
+    return res;
+}
+temp_c_f.addEventListener('change', async function(){
+    der = temp_c_f.value;
+    console.log(der);
+    console.log(todo);
+    okey = await graficaMadurador1(todo.graph,todo.cadena,todo.temperature,der);
+})
 function elcolor(d){return d==1 ?'green': d==2 ?'orange': d==3 ?'white': 'black'; }
 function pintarCirculo(contenedor,indice){
     estadoColor =1 ;
@@ -86,7 +108,8 @@ async function procesarFecha(){
         else{
             //aqui recibimos la infro procesada y lista pa mostrar en la grafica 
             console.log(data);
-            graph = await graficaMadurador1(data.graph,data.cadena);
+            todo = data ;
+            graph = await graficaMadurador1(data.graph,data.cadena,data.temperature,data.temperature);
 
         }
         //console.log(data);
@@ -121,8 +144,9 @@ async function graficaM(id){
     const result = await response.json();
     //reemplazar el nombre de la grafica 
 
-    //console.log(result);
-    graph = await graficaMadurador1(result.graph,result.cadena);
+    console.log(result);
+    todo = result ;
+    graph = await graficaMadurador1(result.graph,result.cadena,result.temperature,result.temperature);
     return result;
 }
 async function obtenerCambio() {
@@ -151,7 +175,6 @@ function tarjeta(res){
     $('#cargo3_'+res.telemetria_id).text(res.cargo_3_temp);
     $('#cargo4_'+res.telemetria_id).text(res.cargo_4_temp);
 }
-
 //console.log(extraerdata);
 async function cargar_circulos(tipo_usuario1,empresa_general1)
 {
@@ -307,15 +330,20 @@ async function cargar_circulos(tipo_usuario1,empresa_general1)
         markers1.addLayer(circulo);       
     }   
 }
-async function graficaMadurador1(info,cadena){
+
+async function graficaMadurador1(info,cadena,temp,temp1){
+    console.log(temp);
     //console.log(info);
     //console.log(cadena);
+    cambioTemp=1;
+    if(temp!=temp1){cambioTemp=2;}
     dataGrafica =[];
     for (var i = 0; i < cadena.length; i++) {
         if(cadena[i]!='created_at'){
             boleto =cadena[i];
             //console.log(info[boleto]);
-            if(info[boleto].config[3]==1){eje = "y";
+            if(info[boleto].config[3]==1){
+                eje = "y";
             }else if(info[boleto].config[3]==3){eje = "y2";
             }else{eje="y1";}
             if(info[boleto].config[3]==4){fillx=true;}else{fillx=false;}
@@ -325,7 +353,7 @@ async function graficaMadurador1(info,cadena){
             }else{displayX ='auto';}
             obj = {
                 label : info[boleto].config[0],
-                data : info[boleto].data,
+                data : datito = (info[boleto].config[3]==1 && cambioTemp==2)? dato_procesado(info[boleto].data,temp1):info[boleto].data ,
                 backgroundColor: info[boleto].config[2], // Color de fondo
                 borderColor: info[boleto].config[2], // Color del borde
                 borderWidth: 3,// Ancho del borde
@@ -335,6 +363,7 @@ async function graficaMadurador1(info,cadena){
                 tension: -0.2,
                 hidden :info[boleto].config[1],
                 fill: fillx,
+                spanGaps: true,
                 datalabels: {
                     display: displayX,
                     clip :'true',
@@ -485,8 +514,15 @@ async function graficaMadurador1(info,cadena){
             },
             stacked :false,
             scales: {
+                //min:3,
                 x:{
                     type:'time',
+                    //offset:true,
+                    alignToPixels:true,
+                    time:{
+                        minUnit:'minute',
+                    },
+                    clip :false,
                     ticks:{
                         major:{
                             enabled:true,
@@ -503,6 +539,7 @@ async function graficaMadurador1(info,cadena){
                 },
 
                 y: {
+                    type: 'linear',
                     position: 'left',
                     display: true,
                     title: {
@@ -520,11 +557,11 @@ async function graficaMadurador1(info,cadena){
                     ticks:{
                         color:"blue",
                         callback :(value,index,ticks) =>{
-                            return `${value}C\u00B0`;
+                            return `${value}${c_f(temp1)}\u00B0`;
                         }
                     },
-                    suggestedMin: 0,
-                    suggestedMax: 20
+                    suggestedMin: c_f(temp1,10),
+                    suggestedMax: c_f(temp1,20)
                 },
                 y1: {
                     type: 'linear',

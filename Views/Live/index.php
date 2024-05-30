@@ -299,9 +299,9 @@ const swiper = new Swiper(".card-slider", {
                         <h5 >Search by Date :</h5>
                     </div>
                     <div class="col-4 col-lg-2" style="padding-right: 15px; margin-top:5px;">
-                        <select class="form-select" aria-label="Default select example">
-                            <option value="C" selected>C°</option>
-                            <option value="F">F°</option>
+                        <select class="form-select" aria-label="Default select example" id="temp_c_f">
+                            <option value=0 selected>C°</option>
+                            <option value=1 >F°</option>
                         </select>
                     </div>
                     <div class="col-6 col-lg-2" style="padding-left: 15px; margin-top:5px;">
