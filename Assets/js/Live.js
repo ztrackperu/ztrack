@@ -8,7 +8,10 @@ let tituloGrafica = document.getElementById('tituloGrafica');
 let fechaInicial = document.getElementById('fechaInicial');
 let fechaFin = document.getElementById('fechaFin');
 let temp_c_f = document.getElementById('temp_c_f');
+const bajarGrafica = document.getElementById('bajarGraph');
 
+timeUser =new Date();
+console.log(timeUser.getUTCHours());
 function markerOnClick(e)
 {
     showLocation();
@@ -484,6 +487,8 @@ async function graficaMadurador1(info,cadena,temp,temp1){
         options: {
             animation: {
                 onComplete: function () {
+                    bajarGrafica.href= X1.toBase64Image();
+                    bajarGrafica.download = tituloGrafica.textContent+"_"+fechaInicial.value+"_"+fechaFin.value;                   
                 },
             },
             responsive : true,

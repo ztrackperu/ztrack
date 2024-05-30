@@ -294,10 +294,10 @@ const swiper = new Swiper(".card-slider", {
       </div>
       <div class="modal-body" style="padding: 5px ;margin-top:1px;">
                 <div class="row justify-content-center " style="padding: 5px; margin-top:1px;">
-                    <div class="col-8 col-lg-3 align-self-center" style="margin-top:5px;" >
+                    <div class="col-8 col-lg-3 align-self-end" style="margin-top:5px;" >
                         <h5 >Search by Date :</h5>
                     </div>
-                    <div class="col-4 col-lg-2 align-self-center" style="padding-right: 15px; margin-top:5px;">
+                    <div class="col-4 col-lg-2 align-self-end" style="padding-right: 15px; margin-top:5px;">
                         <select class="form-select" aria-label="Default select example" id="temp_c_f">
                             <option value=0 selected>C°</option>
                             <option value=1 >F°</option>
@@ -324,50 +324,14 @@ const swiper = new Swiper(".card-slider", {
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Graph</button>
+        <!--<button type="button" class="btn btn-primary" id="a">Graph</button>-->
+        <a id="bajarGraph" class="btn btn-outline-success btn-lg btn-block">DOWNLOAD GRAPH</a>
+
       </div>
     </div>
   </div>
 </div>
 
-<div id="interfazGrafica1" align="center"class="modal modal-fullscreen" tabindex="-1" role="dialog" aria-labelledby="my-modal-title" aria-hidden="true">
-    <div class="modal-dialog modal-fullscreen"  role="document">
-        <div class="modal-content">
-            <div class="modal-header bg-primary text-white">
-                <h5 class="modal-title text-white" id="title">Data Dispositivo</h5>
-                <button class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body" style="padding-left: 2px;padding-right: 2px;">
-                <h1 align="center" id="tituloGrafica1">TEST123456-7</h1>
-                <div class="row justify-content-center align-self-center" style="padding: 10px; margin-top:5px;">
-                    <div class="col-8 col-lg-2 align-self-end" >
-                        <h5 >Search by Date :</h5>
-                    </div>
-                    <div class="col-4 col-lg-2" style="padding-right: 15px; margin-top:5px;">
-                        <select class="form-select" aria-label="Default select example">
-                            <option value="C" selected>C°</option>
-                            <option value="F">F°</option>
-                        </select>
-                    </div>
-                    <div class="col-6 col-lg-2" style="padding-left: 15px; margin-top:5px;">
-                        <input class='form-control'  id="fechaInicial1" type="datetime-local">	
-                    </div>
-                    <div class="col-6 col-lg-2" style="padding-right: 15px;margin-top:5px;">
-                        <input class='form-control' id="fechaFin1" type="datetime-local">
-                    </div>
-                    <div class="col-12 col-lg-2 col-md-3" style="margin-top:5px;">
-                        <button type="button"  id="fechaPer1" onclick="procesarFecha()" class="btn btn-primary  btn-lg btn-block">Search </button>
-                    </div>
-                </div>
-                <!--<div class="container "> -->
-                <div id="legend-container" class="container" style="padding-left: 2px;padding-right: 2px;"></div>   
-                <!--</div> -->
-                <canvas align ="center" id="graficaFinal1" style="" width="1200" height="500"></canvas>
-            </div>
-        </div>
-    </div>
-</div>
+
 <?php include "Views/templates/footerLive.php"; ?>
 <?php include "Views/templates/footer.php"; ?>
