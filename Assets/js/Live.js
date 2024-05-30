@@ -100,6 +100,8 @@ function pintarCirculo(contenedor,indice){
     
 }
 async function procesarFecha(){
+    
+
     contenedor =tituloGrafica.textContent ;
     fechaInicialx=fechaInicial.value;
     console.log(fechaInicialx)
@@ -111,8 +113,10 @@ async function procesarFecha(){
         conj= contenedor+"/"+fechaInicialx+"/"+fechaFinx;
         console.log(conj);
         if(fechaInicialx!=todo.date[0] || fechaFinx!=todo.date[1]){
+            $(".loader").show();
             const response = await fetch(base_url + "Live/GraficaInicial/"+conj,{method: 'GET'});
             const data = await response.json();
+
             if(data=="mal"){alert("Fecha Inicial mayor a Fecha Mayor!");}
             else if(data=="rango"){alert("Búsqueda fuera de Rango , contacta al Administrador");}
             else{
@@ -120,7 +124,8 @@ async function procesarFecha(){
                 console.log(data);
                 todo = data ;
                 graph = await graficaMadurador1(data.graph,data.cadena,data.temperature,data.temperature);
-    
+                setInterval( async function(){ $(".loader").fadeOut("fast"); }, 1000);
+
             }
         }else{
             alert("Fechas Procesadas!");
@@ -151,7 +156,8 @@ function saludos(){
 //graficaM
 async function graficaM(id){
     //console.log(id);
-    setInterval( async function(){ $(".loader").fadeOut("fast"); }, 1000);
+    //$(".loader").show();
+    
     tituloGrafica.textContent =id;
     const response = await fetch(base_url + "Live/GraficaInicial/"+id, {method: "GET", });
     const result = await response.json();
@@ -161,10 +167,14 @@ async function graficaM(id){
     todo = result ;
     fechaFin.value =result.date[1] ;
     fechaInicial.value =result.date[0] ;
+    //setInterval( function(){ $(".loader").fadeOut("fast"); }, 1000);
+
     graph = await graficaMadurador1(result.graph,result.cadena,result.temperature,result.temperature);
+
     return result;
 }
 async function obtenerCambio() {
+    //$(".loader").show();
     const response = await fetch(base_url + "Live/LiveData", {method: "GET", });
     const result = await response.json();
     if(result.length!=0){
@@ -175,6 +185,8 @@ async function obtenerCambio() {
         })
     }
     console.log(result);
+    //setInterval(  function(){ $(".loader").fadeOut("fast"); }, 1000);
+
     return result;
 }
 function tarjeta(res){
@@ -347,6 +359,7 @@ async function cargar_circulos(tipo_usuario1,empresa_general1)
 }
 
 async function graficaMadurador1(info,cadena,temp,temp1){
+    //$(".loader").show();
     console.log(temp);
     //console.log(info);
     //console.log(cadena);
@@ -719,6 +732,8 @@ async function graficaMadurador1(info,cadena,temp,temp1){
         plugins : [plugin,ChartDataLabels,htmlLegendPlugin,textCenter],       
     })
     $("#interfazGrafica").modal("show");
+    //setInterval(  function(){ $(".loader").fadeOut("fast"); }, 1000);
+
 }
 
 async function graficaMadurador(info){
