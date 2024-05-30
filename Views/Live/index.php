@@ -292,26 +292,28 @@ const swiper = new Swiper(".card-slider", {
         </div>
 
       </div>
-      <div class="modal-body">
-        
-                <div class="row justify-content-center align-self-center" style="padding: 10px; margin-top:5px;">
-                    <div class="col-8 col-lg-3 align-self-end" >
+      <div class="modal-body" style="padding: 5px ;margin-top:1px;">
+                <div class="row justify-content-center " style="padding: 5px; margin-top:1px;">
+                    <div class="col-8 col-lg-3 align-self-center" style="margin-top:5px;" >
                         <h5 >Search by Date :</h5>
                     </div>
-                    <div class="col-4 col-lg-2" style="padding-right: 15px; margin-top:5px;">
+                    <div class="col-4 col-lg-2 align-self-center" style="padding-right: 15px; margin-top:5px;">
                         <select class="form-select" aria-label="Default select example" id="temp_c_f">
                             <option value=0 selected>C°</option>
                             <option value=1 >F°</option>
                         </select>
                     </div>
-                    <div class="col-6 col-lg-2" style="padding-left: 15px; margin-top:5px;">
+
+                    <div class="col-6 col-lg-2" style="padding-left: 15px; margin-top:10px;">
+                        <h5 ><strong>From :</strong></h5>
                         <input class='form-control'  id="fechaInicial" type="datetime-local">	
                     </div>
-                    <div class="col-6 col-lg-2" style="padding-right: 15px;margin-top:5px;">
+                    <div class="col-6 col-lg-2" style="padding-right: 15px;margin-top:10px;">
+                        <h5 ><strong>To :</strong></h5>
                         <input class='form-control' id="fechaFin" type="datetime-local">
                     </div>
-                    <div class="col-12 col-lg-2" style="margin-top:5px;">
-                        <button type="button"  id="fechaPer" onclick="procesarFecha()" class="btn btn-primary  btn-lg btn-block">Search </button>
+                    <div class="col-12 col-lg-2 align-self-center d-grid" style="margin-top:5px;">
+                        <button type="button"  id="fechaPer" onclick="procesarFecha()" class="btn btn-primary btn-lg">Search </button>
                     </div>
                 </div>
                 <!--<div class="container "> -->
