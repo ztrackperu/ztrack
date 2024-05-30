@@ -21,6 +21,11 @@
         }
         return $valor;
     }
+    function validateDate($date, $format = 'Y-m-d H:i:s')
+{
+    $d = DateTime::createFromFormat($format, $date);
+    return $d && $d->format($format) == $date;
+}
     function porNormal($val){
         if($val>=0 && $val<100){$valor=$val ;}else{$valor="NA";}
         return $valor;

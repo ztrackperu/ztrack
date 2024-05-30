@@ -119,8 +119,6 @@ async function procesarFecha(){
         }else{
             alert("Fechas Procesadas!");
         }
-
-        //console.log(data);
     }
 
 }
@@ -388,12 +386,9 @@ async function graficaMadurador1(info,cadena,temp,temp1){
     }
     console.log(dataGrafica);
     if (typeof X1 !== 'undefined') {X1.destroy();}
-
-
     const getOrCreateLegendList = (chart, id) => {
         const legendContainer = document.getElementById(id);
-        let listContainer = legendContainer.querySelector('div');
-      
+        let listContainer = legendContainer.querySelector('div');  
         if (!listContainer) {
           listContainer = document.createElement('div');
           listContainer.className = "row justify-content-center row-cols-4 row-cols-sm-4 row-cols-md-4 ";
@@ -401,26 +396,20 @@ async function graficaMadurador1(info,cadena,temp,temp1){
           listContainer.style.flexDirection = 'row';
           listContainer.style.margin = 0;
           listContainer.style.padding = 0;
-      
           legendContainer.appendChild(listContainer);
-        }
-      
+        } 
         return listContainer;
-      };
-      
+      };  
       const htmlLegendPlugin = {
         id: 'htmlLegend',
         afterUpdate(chart, args, options) {
           const ul = getOrCreateLegendList(chart, options.containerID);
-      
           // Remove old legend items
           while (ul.firstChild) {
             ul.firstChild.remove();
           }
-      
           // Reuse the built-in legendItems generator
           const items = chart.options.plugins.legend.labels.generateLabels(chart);
-      
           items.forEach(item => {
             const sdiv = document.createElement('div');
             sdiv.style.paddingLeft = '2px';
@@ -434,20 +423,16 @@ async function graficaMadurador1(info,cadena,temp,temp1){
             //papa.className='col-xs-6 col-1';
             //$(cambio).addClass('col-xs-6 col-1 ');
             //$(cambio).addClass('col-xs-6 col-1 ');
-
             //sdiv[item.text].addClass('col-xs-6 col-1 ');
             //style="padding-left: 2px;padding-right: 2px;"
-
             //sdiv.style.flexDirection = 'row';
             //sdiv.style.marginLeft = '10px';
-
             const li = document.createElement('li');
             li.style.alignItems = 'center';
             li.style.cursor = 'pointer';
             li.style.display = 'flex';
             li.style.flexDirection = 'row';
-            li.style.marginLeft = '10px';
-      
+            li.style.marginLeft = '10px'; 
             li.onclick = () => {
               const {type} = chart.config;
               if (type === 'pie' || type === 'doughnut') {
@@ -458,7 +443,6 @@ async function graficaMadurador1(info,cadena,temp,temp1){
               }
               chart.update();
             };
-      
             // Color box
             const boxSpan = document.createElement('span');
             boxSpan.style.background = item.fillStyle;
@@ -469,7 +453,6 @@ async function graficaMadurador1(info,cadena,temp,temp1){
             boxSpan.style.height = '20px';
             boxSpan.style.marginRight = '10px';
             boxSpan.style.width = '20px';
-      
             // Text
             const textContainer = document.createElement('p');
             textContainer.style.color = item.fontColor;
@@ -482,11 +465,8 @@ async function graficaMadurador1(info,cadena,temp,temp1){
             if(tx1[0].length >7){
                 tx1[0]=tx1[0].substr(-20, 8);
             }
-            const text = document.createTextNode(tx1[0]);
-
-            
-            textContainer.appendChild(text);
-      
+            const text = document.createTextNode(tx1[0]);   
+            textContainer.appendChild(text);   
             li.appendChild(boxSpan);
             li.appendChild(textContainer);
             sdiv.appendChild(li);
@@ -495,21 +475,12 @@ async function graficaMadurador1(info,cadena,temp,temp1){
           });
         }
       };
-
-
-
-
-
-
-
     X1 =new Chart(grafica1, {
         type: 'line',// Tipo de gráfica
         data: {
             labels: info['created_at'].data,
             datasets: dataGrafica,
         },
-
-
         options: {
             animation: {
                 onComplete: function () {
@@ -545,9 +516,7 @@ async function graficaMadurador1(info,cadena,temp,temp1){
                         },
                         //padding:15,
                     }
-
                 },
-
                 y: {
                     type: 'linear',
                     position: 'left',
@@ -629,7 +598,6 @@ async function graficaMadurador1(info,cadena,temp,temp1){
                     // ID of the container to put the legend in
                     containerID: 'legend-container',
                   },
-
                 datalabels: {
                     color: function(context) {
                       return context.dataset.backgroundColor;
@@ -638,7 +606,6 @@ async function graficaMadurador1(info,cadena,temp,temp1){
                       weight: 'bold'
                     },          
                     padding: 6,
-    
                   },
                 title: {
                     display: false,
