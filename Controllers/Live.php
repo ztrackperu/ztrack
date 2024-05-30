@@ -87,8 +87,8 @@ class Live extends Controller
                         'ultima'=>$ultimaFecha,
                         //'fechaI'=>$fechaI.":00",
                         //'fechaF'=>$fechaF.":00"
-                        'fechaI'=>$fechaI = validateDate($fechaI, $format = 'Y-m-d H:i:s') ? $fechaI : $fechaI.":00",
-                        'fechaF'=>$fechaF = validateDate($fechaF, $format = 'Y-m-d H:i:s') ? $fechaF : $fechaF.":00",
+                        'fechaI'=>$fechaI = validateDate($fechaI, $format = 'Y-m-d H:i:s') ? $fechaI.":00" : $fechaI,
+                        'fechaF'=>$fechaF = validateDate($fechaF, $format = 'Y-m-d H:i:s') ? $fechaF.":00" : $fechaF,
                     );
                 }else{
                     $cadena = array();
