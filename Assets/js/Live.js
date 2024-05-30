@@ -96,22 +96,30 @@ function pintarCirculo(contenedor,indice){
 async function procesarFecha(){
     contenedor =tituloGrafica.textContent ;
     fechaInicialx=fechaInicial.value;
+    console.log(fechaInicialx)
     fechaFinx=fechaFin.value;
+    console.log(fechaFinx)
     if(fechaInicialx==''|| fechaFinx==''){alert("No se seleccionado las fechas");
     }else{
-        //console.log("vamos a analizar");
+        console.log("vamos a analizar");
         conj= contenedor+"/"+fechaInicialx+"/"+fechaFinx;
-        const response = await fetch(base_url + "Live/GraficaInicial/"+conj,{method: 'GET'});
-        const data = await response.json();
-        if(data=="mal"){alert("Fecha Inicial mayor a Fecha Mayor!");}
-        else if(data=="rango"){alert("Búsqueda fuera de Rango , contacta al Administrador");}
-        else{
-            //aqui recibimos la infro procesada y lista pa mostrar en la grafica 
-            console.log(data);
-            todo = data ;
-            graph = await graficaMadurador1(data.graph,data.cadena,data.temperature,data.temperature);
-
+        console.log(conj);
+        if(fechaInicialx!=todo.date[0] || fechaFinx!=todo.date[1]){
+            const response = await fetch(base_url + "Live/GraficaInicial/"+conj,{method: 'GET'});
+            const data = await response.json();
+            if(data=="mal"){alert("Fecha Inicial mayor a Fecha Mayor!");}
+            else if(data=="rango"){alert("Búsqueda fuera de Rango , contacta al Administrador");}
+            else{
+                //aqui recibimos la infro procesada y lista pa mostrar en la grafica 
+                console.log(data);
+                todo = data ;
+                graph = await graficaMadurador1(data.graph,data.cadena,data.temperature,data.temperature);
+    
+            }
+        }else{
+            alert("Fechas Procesadas!");
         }
+
         //console.log(data);
     }
 
@@ -146,6 +154,8 @@ async function graficaM(id){
 
     console.log(result);
     todo = result ;
+    fechaFin.value =result.date[1] ;
+    fechaInicial.value =result.date[0] ;
     graph = await graficaMadurador1(result.graph,result.cadena,result.temperature,result.temperature);
     return result;
 }

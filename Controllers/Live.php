@@ -85,8 +85,10 @@ class Live extends Controller
                     $cadena = array(
                         'device'=>$telemetria,
                         'ultima'=>$ultimaFecha,
-                        'fechaI'=>$fechaI.":00",
-                        'fechaF'=>$fechaF.":00"
+                        //'fechaI'=>$fechaI.":00",
+                        //'fechaF'=>$fechaF.":00"
+                        'fechaI'=>$fechaI,
+                        'fechaF'=>$fechaF
                     );
                 }else{
                     $cadena = array();
