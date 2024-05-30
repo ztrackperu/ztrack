@@ -95,7 +95,7 @@ body {
     width: 100%;
     height: 100%;
     z-index: 9999;
-    background: url('http://161.132.206.104/img/j.gif') 50% 50% no-repeat #fff;
+    background: url('https://ztrack.app/img/j.gif') 50% 50% no-repeat #fff;
     opacity: 0.90;
 }
 
