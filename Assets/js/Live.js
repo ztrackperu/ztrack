@@ -488,6 +488,17 @@ async function graficaMadurador1(info,cadena,temp,temp1){
             ctx.fillText(tituloGrafica.textContent,(width*45)/100 ,(height*9)/10);
         }
       }
+      const plugin = {
+        id : 'customCanvasBackgroundColor',
+        beforeDraw : (chart ,args ,options) => {
+          const {ctx} = chart;
+          ctx.save();
+          ctx.globalCompositeOperation = 'destination-over';
+          ctx.fillStyle = options.color || '#000000';
+          ctx.fillRect(0,0,chart.width,chart.height);
+          ctx.restore();
+        }
+      }
     X1 =new Chart(grafica1, {
         type: 'line',// Tipo de gráfica
         data: {
@@ -513,6 +524,20 @@ async function graficaMadurador1(info,cadena,temp,temp1){
                 //min:3,
                 x:{
                     type:'time',
+                    //display: false,
+                    //position: 'right',
+                    //beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'ZTRACK - Live Telematic',
+                        color: '#212529',
+                        font: { 
+                            size: 20,
+                            style: 'bold',
+                            lineHeight: 1.1
+                        },
+                        padding: {top: -5, left: 0, right: 0, bottom: 0}
+                      },
                     //offset:true,
                     alignToPixels:true,
                     time:{
@@ -568,7 +593,7 @@ async function graficaMadurador1(info,cadena,temp,temp1){
                         color: '#1a2c4e',
                         font: { 
                             size: 20,
-                            style: 'normal',
+                            style: 'bold',
                             lineHeight: 1.2
                         },
                         padding: {top: 30, left: 0, right: 0, bottom: 0}
@@ -687,7 +712,7 @@ async function graficaMadurador1(info,cadena,temp,temp1){
 
             }           
         },
-        plugins : [ChartDataLabels,htmlLegendPlugin,textCenter],       
+        plugins : [plugin,ChartDataLabels,htmlLegendPlugin,textCenter],       
     })
     $("#interfazGrafica").modal("show");
 }
