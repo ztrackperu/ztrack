@@ -62,6 +62,8 @@
             <br><br>
             <input type="text" placeholder="Usuario" id="usuario" name="usuario" autofocus required>
             <input type="password" placeholder="Contraseña" id="clave" name="clave" required>
+            <input type="hidden"  id="utc" name="utc" >
+
             <button class="btn-solicitar" type="submit">Ingresar</button>
             <p class="cuenta-gratis">¿Aun no tienes una cuenta?</p>
         </form>

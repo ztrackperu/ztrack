@@ -55,6 +55,7 @@ class Usuarios extends Controller{
     {
         $usuario = strClean($_POST['usuario']);
         $clave = strClean($_POST['clave']);
+        $utc = strClean($_POST['utc']);
         if (empty($usuario) || empty($clave)) {
             $msg = array('msg' => 'Todo los campos son requeridos', 'icono' => 'warning');
         }else{
@@ -82,6 +83,7 @@ class Usuarios extends Controller{
                 $ExtraerDatos = $this->model->ExtraerDatos($_SESSION['empresa_id']);
                 $resultadoData = json_decode($ExtraerDatos);
                 $_SESSION['data'] = $resultadoData->data;
+                $_SESSION['utc'] = $utc;
                 //$_SESSION['data'] = $this->model->ExtraerDatos($_SESSION['empresa_id']);
 
                 $msg = array('msg' => 'Bienvenido  '.$_SESSION['nombres_ztrack'].' a ztrack !', 'icono' => 'success');

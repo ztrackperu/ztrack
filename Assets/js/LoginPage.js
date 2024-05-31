@@ -1,3 +1,9 @@
+utc = document.getElementById("utc");
+timeUser =new Date();
+console.log(timeUser);
+console.log(timeUser.getUTCHours());
+//getUTCDate()
+console.log(timeUser.getTimezoneOffset());
 function frmLogin(e) {
     e.preventDefault();
     const usuario = document.getElementById("usuario");
@@ -13,18 +19,18 @@ function frmLogin(e) {
     } else {
         const url = base_url + "Usuarios/validar";
         console.log(url);
+        utc.value =timeUser.getTimezoneOffset() ;
         const frm = document.getElementById("frmLogin");
         const http = new XMLHttpRequest();
         http.open("POST", url, true);
         http.send(new FormData(frm));
         http.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
+            if (this.readyState == 4 && this.status == 200) { 
                 const res = JSON.parse(this.responseText);
                 if (res.icono == "success") {
                     alertas(res.msg, res.icono);
                     //console.log("se acepto el ingreso")
-                    setTimeout(function(){
-                        
+                    setTimeout(function(){                  
                         window.location = base_url + "Live";       
                     }, 1000);
                 } else {

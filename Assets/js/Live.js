@@ -1,4 +1,5 @@
 console.log(empresa_id);
+console.log(empresa_id);
 const grafica1 = document.getElementById("graficaFinal");
 carruselExtra = document.getElementById("carruselExtra");
 extraerdata =[];
@@ -124,7 +125,7 @@ async function procesarFecha(){
                 console.log(data);
                 todo = data ;
                 graph = await graficaMadurador1(data.graph,data.cadena,data.temperature,data.temperature);
-                setInterval( async function(){ $(".loader").fadeOut("fast"); }, 1000);
+                //setInterval( async function(){ $(".loader").fadeOut("fast"); }, 1000);
 
             }
         }else{
@@ -156,7 +157,7 @@ function saludos(){
 //graficaM
 async function graficaM(id){
     //console.log(id);
-    //$(".loader").show();
+    $(".loader").show();
     
     tituloGrafica.textContent =id;
     const response = await fetch(base_url + "Live/GraficaInicial/"+id, {method: "GET", });

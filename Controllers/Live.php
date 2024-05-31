@@ -78,17 +78,20 @@ class Live extends Controller
             if($fechaI=="0" && $fechaF=="0"){
                 $cadena = array(
                     'device'=>$telemetria,
-                    'ultima'=>$ultimaFecha,
+                    'ultima'=>gmtFecha($ultimaFecha),
+                    'utc'=>$_SESSION['utc']
                 );
             }else{
                 if(fechaGrafica($fechaI,$fechaF)=="ok"){
                     $cadena = array(
                         'device'=>$telemetria,
-                        'ultima'=>$ultimaFecha,
+                        'ultima'=>gmtFecha($ultimaFecha),
                         //'fechaI'=>$fechaI.":00",
                         //'fechaF'=>$fechaF.":00"
                         'fechaI'=> validateDate($fechaI),
-                        'fechaF'=> validateDate($fechaF)
+                        'fechaF'=> validateDate($fechaF),
+                        'utc'=>$_SESSION['utc']
+                        
                     );
                     //validateDate($fechaI, $format = 'Y-m-d H:i:s')
                 }else{

@@ -35,8 +35,26 @@
         if($val>=0 && $val<100){$valor=$val ;}else{$valor="NA";}
         return $valor;
     }
+    function gmtFecha($val){
+        if($_SESSION['utc']!=300){
+            $val1 =  strtotime($val);
+            $dif =300-$_SESSION['utc'];
+            $minutes = $dif." minutes";
+            $puntoA1 = strtotime($minutes,$val1);
+            $val = date('Y-m-d\TH:i:s', $puntoA1);
+        }
+        return $val;
+    }
     function fechaPro($val){
         //echo $val;
+        //previa validacion de GMT  "Y-m-d\TH:i:s
+        if($_SESSION['utc']!=300){
+            $val1 =  strtotime($val);
+            $dif =300-$_SESSION['utc'];
+            $minutes = $dif." minutes";
+            $puntoA1 = strtotime($minutes,$val1);
+            $val = date('Y-m-d\TH:i:s', $puntoA1);
+        }
         $ultima = explode("T",$val) ;
         $fech = explode("-",$ultima[0]);
         //echo $ultima[0];
