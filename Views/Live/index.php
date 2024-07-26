@@ -1,5 +1,6 @@
 <?php include "Views/templates/navbar.php"; ?>
 <link rel="stylesheet" href="<?php echo base_url; ?>Assets/css/swiper-bundle.min.css" />
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
 /* -----Root CSS Variable------ */
@@ -119,12 +120,22 @@ body {
         <div class="wrapper">
             <h2>
                 <strong>Equipos disponibles ztrack</strong>
+                <div class="mt-2">
+                    <div class="col-md-5 mx-auto">
+                        <div class="input-group">
+                            <input class="form-control border" type="search" placeholder="search" id="example-search-input">
+                            <button type="button" class="btn btn-primary" id="search-button">Buscar</button>
+                        </div>
+                    </div>
+                </div>
             </h2>
             <!-- Slider main container -->
             <div class="swiper" style='padding-top:15px ;' >
                 <div class="card-slider">
+                    
                     <!-- Additional required wrapper -->
                     <div  id="carruselExtra" class="swiper-wrapper">
+                        
                         <!-- Slides -->
                         <!--<div id="carruselExtra"></div>-->
 
@@ -154,39 +165,43 @@ body {
 
             <!-- map -->
             <div class="col-lg-4 sm-mt-3 ">
-                <div class="row mt-2">
-                    <div class="col-md-4 col-lg-4 col-xl-4 sm-mb-3">
+                <div class="row">
+                    <div class="col-md-4 col-lg-4 col-xl-4 sm-mb-3 mt-2">
                     <div class="card">
-                        <div class="card-body text-center">
+                        <div class="card-body text-center text-success">
                         <h6>Online</h6>
                         <h4>20</h4>
                         </div>
                     </div>
                     </div>
 
-                    <div class="col-md-4 col-lg-4 col-xl-4 sm-mb-3">
+                    <div class="col-md-4 col-lg-4 col-xl-4 sm-mb-3 mt-2">
                     <div class="card">
-                        <div class="card-body text-center">
+                        <div class="card-body text-center text-warning">
                         <h6>Wait</h6>
                         <h4>12</h4>
                         </div>
                     </div>
                     </div>
 
-                    <div class="col-md-4 col-lg-4 col-xl-4 sm-mb-3">
+                    <div class="col-md-4 col-lg-4 col-xl-4 sm-mb-3 mt-2">
                     <div class="card">
-                        <div class="card-body text-center">
+                        <div class="card-body text-center text-danger">
                         <h6>Offline</h6>
                         <h4>123</h4>
                         </div>
                     </div>
                     </div>
                 </div>
-
+                <div class="card mt-2">
+                    <div class="card-body py-2 flex align-items-center">
+                        <canvas id="grfAlarma"></canvas>                   
+                    </div>
+                </div>
             
                 <div class="card mt-2">
                     <div class="card-body">
-                        <div id="map" style="width: 100%; height: 600px"></div> 
+                        <div id="map" style="width: 100%; height: 470px"></div> 
                     </div>
                 </div>
             </div>
@@ -341,3 +356,4 @@ const swiper = new Swiper(".card-slider", {
 
 <?php include "Views/templates/footerLive.php"; ?>
 <?php include "Views/templates/footer.php"; ?>
+

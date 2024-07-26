@@ -11,6 +11,9 @@
     <!--<link rel="stylesheet" href="<?php echo base_url; ?>Assets/css/main.css" />-->
     <link rel="stylesheet" href="<?php echo base_url; ?>Assets/css/dataTables.dataTables.min.css">
     <link rel="stylesheet" href="<?php echo base_url; ?>Assets/css/select2.min.css"  />
+    <link rel="stylesheet" href="<?php echo base_url; ?>Assets/css/fonts/remixicon.css" />
+    <!-- BOOTSTRAP ICONS-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
     <title>ZTRACK | LIVE TELEMATIC</title>
 </head>
 <body>

@@ -134,6 +134,59 @@ async function procesarFecha(){
     }
 
 }
+$(document).ready(function(){
+
+    // INICIALIZANDO TOOLTIP PARA QUE SE PUEDA VISUALIZAR EN LA PÁGINA
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+
+    // CREANDO GRÁFICO DOUGHNUT PARA LAS ALARMAS
+    var ctx = document.getElementById('grfAlarma').getContext('2d');
+    var myDoughnutChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Online', 'Wait', 'Offline'],
+            datasets: [{
+                label: 'Equipos',
+                data: [20, 12, 123],
+                backgroundColor: [
+                    'rgb(0, 116, 75)',
+                    'rgb(255, 193, 0)',
+                    'rgb(233, 26, 51)'
+                ],
+                hoverOffset: 4
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'Disponibilidad de Equipos ZTRACK'
+                }
+            }
+        }
+    });
+    
+    // SEARCH INPUT PARA BUSCAR LOS EQUIPOS DENTRO DE LOS SLIDER
+    document.getElementById('search-button').addEventListener('click', function() {
+        var searchTerm = document.getElementById('example-search-input').value.toLowerCase();
+        var slides = document.querySelectorAll('.swiper-slide');
+        slides.forEach(function(slide) {
+            if (slide.getAttribute('data-title').toLowerCase().includes(searchTerm)) {
+                slide.style.display = 'flex';
+            } else {
+                slide.style.display = 'none';
+            }
+        });
+        //esto sucede cuando se busca un equipo y no se encuentra en el slider
+        swiper.update();
+    });
+})
 document.addEventListener("DOMContentLoaded", async function(){
     try{
         const response = await fetch(base_url + "Live/ListaDispositivoEmpresa",{method: 'GET'});
