@@ -258,7 +258,7 @@
         32762, -32762, 3276.2, -3276.2, 327.62, -327.62, 32761, -32761, 3276.1, -3276.1, 327.61, -327.61,32760, -32760, 3276.0, -3276.0, 327.60, -327.60,
         32759, -32759, 3275.9, -3275.9, 327.59, -327.59,32751, -32751, 3275.1, -3275.1, 327.51, -327.51,-3277,-3276.9,-38.5,25.4,255
     ];
-    function b($val, $array = ['ethylene', 'sp_ethyleno', 'compress_coil_1' , 'co2_reading', 'set_point_co2', 'relative_humidity', 'humidity_set_point', 'ripener_prueba', 'temp_supply_1', 'avl']) {
+    function b($val, $array = ['ethylene', 'sp_ethyleno', 'defrost_prueba','compress_coil_1' , 'co2_reading', 'set_point_co2', 'relative_humidity', 'humidity_set_point', 'ripener_prueba', 'temp_supply_1', 'avl']) {
         $result = [];
         foreach ($array as $key) {
             $datoDepurar = $val->$key;
@@ -389,6 +389,7 @@
         $supply = $datosDepurados['temp_supply_1'];
         $n_apertura = $datosDepurados['avl'];
         $compresor = $datosDepurados['compress_coil_1'];
+        $i = $datosDepurados['defrost_prueba'];
 
         $temp1 =tempNormal($val->temp_supply_1) ; 
         $return =tempNormal($val->return_air) ; 
@@ -536,10 +537,8 @@
                                 </div>
                             </div>
                             <div class='col-4 border-start border-end border-bottom'>
-                                <div class='row'>
-                                    <div class='col-12 '><h6 class='mt-2'>N. Apertura :</h6></div>
-                                    <div class='col-7 p-1'>  <input type='text' class='form-control' placeholder='I: %' readonly></div>
-                                    <div class='col-5 align-self-center p-1 '></div>
+                                 <div class='row'>
+                                    <p class='mt-3 text-center'>I: {$i}</p>
                                 </div>
                             </div>
                               <div class='col-4 border-start border-bottom'>
