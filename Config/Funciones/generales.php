@@ -448,13 +448,13 @@
                             </div>
                             <div class='col-4 border-start border-bottom'>
                                 <div class='row'>
-                                    <p class='mt-3'>{$etileno}</p>
+                                    <p class='mt-3' id='etileno_{$val->telemetria_id}'>{$etileno}</p>
                                 </div>
                             </div>
                             <div class='col-4 border-start border-end border-bottom'>
                                 <div class='row'>
                                     <div class='col-12 '><h6 class='mt-2'>SP Ethylene :</h6></div>
-                                    <div class='col-7 p-1'><input type='text' class='form-control' placeholder={$sp_ethyleno} readonly></div>
+                                    <div class='col-7 p-1'><input type='text' class='form-control' id='sp_etileno_{$val->telemetria_id}' placeholder={$sp_ethyleno} readonly></div>
                                     <div class='col-5 align-self-center p-1 '>ppm</div>
                                 </div>
                             </div>
@@ -465,13 +465,13 @@
                             </div>
                             <div class='col-4 border-start border-bottom'>
                                 <div class='row'>
-                                    <p class='mt-3'>{$co2}</p>
+                                    <p class='mt-3' id='co2_{$val->telemetria_id}'>{$co2}</p>
                                 </div>
                             </div>
                             <div class='col-4 border-start border-end'>
                                 <div class='row'>
                                     <div class='col-12 '><h6 class='mt-2'>SP CO2 :</h6></div>
-                                    <div class='col-7 p-1'>  <input type='text' class='form-control' placeholder={$sp_co2} readonly></div>
+                                    <div class='col-7 p-1'>  <input type='text' class='form-control' id='sp_co2_{$val->telemetria_id}' placeholder={$sp_co2} readonly></div>
                                     <div class='col-5 align-self-center p-1 '>%</div>
                                 </div>
                             </div>
@@ -482,13 +482,13 @@
                             </div>
                             <div class='col-4 border-start border-bottom'>
                                 <div class='row'>
-                                    <p class='mt-3'>{$humedad}</p>
+                                    <p class='mt-3' id='humd_{$val->telemetria_id}'>{$humedad}</p>
                                 </div>
                             </div>
                             <div class='col-4 border'>
                                 <div class='row'>
                                     <div class='col-12 '><h6 class='mt-2'>SP Humedad:</h6></div>
-                                    <div class='col-7 p-1'>  <input type='text' class='form-control' placeholder={$sp_humedad} readonly></div>
+                                    <div class='col-7 p-1'>  <input type='text' class='form-control' id='s_humd_{$val->telemetria_id}' placeholder={$sp_humedad} readonly></div>
                                     <div class='col-5 align-self-center p-1 '>%</div>
                                 </div>
                             </div>
@@ -499,7 +499,7 @@
                             </div>
                             <div class='col-4 border-start border-bottom'>
                                 <div class='row'>
-                                    <p class='mt-3'>{$h_inyeccion}</p>
+                                    <p class='mt-3' id='h_inyeccion_{$val->telemetria_id}'>{$h_inyeccion}</p>
                                 </div>
                             </div>
                             <div class='col-4 border-start border-end border-bottom'>
@@ -516,13 +516,13 @@
                             </div>
                             <div class='col-4 border-start border-bottom'>
                                 <div class='row'>
-                                    <p class='mt-3'>{$supply}</p>
+                                    <p class='mt-3' id='temp1_{$val->telemetria_id}'>{$supply}</p>
                                 </div>
                             </div>
                             <div class='col-4 border-start border-end border-bottom'>
                                 <div class='row'>
                                     <div class='col-12 '><h6 class='mt-2'>SP Temp :</h6></div>
-                                    <div class='col-7 p-1'>  <input type='text' class='form-control' placeholder={$val->set_point}></div>
+                                    <div class='col-7 p-1'>  <input type='text' class='form-control' id='s_temp_{$val->telemetria_id}' placeholder={$val->set_point}></div>
                                     <div class='col-5 align-self-center p-1 '>%</div>
                                 </div>
                             </div>
@@ -533,12 +533,12 @@
                             </div>
                             <div class='col-4 border-start border-bottom'>
                                 <div class='row'>
-                                    <p class='mt-3'>{$n_apertura}</p>
+                                    <p class='mt-3' id='n_apertura_{$val->telemetria_id}'>{$n_apertura}</p>
                                 </div>
                             </div>
                             <div class='col-4 border-start border-end border-bottom'>
                                  <div class='row'>
-                                    <p class='mt-3 text-center'>I: {$i}</p>
+                                    <p class='mt-3 text-center' id='defrost_prueba_{$val->telemetria_id}'>I: {$i}</p>
                                 </div>
                             </div>
                               <div class='col-4 border-start border-bottom'>
@@ -548,7 +548,7 @@
                             </div>
                             <div class='col-4 border-start border-bottom'>
                                 <div class='row'>
-                                    <p class='mt-3'>{$compresor}</p>
+                                    <p class='mt-3' id='compresor_{$val->telemetria_id}'>{$compresor}</p>
                                 </div>
                             </div>
                             <div class='col-4 border-start border-end border-bottom'>

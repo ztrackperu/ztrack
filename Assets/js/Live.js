@@ -306,6 +306,14 @@ function tarjeta(res){
     $('#cargo2_'+res.telemetria_id).text(res.cargo_2_temp);
     $('#cargo3_'+res.telemetria_id).text(res.cargo_3_temp);
     $('#cargo4_'+res.telemetria_id).text(res.cargo_4_temp);
+    $('#etileno_'+res.telemetria_id).text(res.ethylene);
+    $('#sp_etileno_'+res.telemetria_id).val(res.sp_ethyleno);
+    $('#co2_'+res.telemetria_id).text(res.co2_reading);
+    $('#sp_co2_'+res.telemetria_id).val(res.set_point_co2);
+    $('#h_inyeccion_'+res.telemetria_id).text(res.relative_humidity);
+    $('#n_apertura_'+res.telemetria_id).text(res.avl);
+    $('#compresor_'+res.telemetria_id).text(res.compress_coil_1);
+    $('#defrost_prueba_'+res.telemetria_id).text(res.defrost_prueba);
 }
 //console.log(extraerdata);
 async function cargar_circulos(tipo_usuario1,empresa_general1)
