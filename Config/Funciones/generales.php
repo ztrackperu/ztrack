@@ -223,6 +223,35 @@
         }
         return $result;
     }
+#posiciones on,wait,off
+     function determinarEstado($ultima_fecha ,$id,$est) {
+        if($est==[]){
+            $est=[0,0,0];
+        }
+        date_default_timezone_set('UTC');
+        $hoy = date("Y-m-d H:i:s");                   
+        $fechaActual = new DateTime($hoy);
+        $fechaUltima = new DateTime($ultima_fecha);
+        #$diferencia = $fechaActual->getTimestamp() - $fechaUltima->getTimestamp();
+        $diferencia = $fechaActual->diff($fechaUltima);
+        
+        // Convertir la diferencia en minutos
+        $diferenciaEnMinutos = ($diferencia->days * 24 * 60) + ($diferencia->h * 60) + $diferencia->i;
+        
+        //tiempo en segundos
+        if ($diferenciaEnMinutos <= 30+300) { 
+            $est[0]=$est[0]+1;
+            #return 'Online';
+        } elseif ($diferenciaEnMinutos <= 1440+300) { 
+            $est[1]=$est[1]+1;
+            #return 'Wait';
+        } else {
+            $est[2]=$est[2]+1;
+            #return 'Offline';
+        }
+        //array_push($est,$ultima_fecha,$diferenciaEnMinutos,$fechaActual);
+        return $est;
+    }
 
   
     function ContenedorReefer($val , $url){

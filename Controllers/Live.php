@@ -185,9 +185,12 @@ class Live extends Controller
         $text ="";
         $data2 =[];
         $url = base_url;
+        $fecha=[];
+        
         foreach($data as $val){
             $tipo = 2;
             $enlace = ContenedorPlantilla($val,$url, $tipo) ;
+            $fecha =  determinarEstado($val->ultima_fecha ,$id =1,$fecha);
             $text.=$enlace['text'];
             array_push($data2 ,array(
                 'latitud'=>$enlace['latitud'],
@@ -200,7 +203,8 @@ class Live extends Controller
             //'data'=>tarjetamadurador($val)
             'data'=>$data2,
             'text'=>$text,
-            'extraer'=>$_SESSION['data']
+            'extraer'=>$_SESSION['data'],
+            'estadofecha'=>$fecha
         );
         echo json_encode($data1, JSON_UNESCAPED_UNICODE);
         die();
@@ -231,6 +235,7 @@ class Live extends Controller
     // fecha desde (24 horas atras) = OFF
     // $ult_fecha = fechaPro($val->ultima_fecha);
     private function determinarEstado($ultima_fecha) {
+        
         $fechaActual = new DateTime();
         $fechaUltima = new DateTime($ultima_fecha);
         $diferencia = $fechaActual->getTimestamp() - $fechaUltima->getTimestamp();
