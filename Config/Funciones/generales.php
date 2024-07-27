@@ -214,11 +214,11 @@
     }
 
     function ContenedorPlantilla($val,$url,$tipo){      
-        if($tipo==1){
+        if($tipo==0){
             $result = ContenedorReefer($val,$url);
-        }elseif($tipo==2){
+        }elseif($tipo==1){
             $result = ContenedorMadurador($val,$url);
-        }elseif($tipo==3){
+        }elseif($tipo==2){
             $result = ContenedorTunel($val,$url);
         }
         return $result;
@@ -252,7 +252,24 @@
         //array_push($est,$ultima_fecha,$diferenciaEnMinutos,$fechaActual);
         return $est;
     }
-
+    const datosDepurar = [
+        32752,-32752, 3275.2, -3275.2, 327.52,-327.52, 32767, -32767, 3276.7, -3276.7, 327.67, -327.67,32766, -32766 , 3276.6, -3276.6, 327.66, -327.66,
+        32765, -32765, 3276.5, -3276.5, 327.65, -327.65,32764, -32764, 3276.4, -3276.4, 327.64, -327.64,32763, -32763, 3276.3, -3276.3, 327.63, -327.63,
+        32762, -32762, 3276.2, -3276.2, 327.62, -327.62, 32761, -32761, 3276.1, -3276.1, 327.61, -327.61,32760, -32760, 3276.0, -3276.0, 327.60, -327.60,
+        32759, -32759, 3275.9, -3275.9, 327.59, -327.59,32751, -32751, 3275.1, -3275.1, 327.51, -327.51,-3277,-3276.9,-38.5,25.4,255
+    ];
+    function b($val, $array = ['ethylene', 'sp_ethyleno', 'compress_coil_1' , 'co2_reading', 'set_point_co2', 'relative_humidity', 'humidity_set_point', 'ripener_prueba', 'temp_supply_1', 'avl']) {
+        $result = [];
+        foreach ($array as $key) {
+            $datoDepurar = $val->$key;
+            if (in_array($datoDepurar, $array)) {
+                $result[$key] = 'NA';
+            } else {
+                $result[$key] = $datoDepurar;
+            }
+        }
+        return $result;
+    }
   
     function ContenedorReefer($val , $url){
         //validacion de informacion 
@@ -359,8 +376,20 @@
         return $result;
     }
 
-    function ContenedorMadurador($val, $url){
-        //validacion de informacion 
+    function ContenedorMadurador($val, $url){   
+        //validacion de informacion
+        $datosDepurados = b($val);
+        $etileno = $datosDepurados['ethylene'];
+        $sp_ethyleno = $datosDepurados['sp_ethyleno'];
+        $co2 = $datosDepurados['co2_reading'];
+        $sp_co2 = $datosDepurados['set_point_co2'];
+        $humedad = $datosDepurados['relative_humidity'];
+        $sp_humedad = $datosDepurados['humidity_set_point'];
+        $h_inyeccion = $datosDepurados['ripener_prueba'];
+        $supply = $datosDepurados['temp_supply_1'];
+        $n_apertura = $datosDepurados['avl'];
+        $compresor = $datosDepurados['compress_coil_1'];
+
         $temp1 =tempNormal($val->temp_supply_1) ; 
         $return =tempNormal($val->return_air) ; 
         $s_temp =tempNormal($val->set_point) ; 
@@ -377,6 +406,12 @@
         //$fechita =$ultima[1]." del  ".$fech1;
         $fechita =fechaPro($val->ultima_fecha);                  
         $valR ='"'.$val->nombre_contenedor.'"';
+        if($val->power_state==1){
+            $power_state="text-success";
+        }else{
+            $power_state="text-danger";
+        }
+        
         $text ="
         <div class='swiper-slide' data-title='card_{$val->nombre_contenedor}'>
             <div class='card'  >
@@ -384,7 +419,7 @@
                     <div class='container '>
                         <div class='row py-4' style='padding-right:5px ; padding-left:5px;'>
                             <div class='col-2' style='padding-right:5px ; padding-left:5px;' data-toggle='tooltip' data-placement='top' title='Turn ON/OFF'>         
-                                <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' strokeWidth={1.5} stroke='currentColor' width='35px' height='35px' class='mt-2 text-danger'>
+                                <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' strokeWidth={1.5} stroke='currentColor' width='35px' height='35px' class='mt-2 {$power_state}'>
                                     <path strokeLinecap='round' strokeLinejoin='round' d='M5.636 5.636a9 9 0 1 0 12.728 0M12 3v9' />
                                 </svg>
                             </div>
@@ -412,13 +447,13 @@
                             </div>
                             <div class='col-4 border-start border-bottom'>
                                 <div class='row'>
-                                    <p class='mt-3'>Value Ethylene</p>
+                                    <p class='mt-3'>{$etileno}</p>
                                 </div>
                             </div>
                             <div class='col-4 border-start border-end border-bottom'>
                                 <div class='row'>
                                     <div class='col-12 '><h6 class='mt-2'>SP Ethylene :</h6></div>
-                                    <div class='col-7 p-1'><input type='text' class='form-control' ></div>
+                                    <div class='col-7 p-1'><input type='text' class='form-control' placeholder={$sp_ethyleno} readonly></div>
                                     <div class='col-5 align-self-center p-1 '>ppm</div>
                                 </div>
                             </div>
@@ -429,13 +464,13 @@
                             </div>
                             <div class='col-4 border-start border-bottom'>
                                 <div class='row'>
-                                    <p class='mt-3'>Value CO2</p>
+                                    <p class='mt-3'>{$co2}</p>
                                 </div>
                             </div>
                             <div class='col-4 border-start border-end'>
                                 <div class='row'>
                                     <div class='col-12 '><h6 class='mt-2'>SP CO2 :</h6></div>
-                                    <div class='col-7 p-1'>  <input type='text' class='form-control' ></div>
+                                    <div class='col-7 p-1'>  <input type='text' class='form-control' placeholder={$sp_co2} readonly></div>
                                     <div class='col-5 align-self-center p-1 '>%</div>
                                 </div>
                             </div>
@@ -446,13 +481,13 @@
                             </div>
                             <div class='col-4 border-start border-bottom'>
                                 <div class='row'>
-                                    <p class='mt-3'>Value Humedad</p>
+                                    <p class='mt-3'>{$humedad}</p>
                                 </div>
                             </div>
                             <div class='col-4 border'>
                                 <div class='row'>
                                     <div class='col-12 '><h6 class='mt-2'>SP Humedad:</h6></div>
-                                    <div class='col-7 p-1'>  <input type='text' class='form-control' ></div>
+                                    <div class='col-7 p-1'>  <input type='text' class='form-control' placeholder={$sp_humedad} readonly></div>
                                     <div class='col-5 align-self-center p-1 '>%</div>
                                 </div>
                             </div>
@@ -463,13 +498,13 @@
                             </div>
                             <div class='col-4 border-start border-bottom'>
                                 <div class='row'>
-                                    <p class='mt-3'>Value H. Inyeccion</p>
+                                    <p class='mt-3'>{$h_inyeccion}</p>
                                 </div>
                             </div>
                             <div class='col-4 border-start border-end border-bottom'>
                                 <div class='row'>
                                     <div class='col-12 '><h6 class='mt-2'>H. Inyeccion :</h6></div>
-                                    <div class='col-7 p-1'>  <input type='text' class='form-control' ></div>
+                                    <div class='col-7 p-1'>  <input type='text' class='form-control'></div>
                                     <div class='col-5 align-self-center p-1 '>H</div>
                                 </div>
                             </div>
@@ -480,13 +515,13 @@
                             </div>
                             <div class='col-4 border-start border-bottom'>
                                 <div class='row'>
-                                    <p class='mt-3'>Value Supply</p>
+                                    <p class='mt-3'>{$supply}</p>
                                 </div>
                             </div>
                             <div class='col-4 border-start border-end border-bottom'>
                                 <div class='row'>
                                     <div class='col-12 '><h6 class='mt-2'>SP Temp :</h6></div>
-                                    <div class='col-7 p-1'>  <input type='text' class='form-control' ></div>
+                                    <div class='col-7 p-1'>  <input type='text' class='form-control' placeholder={$val->set_point}></div>
                                     <div class='col-5 align-self-center p-1 '>%</div>
                                 </div>
                             </div>
@@ -497,14 +532,30 @@
                             </div>
                             <div class='col-4 border-start border-bottom'>
                                 <div class='row'>
-                                    <p class='mt-3'>Value N. Apertura </p>
+                                    <p class='mt-3'>{$n_apertura}</p>
                                 </div>
                             </div>
                             <div class='col-4 border-start border-end border-bottom'>
                                 <div class='row'>
                                     <div class='col-12 '><h6 class='mt-2'>N. Apertura :</h6></div>
-                                    <div class='col-7 p-1'>  <input type='text' class='form-control' ></div>
-                                    <div class='col-5 align-self-center p-1 '>_</div>
+                                    <div class='col-7 p-1'>  <input type='text' class='form-control' placeholder='I: %' readonly></div>
+                                    <div class='col-5 align-self-center p-1 '></div>
+                                </div>
+                            </div>
+                              <div class='col-4 border-start border-bottom'>
+                                <div class='row'>
+                                    <p class='mt-3 text-center'>Compresor</p>
+                                </div>
+                            </div>
+                            <div class='col-4 border-start border-bottom'>
+                                <div class='row'>
+                                    <p class='mt-3'>{$compresor}</p>
+                                </div>
+                            </div>
+                            <div class='col-4 border-start border-end border-bottom'>
+                                <div class='row text-center'>
+                                    <div class='col-12 '><h6 class='mt-2'>Defrost :</h6></div>
+                                    <div class='col-12 p-1'><button type='button' class='mt-1 btn btn-block btn-success'>ACTIVE</button> </div>
                                 </div>
                             </div>
                         </div>

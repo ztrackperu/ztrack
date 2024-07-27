@@ -188,7 +188,7 @@ class Live extends Controller
         $fecha=[];
         
         foreach($data as $val){
-            $tipo = 2;
+            $tipo = $val->extra_1;
             $enlace = ContenedorPlantilla($val,$url, $tipo) ;
             $fecha =  determinarEstado($val->ultima_fecha ,$id =1,$fecha);
             $text.=$enlace['text'];

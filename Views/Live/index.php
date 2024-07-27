@@ -167,29 +167,29 @@ body {
             <!-- map -->
             <div class="col-lg-4 sm-mt-3 ">
                 <div class="row">
-                    <div class="col-md-4 col-lg-4 col-xl-4 sm-mb-3 mt-2">
+                    <div class="col-4 col-md-4 col-sm-4 col-lg-4 col-xl-4 sm-mb-3 mt-2">
                     <div class="card">
                         <div class="card-body text-center text-success">
                         <h6>Online</h6>
-                        <h4>20</h4>
+                        <h4 id="cardOnline"></h4>
                         </div>
                     </div>
                     </div>
 
-                    <div class="col-md-4 col-lg-4 col-xl-4 sm-mb-3 mt-2">
+                    <div class="col-4 col-md-4 col-sm-4 col-lg-4 col-xl-4 sm-mb-3 mt-2">
                     <div class="card">
                         <div class="card-body text-center text-warning">
                         <h6>Wait</h6>
-                        <h4>12</h4>
+                        <h4 id="cardWait"></h4>
                         </div>
                     </div>
                     </div>
 
-                    <div class="col-md-4 col-lg-4 col-xl-4 sm-mb-3 mt-2">
+                    <div class="col-4 col-md-4 col-sm-4 col-lg-4 col-xl-4 sm-mb-3 mt-2">
                     <div class="card">
                         <div class="card-body text-center text-danger">
                         <h6>Offline</h6>
-                        <h4>123</h4>
+                        <h4 id="cardOffline"></h4>
                         </div>
                     </div>
                     </div>

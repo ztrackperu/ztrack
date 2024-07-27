@@ -140,7 +140,7 @@ $(document).ready(function(){
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
     })
-
+    /*
     const url = base_url + "Live/ListaD";
     const request = new XMLHttpRequest();
     request.open("GET", url);
@@ -169,38 +169,9 @@ $(document).ready(function(){
             myDoughnutChart.data.datasets[0].data = [onlineCount, waitCount, offlineCount];
             myDoughnutChart.update();
         }
-    }
+    }*/
 
-    // CREANDO GRÁFICO DOUGHNUT PARA LAS ALARMAS
-    var ctx = document.getElementById('grfAlarma').getContext('2d');
-    var myDoughnutChart = new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-            labels: ['Online', 'Wait', 'Offline'],
-            datasets: [{
-                label: 'Equipos',
-                data: [0, 0, 0], 
-                backgroundColor: [
-                    'rgb(0, 116, 75)',
-                    'rgb(255, 193, 0)',
-                    'rgb(233, 26, 51)'
-                ],
-                hoverOffset: 4
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'top',
-                },
-                title: {
-                    display: true,
-                    text: 'Estado de los Equipos'
-                }
-            }
-        }
-    });
+    
     
     // SEARCH INPUT PARA BUSCAR LOS EQUIPOS DENTRO DE LOS SLIDER
     document.getElementById('search-button').addEventListener('click', function() {
@@ -236,9 +207,49 @@ document.addEventListener("DOMContentLoaded", async function(){
         //insertar en texto la data 
         //console.log(data.text);
         carruselExtra.innerHTML  =data.text;
+        cardOnline.innerHTML = data.estadofecha[0];
+        cardWait.innerHTML = data.estadofecha[1];
+        cardOffline.innerHTML = data.estadofecha[2];
+
+        d1 = data.estadofecha[0];
+        d2 = data.estadofecha[1];
+        d3 = data.estadofecha[2];
+
         //console.log(data.extraer);
         extraerdata = data.extraer ;
         //console.log(extraerdata);
+       
+        //myDoughnutChart.update();
+        // CREANDO GRÁFICO DOUGHNUT PARA LAS ALARMAS
+        var ctx = document.getElementById('grfAlarma').getContext('2d');
+        var myDoughnutChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Online', 'Wait', 'Offline'],
+                datasets: [{
+                    label: 'Equipos',
+                    data: [d1,d2,d3], 
+                    backgroundColor: [
+                        'rgb(0, 116, 75)',
+                        'rgb(255, 193, 0)',
+                        'rgb(233, 26, 51)'
+                    ],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'right',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Estado de los Equipos'
+                    }
+                }
+            }
+        });
 
     }catch(err){alert(err);}
     //cada 10 segundos ejecutar 
