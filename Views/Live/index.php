@@ -124,7 +124,8 @@ body {
                     <div class="col-md-5 mx-auto">
                         <div class="input-group">
                             <input class="form-control border" type="search" placeholder="search" id="example-search-input">
-                            <button type="button" class="btn btn-primary" id="search-button">Buscar</button>
+                            <button type="button" class="btn btn-primary" id="search-button"><i class="ri-search-line"></i></button>
+                            <button type="button" class="btn btn-primary" id="refresh-button"><i class="ri-restart-line"></i></button>
                         </div>
                     </div>
                 </div>
@@ -194,11 +195,10 @@ body {
                     </div>
                 </div>
                 <div class="card mt-2">
-                    <div class="card-body py-2 flex align-items-center">
-                        <canvas id="grfAlarma"></canvas>                   
+                    <div class="card-body d-flex justify-content-center align-items-center" style="height: 300px;">
+                        <canvas id="grfAlarma" style="width: 100%; height: 100%; max-width: 400px; max-height: 400px;"></canvas>                   
                     </div>
                 </div>
-            
                 <div class="card mt-2">
                     <div class="card-body">
                         <div id="map" style="width: 100%; height: 470px"></div> 

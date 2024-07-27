@@ -141,6 +141,36 @@ $(document).ready(function(){
         $('[data-toggle="tooltip"]').tooltip()
     })
 
+    const url = base_url + "Live/ListaD";
+    const request = new XMLHttpRequest();
+    request.open("GET", url);
+    request.send();
+    request.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var data = JSON.parse(this.responseText);
+            console.log(data);
+
+            // Contar la cantidad de cada estado
+            let onlineCount = 0;
+            let waitCount = 0;
+            let offlineCount = 0;
+
+            data.estados.forEach(item => {
+                if (item.estado === 'Online') {
+                    onlineCount++;
+                } else if (item.estado === 'Wait') {
+                    waitCount++;
+                } else if (item.estado === 'Offline') {
+                    offlineCount++;
+                }
+            });
+
+            // Actualizar los datos del gráfico
+            myDoughnutChart.data.datasets[0].data = [onlineCount, waitCount, offlineCount];
+            myDoughnutChart.update();
+        }
+    }
+
     // CREANDO GRÁFICO DOUGHNUT PARA LAS ALARMAS
     var ctx = document.getElementById('grfAlarma').getContext('2d');
     var myDoughnutChart = new Chart(ctx, {
@@ -149,7 +179,7 @@ $(document).ready(function(){
             labels: ['Online', 'Wait', 'Offline'],
             datasets: [{
                 label: 'Equipos',
-                data: [20, 12, 123],
+                data: [0, 0, 0], 
                 backgroundColor: [
                     'rgb(0, 116, 75)',
                     'rgb(255, 193, 0)',
@@ -166,7 +196,7 @@ $(document).ready(function(){
                 },
                 title: {
                     display: true,
-                    text: 'Disponibilidad de Equipos ZTRACK'
+                    text: 'Estado de los Equipos'
                 }
             }
         }
@@ -183,9 +213,19 @@ $(document).ready(function(){
                 slide.style.display = 'none';
             }
         });
-        //esto sucede cuando se busca un equipo y no se encuentra en el slider
+        //sirve para refrescar el efecto swiper
         swiper.update();
     });
+
+    // REFRESH BUTTON
+    document.getElementById('refresh-button').addEventListener('click', function(){
+        var slides = document.querySelectorAll('.swiper-slide');
+        slides.forEach(function(slide) {
+            slide.style.display = 'flex';
+        });
+        //sirve para refrescar el efecto swiper
+        swiper.update();
+    })
 })
 document.addEventListener("DOMContentLoaded", async function(){
     try{

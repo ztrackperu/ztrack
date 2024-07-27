@@ -186,7 +186,8 @@ class Live extends Controller
         $data2 =[];
         $url = base_url;
         foreach($data as $val){
-            $enlace = ContenedorPlantilla($val,$url) ;
+            $tipo = 2;
+            $enlace = ContenedorPlantilla($val,$url, $tipo) ;
             $text.=$enlace['text'];
             array_push($data2 ,array(
                 'latitud'=>$enlace['latitud'],
@@ -205,4 +206,43 @@ class Live extends Controller
         die();
 
     }   
+
+    public function ListaD() {
+        $data = $this->model->ListaDispositivoEmpresa($_SESSION['empresa_id']);
+        $data = json_decode($data);
+        $data = $data->data;
+        $estados = array();
+        
+        foreach($data as $val2) {
+            $estado = $this->determinarEstado($val2->ultima_fecha);
+            $estados[] = (object) ['estado' => $estado];
+        }
+        
+        $n_array = array(
+            'estados' => $estados
+        );
+        
+        echo json_encode($n_array, JSON_UNESCAPED_UNICODE);
+        die();
+    }
+    //FUNCION PARA DEFINIR SI EL DISPOSITIVO ESTÁ ON, WAIT O OFF
+    // fecha (hoy) hasta (30min atras) = ON
+    // fecha desde (30min atras) hasta (24 horas atras) = WAIT
+    // fecha desde (24 horas atras) = OFF
+    // $ult_fecha = fechaPro($val->ultima_fecha);
+    private function determinarEstado($ultima_fecha) {
+        $fechaActual = new DateTime();
+        $fechaUltima = new DateTime($ultima_fecha);
+        $diferencia = $fechaActual->getTimestamp() - $fechaUltima->getTimestamp();
+        
+        //tiempo en segundos
+        if ($diferencia >= 1800) { 
+            return 'Online';
+        } elseif ($diferencia <= 86400) { 
+            return 'Wait';
+        } else {
+            return 'Offline';
+        }
+    }
 }
+
