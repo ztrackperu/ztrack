@@ -33,14 +33,14 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#!">Inicio</a>
           </li>  
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown d-none">
             <a class="nav-link dropdown-toggle" id="usuarioDropdown" role="button" data-bs-toggle="dropdown" aria-current="page">Usuarios</a>
             <ul class="dropdown-menu border-0 shadow bsb-zoomIn" aria-labelledby="usuarioDropdown">
               <li><a class="nav-link active" aria-current="page" href=" <?php echo base_url; ?>Usuarios">Usuarios</a></li>
               <li><a class="nav-link active" aria-current="page "href=" <?php echo base_url; ?>Permisos">Permisos</a></li>
             </ul>
           </li>
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown d-none">
             <a class="nav-link dropdown-toggle" href= id="conceptoDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Conceptos OT</a>
             <ul class="dropdown-menu border-0 shadow bsb-zoomIn" aria-labelledby="conceptoDropdown">
               <li><a class="dropdown-item" href="<?php echo base_url; ?>ConceptosOT">Lista</a></li>
@@ -49,7 +49,7 @@
             </ul>
           </li>
    
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown d-none">
             <a class="nav-link dropdown-toggle" href= id="conceptoDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Concepto</a>
             <ul class="dropdown-menu border-0 shadow bsb-zoomIn" aria-labelledby="conceptoDropdown">
               <li><a class="dropdown-item" href="#!">Conceptos</a></li>
@@ -57,7 +57,7 @@
               <li><a class="dropdown-item" href="#!">Insumo</a></li>
             </ul>
           </li>
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown d-none">
             <a class="nav-link dropdown-toggle" href="#!" id="otDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">O.T.</a>
             <ul class="dropdown-menu border-0 shadow bsb-zoomIn" aria-labelledby="otDropdown">
               <li><a class="dropdown-item" href="#!">Listar</a></li>
@@ -66,14 +66,14 @@
               <li><a class="dropdown-item" href="<?php echo base_url; ?>Otrabajo/test">Test</a></li>
             </ul>
           </li>
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown d-none">
             <a class="nav-link dropdown-toggle" href="#!" id="pendientesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pendientes</a>
             <ul class="dropdown-menu border-0 shadow bsb-zoomIn" aria-labelledby="pendientesDropdown">
               <li><a class="dropdown-item" href="#!">O.T.</a></li>
               <li><a class="dropdown-item" href="#!">Insumos</a></li>
             </ul>
           </li>
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown d-none">
             <a class="nav-link dropdown-toggle" href="#!" id="analisisDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Análisis</a>
             <ul class="dropdown-menu border-0 shadow bsb-zoomIn" aria-labelledby="analisisDropdown">
               <li><a class="dropdown-item" href="#!">O.T.</a></li>

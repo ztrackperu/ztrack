@@ -214,17 +214,17 @@ body {
 
            <!-- Success Alert -->
            <div id="noti"></div>        
-           <div class="alert alert-success alert-dismissible fade show">
+           <div class="alert alert-success alert-dismissible fade show d-none">
                 <strong>Success!</strong> Your message has been sent successfully.
                 <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
             </div>
             <!-- Error Alert -->
-            <div class="alert alert-danger alert-dismissible fade show">
+            <div class="alert alert-danger alert-dismissible fade show d-none">
                 <strong>Error!</strong> A problem has been occurred while submitting your data.
                 <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
             </div>
             <!-- Warning Alert -->
-            <div class="alert alert-warning alert-dismissible fade show">
+            <div class="alert alert-warning alert-dismissible fade show d-none">
                 <strong>Warning!</strong> There was a problem with your network connection.
                 <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
             </div>
