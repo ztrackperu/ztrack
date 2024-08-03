@@ -315,10 +315,10 @@
                             <div class='col-3 p-2'><button type='button' class='mt-1 btn btn-block btn-outline-success' data-toggle='tooltip' data-placement='top' title='Correo'><i class='ri-mail-line'></i></button> </div>
                             <div class='col-3 p-2'><button type='button' class='mt-1 btn btn-block btn-outline-info' data-toggle='tooltip' data-placement='top' title='Reporte'><i class='ri-file-chart-line'></i></button></div>
                             <div class='col-4 border text-center fw-bold'><p class='mt-1'>Params</p></div>
-                            <div class='col-4 border-top border-bottom text-center fw-bold'><p class='mt-1'>Value</p></div>
-                            <div class='col-4 border-start border-end border-top text-center fw-bold'><p class='mt-1'>Control</p></div>
+                            <div class='col-3 border-top border-bottom text-center fw-bold'><p class='mt-1'>Value</p></div>
+                            <div class='col-5 border-start border-end border-top text-center fw-bold'><p class='mt-1'>Control</p></div>
                             <div class='col-8  align-self-center'>
-                                <div class='row '>
+                                <div class='row '>  
                                     <div class='col-6 border-start border-end'><p class='mt-2'><i class='ri-windy-line'></i>Supply:</p></div>
                                     <div class='col-6 '><h6 class='mt-2' data-toggle='tooltip' data-placement='top' title='+21.5' id='temp1_{$val->telemetria_id}'>{$temp1}<i class='ri-arrow-up-circle-fill text-success' width='20px' height='20px'></i></h6></div>
                                     <div class='col-6 border'><p class='mt-2'><i class='ri-text-wrap'></i>Return :</p> </div>
@@ -390,7 +390,7 @@
         $n_apertura = $datosDepurados['avl'];
         $compresor = $datosDepurados['compress_coil_1'];
         $i = $datosDepurados['defrost_prueba'];
-
+        
         $temp1 =tempNormal($val->temp_supply_1) ; 
         $return =tempNormal($val->return_air) ; 
         $s_temp =tempNormal($val->set_point) ; 
@@ -412,7 +412,41 @@
         }else{
             $power_state="text-danger";
         }
+        // sp_ethyleno y etileno
+        if(abs($etileno - $sp_ethyleno) <= $sp_ethyleno * 0.10){
+            $etileno_color = "text-success";
+        }else if(abs($etileno - $sp_ethyleno) <= $sp_ethyleno * 0.25){
+            $etileno_color = "text-warning";
+        }else{
+            $etileno_color = "text-secondary";
+        }    
+        // sp_co2 y co2
+        if(abs($co2 - $sp_co2) <= $sp_co2 * 0.10){
+            $co2_color = "text-success";
+        }else if(abs($co2 - $sp_co2) <= $sp_co2 * 0.25){
+            $co2_color = "text-warning";
+        }else{
+            $co2_color = "text-secondary";
+        }
         
+        // sp_humedad y humedad
+        if(abs($humedad - $sp_humedad) <= $sp_humedad * 0.10){
+            $humedad_color = "text-success";
+        }else if(abs($humedad - $sp_humedad) <= $sp_humedad * 0.25){
+            $humedad_color = "text-warning";
+        }else{
+            $humedad_color = "text-secondary";
+        }        
+
+         // $val->set_point y supply
+        if(abs($supply - $s_temp) <= $s_temp * 0.10){
+            $supply_color = "text-success";
+        }else if(abs($supply - $s_temp) <= $s_temp * 0.25){
+            $supply_color = "text-warning";
+        }else{
+            $supply_color = "text-secondary";
+        }
+
         $text ="
         <div class='swiper-slide' data-title='card_{$val->nombre_contenedor}'>
             <div class='card'  >
@@ -432,74 +466,74 @@
                                 </svg>
                             </div>
                             <div class='col-12 '><h5 class='text-center mt-2'>{$val->descripcionC}</h5> </div>
-                            <div class='col-4  mt-1 p-1'><h6 class='text-center'>Fecha :</h6></div>
+                            <div class='col-4  mt-1 p-1'><h6 class='text-center'><i class='ri-time-line'></i> Date :</h6></div>
                             <div class='col-8 mt-1 p-1'><h6 id='fechita_{$val->telemetria_id}' class='text-left'> {$fechita}</h6></div>
-                            <div class='col-3 p-2'><button type='button' onclick='graficaM({$valR})' class='mt-1 btn btn-block btn-outline-primary' data-toggle='tooltip' data-placement='top' title='Gráfico'><i class='ri-line-chart-line'></i></button></div>
-                            <div class='col-3 p-2'><button type='button' class='mt-1 btn btn-block btn-outline-secondary' data-toggle='tooltip' data-placement='top' title='Datos'><i class='ri-layout-horizontal-line'></i></button></div>
-                            <div class='col-3 p-2'><button type='button' class='mt-1 btn btn-block btn-outline-success' data-toggle='tooltip' data-placement='top' title='Correo'><i class='ri-mail-line'></i></button> </div>
-                            <div class='col-3 p-2'><button type='button' class='mt-1 btn btn-block btn-outline-info' data-toggle='tooltip' data-placement='top' title='Reporte'><i class='ri-file-chart-line'></i></button></div>
+                            <div class='col-3 p-2 text-center'><button type='button' onclick='graficaM({$valR})' class='mt-1 btn btn-block btn-outline-primary' data-toggle='tooltip' data-placement='top' title='Gráfico'><i class='ri-line-chart-line fs-5'></i></button></div>
+                            <div class='col-3 p-2 text-center'><button type='button' class='mt-1 btn btn-block btn-outline-secondary' data-toggle='tooltip' data-placement='top' title='Datos'><i class='ri-layout-horizontal-line fs-5'></i></button></div>
+                            <div class='col-3 p-2 text-center'><button type='button' class='mt-1 btn btn-block btn-outline-success' data-toggle='tooltip' data-placement='top' title='Correo'><i class='ri-mail-line fs-5'></i></button> </div>
+                            <div class='col-3 p-2 text-center'><button type='button' class='mt-1 btn btn-block btn-outline-info' data-toggle='tooltip' data-placement='top' title='Reporte'><i class='ri-file-chart-line fs-5'></i></button></div>
                             <div class='col-4 border text-center fw-bold'><p class='mt-1'>Params</p></div>
                             <div class='col-4 border-top border-bottom text-center fw-bold'><p class='mt-1'>Value</p></div>
                             <div class='col-4 border text-center fw-bold'><p class='mt-1'>Control</p></div>
                             <div class='col-4 border-start border-bottom'>
                             <div class='row'>
-                                <p class='mt-3 text-center'>Ethylene</p>
+                                <p class='mt-3 text-center'><i class='bi bi-cloud-fog2'></i>Ethylene</p>
                             </div>
                             </div>
-                            <div class='col-4 border-start border-bottom'>
+                            <div class='col-3 border-start border-bottom'>
                                 <div class='row'>
-                                    <p class='mt-3' id='etileno_{$val->telemetria_id}'>{$etileno}</p>
+                                    <p class='mt-3 text-center fs-4 {$etileno_color}' id='etileno_{$val->telemetria_id}'>{$etileno}</p>
                                 </div>
                             </div>
-                            <div class='col-4 border-start border-end border-bottom'>
+                            <div class='col-5 border-start border-end border-bottom'>
                                 <div class='row'>
                                     <div class='col-12 '><h6 class='mt-2'>SP Ethylene :</h6></div>
-                                    <div class='col-7 p-1'><input type='text' class='form-control' id='sp_etileno_{$val->telemetria_id}' placeholder={$sp_ethyleno} readonly></div>
+                                    <div class='col-7 p-1'><input type='text' class='form-control text-center' id='sp_etileno_{$val->telemetria_id}' placeholder={$sp_ethyleno} readonly></div>
                                     <div class='col-5 align-self-center p-1 '>ppm</div>
                                 </div>
                             </div>
                             <div class='col-4 border-start border-bottom'>
                                 <div class='row'>
-                                    <p class='mt-3 text-center'>CO2</p>
+                                    <p class='mt-3 text-center'><i class='ri-cloud-line'></i>CO2</p>
                                 </div>
                             </div>
                             <div class='col-4 border-start border-bottom'>
                                 <div class='row'>
-                                    <p class='mt-3' id='co2_{$val->telemetria_id}'>{$co2}</p>
+                                    <p class='mt-3 text-center fs-4 {$co2_color}' id='co2_{$val->telemetria_id}'>{$co2}</p>
                                 </div>
                             </div>
                             <div class='col-4 border-start border-end'>
                                 <div class='row'>
                                     <div class='col-12 '><h6 class='mt-2'>SP CO2 :</h6></div>
-                                    <div class='col-7 p-1'>  <input type='text' class='form-control' id='sp_co2_{$val->telemetria_id}' placeholder={$sp_co2} readonly></div>
+                                    <div class='col-7 p-1'>  <input type='text' class='form-control text-center' id='sp_co2_{$val->telemetria_id}' placeholder={$sp_co2} readonly></div>
                                     <div class='col-5 align-self-center p-1 '>%</div>
                                 </div>
                             </div>
                             <div class='col-4 border-start border-bottom'>
                                 <div class='row'>
-                                    <p class='mt-3 text-center'>Humedad</p>
+                                    <p class='mt-3 text-center'><i class='bi bi-moisture'></i>Humedad</p>
                                 </div>
                             </div>
                             <div class='col-4 border-start border-bottom'>
                                 <div class='row'>
-                                    <p class='mt-3' id='humd_{$val->telemetria_id}'>{$humedad}</p>
+                                    <p class='mt-3 text-center fs-4 {$humedad_color}' id='humd_{$val->telemetria_id}'>{$humedad}</p>
                                 </div>
                             </div>
                             <div class='col-4 border'>
                                 <div class='row'>
                                     <div class='col-12 '><h6 class='mt-2'>SP Humedad:</h6></div>
-                                    <div class='col-7 p-1'>  <input type='text' class='form-control' id='s_humd_{$val->telemetria_id}' placeholder={$sp_humedad} readonly></div>
+                                    <div class='col-7 p-1'>  <input type='text' class='form-control text-center' id='s_humd_{$val->telemetria_id}' placeholder={$sp_humedad} readonly></div>
                                     <div class='col-5 align-self-center p-1 '>%</div>
                                 </div>
                             </div>
                             <div class='col-4 border-start border-bottom'>
                                 <div class='row'>
-                                    <p class='mt-3 text-center'>H. Inyeccion</p>
+                                    <p class='mt-3 text-center'><i class='ri-time-line'></i>H. Inyeccion</p>
                                 </div>
                             </div>
                             <div class='col-4 border-start border-bottom'>
                                 <div class='row'>
-                                    <p class='mt-3' id='h_inyeccion_{$val->telemetria_id}'>{$h_inyeccion}</p>
+                                    <p class='mt-3 text-center fs-4' id='h_inyeccion_{$val->telemetria_id}'>{$h_inyeccion}</p>
                                 </div>
                             </div>
                             <div class='col-4 border-start border-end border-bottom'>
@@ -511,29 +545,29 @@
                             </div>
                             <div class='col-4 border-start border-bottom'>
                                 <div class='row'>
-                                    <p class='mt-3 text-center'>Supply</p>
+                                    <p class='mt-3 text-center'><i class='ri-windy-line'></i>Supply</p>
                                 </div>
                             </div>
                             <div class='col-4 border-start border-bottom'>
                                 <div class='row'>
-                                    <p class='mt-3' id='temp1_{$val->telemetria_id}'>{$supply}</p>
+                                    <p class='mt-3 text-center fs-4 {$supply_color}' id='temp1_{$val->telemetria_id}'>{$supply}</p>
                                 </div>
                             </div>
                             <div class='col-4 border-start border-end border-bottom'>
                                 <div class='row'>
                                     <div class='col-12 '><h6 class='mt-2'>SP Temp :</h6></div>
-                                    <div class='col-7 p-1'>  <input type='text' class='form-control' id='s_temp_{$val->telemetria_id}' placeholder={$val->set_point}></div>
+                                    <div class='col-7 p-1'>  <input type='text' class='form-control text-center' id='s_temp_{$val->telemetria_id}' placeholder={$val->set_point}></div>
                                     <div class='col-5 align-self-center p-1 '>%</div>
                                 </div>
                             </div>
                             <div class='col-4 border-start border-bottom'>
                                 <div class='row'>
-                                    <p class='mt-3 text-center'>N. Apertura</p>
+                                    <p class='mt-3 text-center'><i class='bi bi-arrow-up-right'></i>N. Apertura</p>
                                 </div>
                             </div>
                             <div class='col-4 border-start border-bottom'>
                                 <div class='row'>
-                                    <p class='mt-3' id='n_apertura_{$val->telemetria_id}'>{$n_apertura}</p>
+                                    <p class='mt-3 text-center fs-4' id='n_apertura_{$val->telemetria_id}'>{$n_apertura}</p>
                                 </div>
                             </div>
                             <div class='col-4 border-start border-end border-bottom'>
@@ -543,12 +577,12 @@
                             </div>
                               <div class='col-4 border-start border-bottom'>
                                 <div class='row'>
-                                    <p class='mt-3 text-center'>Compresor</p>
+                                    <p class='mt-3 text-center'><i class='bi bi-speedometer'></i>Compresor</p>
                                 </div>
                             </div>
                             <div class='col-4 border-start border-bottom'>
                                 <div class='row'>
-                                    <p class='mt-3' id='compresor_{$val->telemetria_id}'>{$compresor}</p>
+                                    <p class='mt-3 text-center fs-4' id='compresor_{$val->telemetria_id}'>{$compresor}</p>
                                 </div>
                             </div>
                             <div class='col-4 border-start border-end border-bottom'>
