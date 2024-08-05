@@ -453,28 +453,34 @@
                 <div class='card-body'>
                     <div class='container '>
                         <div class='row py-4' style='padding-right:5px ; padding-left:5px;'>
+                            <!--POWER ON/OFF -->
                             <div class='col-2' style='padding-right:5px ; padding-left:5px;' data-toggle='tooltip' data-placement='top' title='Turn ON/OFF'>         
-                                <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' strokeWidth={1.5} stroke='currentColor' width='35px' height='35px' class='mt-2 {$power_state}'>
-                                    <path strokeLinecap='round' strokeLinejoin='round' d='M5.636 5.636a9 9 0 1 0 12.728 0M12 3v9' />
+                                <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='4' stroke='currentColor' width='35px' height='35px' class='mt-2 {$power_state}'>
+                                    <path stroke-linecap='round' stroke-linejoin='round' d='M5.636 5.636a9 9 0 1 0 12.728 0M12 3v9' />
                                 </svg>
                             </div>
                             <div class='col-8 '><h4 id='nombre_contenedor_{$val->telemetria_id}' class='text-center mt-3 fw-bold'> {$val->nombre_contenedor}</h4></div>
                             <div class='col-2 text-right' style='padding-right:5px ; padding-left:5px' data-toggle='tooltip' data-placement='top' title='Settings'>
-                                <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' strokeWidth={1.5} stroke='currentColor' width='35px' height='35px' class='mt-2 text-gray-600'>
+                                <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='3' stroke='currentColor' width='35px' height='35px' class='mt-2 text-gray-600'>
                                     <path strokeLinecap='round' strokeLinejoin='round' d='M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 0 1 1.37.49l1.296 2.247a1.125 1.125 0 0 1-.26 1.431l-1.003.827c-.293.241-.438.613-.43.992a7.723 7.723 0 0 1 0 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.955.26 1.43l-1.298 2.247a1.125 1.125 0 0 1-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.47 6.47 0 0 1-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 0 1-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 0 1-1.369-.49l-1.297-2.247a1.125 1.125 0 0 1 .26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 0 1 0-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 0 1-.26-1.43l1.297-2.247a1.125 1.125 0 0 1 1.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.086.22-.128.332-.183.582-.495.644-.869l.214-1.28Z' />
                                     <path strokeLinecap='round' strokeLinejoin='round' d='M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z' />
                                 </svg>
                             </div>
                             <div class='col-12 '><h5 class='text-center mt-2'>{$val->descripcionC}</h5> </div>
-                            <div class='col-4  mt-1 p-1'><h6 class='text-center'><i class='ri-time-line'></i> Date :</h6></div>
-                            <div class='col-8 mt-1 p-1'><h6 id='fechita_{$val->telemetria_id}' class='text-left'> {$fechita}</h6></div>
+                            <div class='col-12 mt-1 p-1'>
+                                <div class='row'>
+                                    <i class='ri-time-line col-3 text-end align-content-center fs-2'></i>
+                                    <h6 id='fechita_{$val->telemetria_id}' class='col-9 align-content-center px-0 m-0'> {$fechita}</h6>
+                                </div>
+                            </div>
+                          
                             <div class='col-3 p-2 text-center'><button type='button' onclick='graficaM({$valR})' class='mt-1 btn btn-block btn-outline-primary' data-toggle='tooltip' data-placement='top' title='Gráfico'><i class='ri-line-chart-line fs-5'></i></button></div>
                             <div class='col-3 p-2 text-center'><button type='button' class='mt-1 btn btn-block btn-outline-secondary' data-toggle='tooltip' data-placement='top' title='Datos'><i class='ri-layout-horizontal-line fs-5'></i></button></div>
                             <div class='col-3 p-2 text-center'><button type='button' class='mt-1 btn btn-block btn-outline-success' data-toggle='tooltip' data-placement='top' title='Correo'><i class='ri-mail-line fs-5'></i></button> </div>
                             <div class='col-3 p-2 text-center'><button type='button' class='mt-1 btn btn-block btn-outline-info' data-toggle='tooltip' data-placement='top' title='Reporte'><i class='ri-file-chart-line fs-5'></i></button></div>
                             <!-- TABLA -->
-                            <div class='table-responsive mt-3'>
-                                <table class='border table table-bordered'>
+                            <div class='table-responsive mt-3 px-0 mx-0'>
+                                <table class='border table table-sm table-bordered overflow-hidden'>
                                     <thead>
                                         <tr class='text-center'>
                                             <th scope='col'>Params</th>
@@ -487,7 +493,7 @@
                                             <td class='col-4 text-center align-content-center'>
                                                 <div class='row justify-content-center'>
                                                     <div class='col-12'>
-                                                        <i class='bi bi-cloud-haze2 fs-2 border rounded px-3 btn btn-outline-secondary' ondblclick='ethyModal()' ontouchstart='ethyModal()'></i>
+                                                        <button type='button' class='btn abrir' ><i class='bi bi-cloud-haze2 fs-2 border rounded px-3 btn btn-outline-secondary'></i></button>
                                                     </div>
                                                     <div class='col-12'>
                                                         <h6 class='mt-2'> Ethylene</h6>
@@ -495,14 +501,10 @@
                                                 </div>
                                             </td>
                                             <td class='value-etileno col-4 text-center align-content-center {$etileno_color}' id='etileno_{$val->telemetria_id}'>{$etileno}</td>
-                                            <td class='col-4 text-center'>
-                                                <div class='row justify-content-center'>
-                                                    <div class='col-auto'>
-                                                        <label for='' class='col-form-label'>SP Ethylene:</label>
-                                                    </div>
-                                                    <div class='col-auto d-flex gap-2'>
-                                                        <input type='text' id='sp_etileno_{$val->telemetria_id}' class='form-control text-center' placeholder={$sp_ethyleno} readonly>
-                                                    </div>
+                                            <td class='col-4 align-content-center'>
+                                                <div class='row justify-content-center g-2'>
+                                                    <label for='' class='col-auto align-content-center sp_ethy'>SP Ethy:</label>
+                                                    <input type='text' class='col-auto w-25 form-control text-center px-0 mx-0' id='sp_etileno_{$val->telemetria_id}' placeholder={$sp_ethyleno} readonly>
                                                 </div>
                                             </td>
                                         </tr>
@@ -518,14 +520,10 @@
                                                 </div>
                                             </td>
                                             <td class='value-co2 col-4 text-center align-content-center {$co2_color}' id='co2_{$val->telemetria_id}'>{$co2}</td>
-                                            <td class='col-4 text-center'>
-                                                <div class='row justify-content-center'>
-                                                    <div class='col-auto'>
-                                                        <label for='' class='col-form-label'>SP CO2:</label>
-                                                    </div>
-                                                    <div class='col-auto'>
-                                                        <input type='text' id='sp_co2_{$val->telemetria_id}' class='form-control text-center' placeholder={$sp_co2} readonly>
-                                                    </div>
+                                            <td class='col-4 align-content-center'>
+                                                <div class='row justify-content-center g-2'>
+                                                    <label for='' class='col-auto align-content-center sp_co2'>SP CO2:</label>            
+                                                    <input type='text' id='sp_co2_{$val->telemetria_id}' class='col-auto w-25 form-control text-center px-0 mx-0' placeholder={$sp_co2} readonly>
                                                 </div>
                                             </td>
                                         </tr>
@@ -541,14 +539,10 @@
                                                 </div>
                                             </td>
                                             <td class='value-humedad col-4 text-center align-content-center {$humedad_color}' id='humd_{$val->telemetria_id}'>{$humedad}</td>
-                                            <td class='col-4 text-center'>
-                                                <div class='row justify-content-center'>
-                                                    <div class='col-auto'>
-                                                        <label for='' class='col-form-label'>SP Humedad:</label>
-                                                    </div>
-                                                    <div class='col-auto'>
-                                                        <input type='text' id='s_humd_{$val->telemetria_id}' class='form-control text-center' placeholder={$sp_humedad} readonly>
-                                                    </div>
+                                            <td class='col-4 align-content-center'>
+                                                <div class='row justify-content-center g-2'>
+                                                    <label for='' class='col-auto align-content-center sp_humedad'>SP Hm:</label>
+                                                    <input type='text' id='s_humd_{$val->telemetria_id}' class='col-auto w-25 form-control text-center px-0 mx-0' placeholder={$sp_humedad} readonly>
                                                 </div>
                                             </td>
                                         </tr>
@@ -564,14 +558,10 @@
                                                 </div>
                                             </td>
                                             <td class='value-h-inyeccion col-4 text-center align-content-center' id='h_inyeccion_{$val->telemetria_id}'>{$h_inyeccion}</td>
-                                            <td class='col-4 text-center'>
-                                                <div class='row justify-content-center'>
-                                                    <div class='col-auto'>
-                                                        <label for='' class='col-form-label'>I. Hours:</label>
-                                                    </div>
-                                                    <div class='col-auto'>
-                                                        <input type='text' class='form-control text-center' placeholder='' readonly>
-                                                    </div>
+                                            <td class='col-4 align-content-center'>
+                                                <div class='row justify-content-center g-2'>
+                                                    <label for='' class='col-auto align-content-center sp_injection'>I. Hours:</label>
+                                                    <input type='text' class='col-auto w-25 form-control text-center px-0 mx-0' placeholder='' readonly>
                                                 </div>
                                             </td>
                                         </tr>
@@ -587,14 +577,10 @@
                                                 </div>
                                             </td>
                                             <td class='value-supply col-4 text-center align-content-center {$supply_color}' id='temp1_{$val->telemetria_id}'>{$supply}</td>
-                                            <td class='col-4 text-center'>
-                                                <div class='row justify-content-center'>
-                                                    <div class='col-auto'>
-                                                        <label for='' class='col-form-label'>SP Temp:</label>
-                                                    </div>
-                                                    <div class='col-auto'>
-                                                        <input type='text' id='s_temp_{$val->telemetria_id}' class='form-control text-center' placeholder={$val->set_point}>
-                                                    </div>
+                                            <td class='col-4 align-content-center'>
+                                                <div class='row justify-content-center g-2'>
+                                                    <label for='' class='col-auto align-content-center sp_temp'>SP Tmp:</label>
+                                                    <input type='text' id='s_temp_{$val->telemetria_id}' class='col-auto w-25 form-control text-center px-0 mx-0' placeholder={$val->set_point}>
                                                 </div>
                                             </td>
                                         </tr>

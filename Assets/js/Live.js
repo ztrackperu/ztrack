@@ -163,6 +163,7 @@ function compressorModal(){
     $("#compressorModal").modal("show");
 }
 
+
 $(document).ready(function(){
     // INICIALIZANDO TOOLTIP PARA QUE SE PUEDA VISUALIZAR EN LA PÁGINA
     $(function () {

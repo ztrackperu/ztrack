@@ -22,7 +22,28 @@
     }
 }
 
+@media (min-width:320px) and (max-width:375px){
+    .sp_ethy{
+        font-size: 14px;
+    }
 
+    .sp_co2{
+        font-size: 14px;
+    }
+
+    .sp_humedad{
+        font-size: 14px;
+    }
+    
+    .sp_injection{
+        font-size: 14px;
+    }
+
+    .sp_temp{
+        font-size: 14px;
+    }
+    
+}
 @media (min-width: 375px) and (max-width: 768px) {
     .value-etileno{
         font-size: 20px;

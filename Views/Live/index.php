@@ -397,7 +397,7 @@ const swiper = new Swiper(".card-slider", {
                 <div class="mt-2">
                     <ul>
                         <li><h6 class='fw-bold'>Why is CO2 important in the solution?</h6></li>
-                        <p class="text-justify">In this case this gas act like a refrigerant for the fruits and vegetables</p>
+                        <p class="text-justify">In this case gas act like a refrigerant for the fruits and vegetables</p>
                     </ul>
                 </div>
             </div>
