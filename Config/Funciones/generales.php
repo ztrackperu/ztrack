@@ -472,125 +472,173 @@
                             <div class='col-3 p-2 text-center'><button type='button' class='mt-1 btn btn-block btn-outline-secondary' data-toggle='tooltip' data-placement='top' title='Datos'><i class='ri-layout-horizontal-line fs-5'></i></button></div>
                             <div class='col-3 p-2 text-center'><button type='button' class='mt-1 btn btn-block btn-outline-success' data-toggle='tooltip' data-placement='top' title='Correo'><i class='ri-mail-line fs-5'></i></button> </div>
                             <div class='col-3 p-2 text-center'><button type='button' class='mt-1 btn btn-block btn-outline-info' data-toggle='tooltip' data-placement='top' title='Reporte'><i class='ri-file-chart-line fs-5'></i></button></div>
-                            <div class='col-4 border text-center fw-bold'><p class='mt-1'>Params</p></div>
-                            <div class='col-4 border-top border-bottom text-center fw-bold'><p class='mt-1'>Value</p></div>
-                            <div class='col-4 border text-center fw-bold'><p class='mt-1'>Control</p></div>
-                            <div class='col-4 border-start border-bottom'>
-                            <div class='row'>
-                                <p class='mt-3 text-center'><i class='bi bi-cloud-fog2'></i>Ethylene</p>
+                            <!-- TABLA -->
+                            <div class='table-responsive mt-3'>
+                                <table class='border table table-bordered'>
+                                    <thead>
+                                        <tr class='text-center'>
+                                            <th scope='col'>Params</th>
+                                            <th scope='col'>Value</th>
+                                            <th scope='col'>Control</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class='col-4 text-center align-content-center'>
+                                                <div class='row justify-content-center'>
+                                                    <div class='col-12'>
+                                                        <i class='bi bi-cloud-haze2 fs-2 border rounded px-3 btn btn-outline-secondary' ondblclick='ethyModal()' ontouchstart='ethyModal()'></i>
+                                                    </div>
+                                                    <div class='col-12'>
+                                                        <h6 class='mt-2'> Ethylene</h6>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class='value-etileno col-4 text-center align-content-center {$etileno_color}' id='etileno_{$val->telemetria_id}'>{$etileno}</td>
+                                            <td class='col-4 text-center'>
+                                                <div class='row justify-content-center'>
+                                                    <div class='col-auto'>
+                                                        <label for='' class='col-form-label'>SP Ethylene:</label>
+                                                    </div>
+                                                    <div class='col-auto d-flex gap-2'>
+                                                        <input type='text' id='sp_etileno_{$val->telemetria_id}' class='form-control text-center' placeholder={$sp_ethyleno} readonly>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class='col-4 text-center align-content-center'>
+                                                <div class='row justify-content-center'>
+                                                    <div class='col-12'>
+                                                        <i class='ri-cloud-line fs-2 border rounded px-3 btn btn-outline-secondary' ondblclick='co2Modal()' ontouchstart='co2Modal()'></i>
+                                                    </div>
+                                                    <div class='col-12'>
+                                                        <h6 class='mt-2'>CO2</h6>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class='value-co2 col-4 text-center align-content-center {$co2_color}' id='co2_{$val->telemetria_id}'>{$co2}</td>
+                                            <td class='col-4 text-center'>
+                                                <div class='row justify-content-center'>
+                                                    <div class='col-auto'>
+                                                        <label for='' class='col-form-label'>SP CO2:</label>
+                                                    </div>
+                                                    <div class='col-auto'>
+                                                        <input type='text' id='sp_co2_{$val->telemetria_id}' class='form-control text-center' placeholder={$sp_co2} readonly>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class='col-4 text-center align-content-center'>
+                                                <div class='row justify-content-center'>
+                                                    <div class='col-12'>
+                                                        <i class='bi bi-moisture fs-2 border rounded px-3 btn btn-outline-primary' ondblclick='humidityModal()' ontouchstart='humidityModal()'></i>
+                                                    </div>
+                                                    <div class='col-12'>
+                                                        <h6 class='mt-2'>Humidity</h6>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class='value-humedad col-4 text-center align-content-center {$humedad_color}' id='humd_{$val->telemetria_id}'>{$humedad}</td>
+                                            <td class='col-4 text-center'>
+                                                <div class='row justify-content-center'>
+                                                    <div class='col-auto'>
+                                                        <label for='' class='col-form-label'>SP Humedad:</label>
+                                                    </div>
+                                                    <div class='col-auto'>
+                                                        <input type='text' id='s_humd_{$val->telemetria_id}' class='form-control text-center' placeholder={$sp_humedad} readonly>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class='col-4 text-center align-content-center'>
+                                                <div class='row justify-content-center'>
+                                                    <div class='col-12'>
+                                                        <i class='ri-time-line fs-2 border rounded px-3 btn btn-outline-secondary' ondblclick='injectionModal()' ontouchstart='injectionModal()'></i>
+                                                    </div>
+                                                    <div class='col-12'>
+                                                        <h6 class='mt-2'>Injection Hours</h6>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class='value-h-inyeccion col-4 text-center align-content-center' id='h_inyeccion_{$val->telemetria_id}'>{$h_inyeccion}</td>
+                                            <td class='col-4 text-center'>
+                                                <div class='row justify-content-center'>
+                                                    <div class='col-auto'>
+                                                        <label for='' class='col-form-label'>I. Hours:</label>
+                                                    </div>
+                                                    <div class='col-auto'>
+                                                        <input type='text' class='form-control text-center' placeholder='' readonly>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class='col-4 text-center align-content-center'>
+                                                <div class='row justify-content-center'>
+                                                    <div class='col-12'>
+                                                        <i class='ri-windy-line fs-2 border rounded px-3 btn btn-outline-secondary' ondblclick='supplyModal()' ontouchstart='supplyModal()'></i>
+                                                    </div>
+                                                    <div class='col-12'>
+                                                        <h6 class='mt-2'>Supply</h6>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class='value-supply col-4 text-center align-content-center {$supply_color}' id='temp1_{$val->telemetria_id}'>{$supply}</td>
+                                            <td class='col-4 text-center'>
+                                                <div class='row justify-content-center'>
+                                                    <div class='col-auto'>
+                                                        <label for='' class='col-form-label'>SP Temp:</label>
+                                                    </div>
+                                                    <div class='col-auto'>
+                                                        <input type='text' id='s_temp_{$val->telemetria_id}' class='form-control text-center' placeholder={$val->set_point}>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class='col-4 text-center align-content-center'>
+                                                <div class='row justify-content-center'>
+                                                    <div class='col-12'>
+                                                        <i class='bi bi-arrow-up-right fs-2 border rounded px-3 btn btn-outline-secondary' ondblclick='apertureModal()' ontouchstart='apertureModal()'></i>
+                                                    </div>
+                                                    <div class='col-12'>
+                                                        <h6>Aperture Level</h6>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class='value-n-apertura col-4 text-center align-content-center' id='n_apertura_{$val->telemetria_id}'>{$n_apertura}</td>
+                                            <td class='col-4 text-center align-content-center' id='defrost_prueba_{$val->telemetria_id}'>I: {$i}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class='col-4 text-center align-content-center'>
+                                                <div class='row justify-content-center'>
+                                                    <div class='col-12'>
+                                                        <i class='bi bi-speedometer fs-2 border rounded px-3 btn btn-outline-secondary' ondblclick='compressorModal()' ontouchstart='compressorModal()'></i>
+                                                    </div>
+                                                    <div class='col-12'>
+                                                        <h6 class='mt-2'>Compressor</h6>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class='value-compresor col-4 text-center align-content-center' id='compresor_{$val->telemetria_id}'>{$compresor}</td>
+                                            <td class='col-4 text-center'>
+                                                <div class='row justify-content-center'>
+                                                    <div class='col-auto'>
+                                                        <label for='' class='col-form-label'>Defrost:</label>
+                                                    </div>
+                                                    <div class='col-auto'>
+                                                        <button type='button' class='btn btn-block btn-success'>ACTIVE</button>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
-                            </div>
-                            <div class='col-3 border-start border-bottom'>
-                                <div class='row'>
-                                    <p class='mt-3 text-center fs-4 {$etileno_color}' id='etileno_{$val->telemetria_id}'>{$etileno}</p>
-                                </div>
-                            </div>
-                            <div class='col-5 border-start border-end border-bottom'>
-                                <div class='row'>
-                                    <div class='col-12 '><h6 class='mt-2'>SP Ethylene :</h6></div>
-                                    <div class='col-7 p-1'><input type='text' class='form-control text-center' id='sp_etileno_{$val->telemetria_id}' placeholder={$sp_ethyleno} readonly></div>
-                                    <div class='col-5 align-self-center p-1 '>ppm</div>
-                                </div>
-                            </div>
-                            <div class='col-4 border-start border-bottom'>
-                                <div class='row'>
-                                    <p class='mt-3 text-center'><i class='ri-cloud-line'></i>CO2</p>
-                                </div>
-                            </div>
-                            <div class='col-4 border-start border-bottom'>
-                                <div class='row'>
-                                    <p class='mt-3 text-center fs-4 {$co2_color}' id='co2_{$val->telemetria_id}'>{$co2}</p>
-                                </div>
-                            </div>
-                            <div class='col-4 border-start border-end'>
-                                <div class='row'>
-                                    <div class='col-12 '><h6 class='mt-2'>SP CO2 :</h6></div>
-                                    <div class='col-7 p-1'>  <input type='text' class='form-control text-center' id='sp_co2_{$val->telemetria_id}' placeholder={$sp_co2} readonly></div>
-                                    <div class='col-5 align-self-center p-1 '>%</div>
-                                </div>
-                            </div>
-                            <div class='col-4 border-start border-bottom'>
-                                <div class='row'>
-                                    <p class='mt-3 text-center'><i class='bi bi-moisture'></i>Humedad</p>
-                                </div>
-                            </div>
-                            <div class='col-4 border-start border-bottom'>
-                                <div class='row'>
-                                    <p class='mt-3 text-center fs-4 {$humedad_color}' id='humd_{$val->telemetria_id}'>{$humedad}</p>
-                                </div>
-                            </div>
-                            <div class='col-4 border'>
-                                <div class='row'>
-                                    <div class='col-12 '><h6 class='mt-2'>SP Humedad:</h6></div>
-                                    <div class='col-7 p-1'>  <input type='text' class='form-control text-center' id='s_humd_{$val->telemetria_id}' placeholder={$sp_humedad} readonly></div>
-                                    <div class='col-5 align-self-center p-1 '>%</div>
-                                </div>
-                            </div>
-                            <div class='col-4 border-start border-bottom'>
-                                <div class='row'>
-                                    <p class='mt-3 text-center'><i class='ri-time-line'></i>H. Inyeccion</p>
-                                </div>
-                            </div>
-                            <div class='col-4 border-start border-bottom'>
-                                <div class='row'>
-                                    <p class='mt-3 text-center fs-4' id='h_inyeccion_{$val->telemetria_id}'>{$h_inyeccion}</p>
-                                </div>
-                            </div>
-                            <div class='col-4 border-start border-end border-bottom'>
-                                <div class='row'>
-                                    <div class='col-12 '><h6 class='mt-2'>H. Inyeccion :</h6></div>
-                                    <div class='col-7 p-1'>  <input type='text' class='form-control'></div>
-                                    <div class='col-5 align-self-center p-1 '>H</div>
-                                </div>
-                            </div>
-                            <div class='col-4 border-start border-bottom'>
-                                <div class='row'>
-                                    <p class='mt-3 text-center'><i class='ri-windy-line'></i>Supply</p>
-                                </div>
-                            </div>
-                            <div class='col-4 border-start border-bottom'>
-                                <div class='row'>
-                                    <p class='mt-3 text-center fs-4 {$supply_color}' id='temp1_{$val->telemetria_id}'>{$supply}</p>
-                                </div>
-                            </div>
-                            <div class='col-4 border-start border-end border-bottom'>
-                                <div class='row'>
-                                    <div class='col-12 '><h6 class='mt-2'>SP Temp :</h6></div>
-                                    <div class='col-7 p-1'>  <input type='text' class='form-control text-center' id='s_temp_{$val->telemetria_id}' placeholder={$val->set_point}></div>
-                                    <div class='col-5 align-self-center p-1 '>%</div>
-                                </div>
-                            </div>
-                            <div class='col-4 border-start border-bottom'>
-                                <div class='row'>
-                                    <p class='mt-3 text-center'><i class='bi bi-arrow-up-right'></i>N. Apertura</p>
-                                </div>
-                            </div>
-                            <div class='col-4 border-start border-bottom'>
-                                <div class='row'>
-                                    <p class='mt-3 text-center fs-4' id='n_apertura_{$val->telemetria_id}'>{$n_apertura}</p>
-                                </div>
-                            </div>
-                            <div class='col-4 border-start border-end border-bottom'>
-                                 <div class='row'>
-                                    <p class='mt-3 text-center' id='defrost_prueba_{$val->telemetria_id}'>I: {$i}</p>
-                                </div>
-                            </div>
-                              <div class='col-4 border-start border-bottom'>
-                                <div class='row'>
-                                    <p class='mt-3 text-center'><i class='bi bi-speedometer'></i>Compresor</p>
-                                </div>
-                            </div>
-                            <div class='col-4 border-start border-bottom'>
-                                <div class='row'>
-                                    <p class='mt-3 text-center fs-4' id='compresor_{$val->telemetria_id}'>{$compresor}</p>
-                                </div>
-                            </div>
-                            <div class='col-4 border-start border-end border-bottom'>
-                                <div class='row text-center'>
-                                    <div class='col-12 '><h6 class='mt-2'>Defrost :</h6></div>
-                                    <div class='col-12 p-1'><button type='button' class='mt-1 btn btn-block btn-success'>ACTIVE</button> </div>
-                                </div>
-                            </div>
+                            <!-- FIN TABLA-->
                         </div>
                     </div>
                 </div>

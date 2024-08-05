@@ -134,8 +134,36 @@ async function procesarFecha(){
     }
 
 }
-$(document).ready(function(){
+// MODALES PARA TARJETAS
+function ethyModal(){
+    $("#ethyModal").modal("show");
+}
 
+function co2Modal(){
+    $("#co2Modal").modal("show");
+}
+
+function humidityModal(){
+    $("#humidityModal").modal("show");
+}
+
+function injectionModal(){
+    $("#injectionModal").modal("show");
+}
+
+function supplyModal(){
+    $("#supplyModal").modal("show");
+}
+
+function apertureModal(){
+    $("#apertureModal").modal("show");
+}
+
+function compressorModal(){
+    $("#compressorModal").modal("show");
+}
+
+$(document).ready(function(){
     // INICIALIZANDO TOOLTIP PARA QUE SE PUEDA VISUALIZAR EN LA PÁGINA
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
@@ -1558,3 +1586,5 @@ if(extra1==1){
 
     console.timeEnd('loop');
 }
+
+

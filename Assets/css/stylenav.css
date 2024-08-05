@@ -21,3 +21,97 @@
         display: none;
     }
 }
+
+
+@media (min-width: 375px) and (max-width: 768px) {
+    .value-etileno{
+        font-size: 20px;
+    }
+    .value-co2{
+        font-size:20px;
+    }
+    .value-humedad{
+        font-size:20px;
+    }
+    .value-h-inyeccion{
+        font-size:20px;
+    }
+    .value-supply{
+        font-size:20px;
+    }
+    .value-n-apertura{
+        font-size:20px;
+    }
+    .value-compresor{
+        font-size:20px;
+    }
+}
+@media (min-width: 767px) and (max-width: 1024px) {
+    .value-etileno{
+        font-size: 30px;
+    }
+    .value-co2{
+        font-size:30px;
+    }
+    .value-humedad{
+        font-size:30px;
+    }
+    .value-h-inyeccion{
+        font-size:30px;
+    }
+    .value-supply{
+        font-size:30px;
+    }
+    .value-n-apertura{
+        font-size:30px;
+    }
+    .value-compresor{
+        font-size:30px;
+    }
+}
+@media (min-width: 1025px) and (max-width: 1440px) {
+    .value-etileno{
+        font-size: 40px;
+    }
+    .value-co2{
+        font-size:40px;
+    }
+    .value-humedad{
+        font-size:40px;
+    }
+    .value-h-inyeccion{
+        font-size:40px;
+    }
+    .value-supply{
+        font-size:40px;
+    }
+    .value-n-apertura{
+        font-size:40px;
+    }
+    .value-compresor{
+        font-size:40px;
+    }
+}
+@media (min-width: 1441px) {
+    .value-etileno{
+        font-size: 40px;
+    }
+    .value-co2{
+        font-size:40px;
+    }
+    .value-humedad{
+        font-size:40px;
+    }
+    .value-h-inyeccion{
+        font-size:40px;
+    }
+    .value-supply{
+        font-size:40px;
+    }
+    .value-n-apertura{
+        font-size:40px;
+    }
+    .value-compresor{
+        font-size:40px;
+    }
+}

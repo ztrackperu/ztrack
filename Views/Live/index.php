@@ -353,6 +353,160 @@ const swiper = new Swiper(".card-slider", {
   </div>
 </div>
 
+<!--MODAL PARA TARJETAS-->
+<!-- ETHYLENE MODAL -->
+<div class="modal fade" id="ethyModal" tabindex="-1" aria-labelledby="my-modal-title" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="title">Ethylene</h5>
+                <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mt-2">
+                    <ul>
+                        <li><h6 class='fw-bold'>What is Ethylene gas?</h6></li>
+                        <p class="text-justify">Is the most commercially gas that plays an important role in the world and is used in many industrial applications for different reasons</p>
+                    </ul>
+                </div>
+                <div class="mt-2">
+                    <ul>
+                        <li><h6 class='fw-bold'>Why is important the use of Ethylene gas in the solution?</h6></li>
+                        <p class="text-justify">In this case we are using this gas to stimulate ripening process.</p>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- CO2 MODAL -->
+<div class="modal fade" id="co2Modal" tabindex="-1" aria-labelledby="my-modal-title" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="title">CO2</h5>
+                <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mt-2">
+                    <ul>
+                        <li><h6 class='fw-bold'>What is CO2 gas?</h6></li>
+                        <p class="text-justify">Carbon dioxide is a natural component of the air and part of the global carbon cycle</p>
+                    </ul>
+                </div>
+                <div class="mt-2">
+                    <ul>
+                        <li><h6 class='fw-bold'>Why is CO2 important in the solution?</h6></li>
+                        <p class="text-justify">In this case this gas act like a refrigerant for the fruits and vegetables</p>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- HUMIDITY MODAL-->
+<div class="modal fade" id="humidityModal" tabindex="-1" aria-labelledby="my-modal-title" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="title">Humidity</h5>
+                <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mt-2">
+                    <ul>
+                        <li><h6 class='fw-bold'>What is Humidity?</h6></li>
+                        <p class="text-justify">Is the concentration of water vapor in the air.</p>
+                    </ul>
+                </div>
+                <div class="mt-2">
+                    <ul>
+                        <li><h6 class='fw-bold'>Why is Humidity important in the solution?</h6></li>
+                        <p class="text-justify">In this case maintaining proper humidity levels is crucial to the success of the fruits ripening process and arrives at the supermarket in the best condition.</p>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- INJECTION MODAL-->
+<div class="modal fade" id="injectionModal" tabindex="-1" aria-labelledby="my-modal-title" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="title">Injection Hours</h5>
+                <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mt-2">
+                    <ul>
+                        <li><h6 class='fw-bold'>What is Injection Hours?</h6></li>
+                        <p class="text-justify"></p>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- SUPPLY MODAL-->
+<div class="modal fade" id="supplyModal" tabindex="-1" aria-labelledby="my-modal-title" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="title">Supply</h5>
+                <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mt-2">
+                    <ul>
+                        <li><h6 class='fw-bold'>What is Supply?</h6></li>
+                        <p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate veritatis provident quasi quo omnis eaque. Velit reprehenderit maxime assumenda aut ratione, itaque facilis. Iure perferendis dicta quisquam illo eveniet debitis.</p>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- APERTURE MODAL-->
+<div class="modal fade" id="apertureModal" tabindex="-1" aria-labelledby="my-modal-title" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="title">Aperture Level</h5>
+                <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mt-2">
+                    <ul>
+                        <li><h6 class='fw-bold'>What is Aperture Level?</h6></li>
+                        <p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate veritatis provident quasi quo omnis eaque. Velit reprehenderit maxime assumenda aut ratione, itaque facilis. Iure perferendis dicta quisquam illo eveniet debitis.</p>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--COMPRESSOR MODAL-->
+<div class="modal fade" id="compressorModal" tabindex="-1" aria-labelledby="my-modal-title" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="title">Compressor</h5>
+                <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mt-2">
+                    <ul>
+                        <li><h6 class='fw-bold'>What is Compressor?</h6></li>
+                        <p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate veritatis provident quasi quo omnis eaque. Velit reprehenderit maxime assumenda aut ratione, itaque facilis. Iure perferendis dicta quisquam illo eveniet debitis.</p>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FIN MODAL PARA TARTEJAS-->
+
 
 <?php include "Views/templates/footerLive.php"; ?>
 <?php include "Views/templates/footer.php"; ?>
