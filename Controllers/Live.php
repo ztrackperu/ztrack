@@ -112,6 +112,7 @@ class Live extends Controller
         echo json_encode($resultadoMadurador , JSON_UNESCAPED_UNICODE);
 
     }
+
     //LiveData
     public function LiveData()
     {

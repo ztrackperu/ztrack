@@ -455,15 +455,20 @@
                         <div class='row py-4' style='padding-right:5px ; padding-left:5px;'>
                             <!--POWER ON/OFF -->
                             <div class='col-2' style='padding-right:5px ; padding-left:5px;' data-toggle='tooltip' data-placement='top' title='Turn ON/OFF'>         
-                                <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='4' stroke='currentColor' width='35px' height='35px' class='mt-2 {$power_state}'>
+                                <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='4' stroke='currentColor' width='30px' height='30px' class='mt-2 {$power_state}'>
                                     <path stroke-linecap='round' stroke-linejoin='round' d='M5.636 5.636a9 9 0 1 0 12.728 0M12 3v9' />
                                 </svg>
                             </div>
                             <div class='col-8 '><h4 id='nombre_contenedor_{$val->telemetria_id}' class='text-center mt-3 fw-bold'> {$val->nombre_contenedor}</h4></div>
-                            <div class='col-2 text-right' style='padding-right:5px ; padding-left:5px' data-toggle='tooltip' data-placement='top' title='Settings'>
-                                <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='3' stroke='currentColor' width='35px' height='35px' class='mt-2 text-gray-600'>
-                                    <path strokeLinecap='round' strokeLinejoin='round' d='M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 0 1 1.37.49l1.296 2.247a1.125 1.125 0 0 1-.26 1.431l-1.003.827c-.293.241-.438.613-.43.992a7.723 7.723 0 0 1 0 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.955.26 1.43l-1.298 2.247a1.125 1.125 0 0 1-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.47 6.47 0 0 1-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 0 1-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 0 1-1.369-.49l-1.297-2.247a1.125 1.125 0 0 1 .26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 0 1 0-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 0 1-.26-1.43l1.297-2.247a1.125 1.125 0 0 1 1.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.086.22-.128.332-.183.582-.495.644-.869l.214-1.28Z' />
-                                    <path strokeLinecap='round' strokeLinejoin='round' d='M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z' />
+                            <div class='col-2 text-right' id='controlMode' onclick='accessModal({$valR})' style='padding-right:5px ; padding-left:5px' data-toggle='tooltip' data-placement='top' title='Access Control'>
+                                <svg version='1.0' xmlns='http://www.w3.org/2000/svg' width='30px' height='30px' class='mt-2' viewBox='0 0 118.000000 118.000000' preserveAspectRatio='xMidYMid meet'>
+                                    <g transform='translate(0.000000,118.000000) scale(0.100000,-0.100000)' fill='#000000' stroke='none'>
+                                    <path fill='green' d='M499 1165 c-63 -20 -136 -72 -171 -121 -40 -56 -58 -132 -58 -251 l0 -103 -38 0 c-27 0 -45 -7 -58 -21 -18 -20 -19 -40 -19 -326 l0 -305 24 -19
+                                            c22 -18 44 -19 411 -19 367 0 389 1 411 19 l24 19 0 305 c0 286 -1 306 -19 326 -13 14 -31 21 -58 21 l-38 0 0 104 c0 185 -50 285 -175 347 -77 38 -165
+                                            47 -236 24z m178 -122 c46 -21 101 -85 110 -130 4 -21 8 -78 8 -128 l0 -90 -205 0 -205 0 1 100 c0 121 12 159 63 209 63 62 147 76 228 39z m-52 -563 c15
+                                            -6 32 -24 41 -46 14 -33 14 -39 -5 -74 -17 -34 -19 -47 -11 -97 6 -32 10 -59 10 -60 0 -2 -31 -3 -70 -3 -38 0 -70 1 -70 3 0 1 4 28 10 60 8 50 6 63 -11 97
+                                        -19 35 -19 41 -5 74 20 49 60 65 111 46z'/>
+                                    </g>
                                 </svg>
                             </div>
                             <div class='col-12 '><h5 class='text-center mt-2'>{$val->descripcionC}</h5> </div>
@@ -478,6 +483,10 @@
                             <div class='col-3 p-2 text-center'><button type='button' class='mt-1 btn btn-block btn-outline-secondary' data-toggle='tooltip' data-placement='top' title='Datos'><i class='ri-layout-horizontal-line fs-5'></i></button></div>
                             <div class='col-3 p-2 text-center'><button type='button' class='mt-1 btn btn-block btn-outline-success' data-toggle='tooltip' data-placement='top' title='Correo'><i class='ri-mail-line fs-5'></i></button> </div>
                             <div class='col-3 p-2 text-center'><button type='button' class='mt-1 btn btn-block btn-outline-info' data-toggle='tooltip' data-placement='top' title='Reporte'><i class='ri-file-chart-line fs-5'></i></button></div>
+
+                            <div class='col-12' id='btnToSave1' hidden>
+                                <button type='button' id='btnSaveData1' class='btn btn-primary col-12' onclick='guardarDatos()'>SAVE</button>
+                            </div>
                             <!-- TABLA -->
                             <div class='table-responsive mt-3 px-0 mx-0'>
                                 <table class='border table table-sm table-bordered overflow-hidden'>
@@ -492,13 +501,15 @@
                                         <tr>
                                             <td class='col-4 text-center align-content-center'>
                                                 <div class='row justify-content-center'>
-                                                    <div class='col-12'>
-                                                        <svg width='70' height='70' class='icon border rounded px-1 btn' ondblclick='ethyModal()' ontouchstart='ethyModal()'>
-                                                            <use xlink:href='sprite.svg#etilenov1'></use>
+                                                    <div class='col-10'>
+                                                        <svg version='1.0' xmlns='http://www.w3.org/2000/svg' width='70' height='70' class='icon-params icon px-1 btn' ondblclick='ethyModal()' ontouchstart='ethyModal()' viewBox='0 0 306 236' preserveAspectRatio='xMidYMid meet'>
+                                                            <g transform='translate(0,236) scale(0.1,-0.1)' stroke='none'>
+                                                                <path fill='gray' d='M472 2126 c-62 -29 -102 -68 -133 -132 -28 -57 -31 -71 -27 -127 6 -73 25 -114 76 -165 59 -59 105 -77 194 -77 l77 0 40 -63 c23 -34 41 -67 41 -72 0 -5 -24 -33 -54 -63 -80 -80 -99 -123 -104 -238 -4 -87 -2 -101 21 -150 15 -30 51 -78 81 -108 l55 -55 -31 -55 c-46 -83 -50 -86 -126 -87 -84 -2 -143 -27 -199 -85 -53 -56 -73 -103 -73 -176 0 -170 162 -295 326 -254 190 48 258 277 125 424 l-35 39 39 75 39 74 73 -6 c83 -8 158 6 218 40 46 26 121 105 147 153 l17 32 284 0 285 0 47 -64 c51 -70 91 -102 170 -137 48 -22 102 -26 210 -17 27 3 33 -3 73 -70 l44 -72 -46 -51 c-57 -64 -76 -122 -66 -200 8 -61 25 -94 74 -147 50 -55 101 -76 181 -76 80 1 124 16 179 64 177 156 58 450 -181 450 -61 0 -64 1 -90 38 -16 21 -36 54 -46 73 l-18 34 55 59 c72 76 96 139 96 245 0 70 -4 86 -35 149 -22 44 -53 86 -81 111 l-45 39 43 71 43 71 61 0 c86 0 150 25 204 80 130 129 95 333 -72 421 -50 26 -167 26 -223 0 -48 -22 -96 -71 -126 -129 -17 -34 -21 -58 -20 -114 2 -77 14 -109 68 -176 l35 -43 -41 -68 -40 -68 -98 1 c-85 0 -105 -3 -153 -25 -67 -31 -116 -73 -156 -131 -16 -24 -33 -46 -39 -50 -5 -4 -137 -7 -293 -7 -306 1 -296 -1 -326 58 -21 40 -97 106 -152 132 -40 18 -67 23 -147 23 l-98 1 -44 69 -43 69 44 63 c48 71 59 111 51 189 -8 82 -62 165 -130 201 -45 23 -182 29 -225 10z'/>
+                                                            </g>
                                                         </svg>
                                                     </div>
-                                                    <div class='col-12'>
-                                                        <h6 class='mt-2'> Ethylene</h6>
+                                                    <div class='col-10'>
+                                                        <h6 class='mt-2 text-params'> Ethylene</h6>
                                                     </div>
                                                 </div>
                                             </td>
@@ -506,19 +517,19 @@
                                                 <div class='d-flex flex-column align-items-center'>
                                                     <div class='d-flex align-items-center'>
                                                         <p class='value-icon' id='eti_icon_{$val->telemetria_id}'><i class='bi bi-arrows me-2 align-items-center mb-1 text-primary value-icon'></i></p>
-                                                        <p class='value-etileno {$etileno_color} align-items-center mb-1' id='etileno_{$val->telemetria_id}'>{$etileno}</p>
+                                                        <p class='value-parameter {$etileno_color} align-items-center mb-1' id='etileno_{$val->telemetria_id}'>{$etileno}</p>
                                                     </div>
-                                                    <small>ppm</small>
+                                                    <small class='value-si'>ppm</small>
                                                 </div>
                                             </td>
                                             <td class='col-4 align-content-center'>
                                                 <div class='d-flex flex-column align-items-center'>
-                                                    <p class='me-2 align-items-center mb-1'>Set Point</p>
-                                                    <p class='me-2 align-items-center fw-bold mb-1'>Ethy</p>
+                                                    <p class='me-2 text-center mb-1 text-control'>Set Point</p>
+                                                    <p class='me-2 text-center fw-bold mb-1 text-control'>Ethy</p>
                                                 </div>
                                                 <div class='row justify-content-center g-2'>
-                                                    <input type='text' class='col-8 w-50 form-control text-center px-0 mx-0' id='sp_etileno_{$val->telemetria_id}' placeholder={$sp_ethyleno} readonly>
-                                                    <small class='col-4 align-content-center sp_ethy'>ppm</small>
+                                                    <input type='text' class='input col-8 w-50 form-control text-center align-content-center px-0 mx-0' id='sp_etileno_{$val->telemetria_id}' placeholder={$sp_ethyleno} readonly>
+                                                    <small class='col-4 align-content-center text-control-si'>ppm</small>
                                                 </div>
                                             </td>
                                         </tr>
@@ -526,7 +537,8 @@
                                             <td class='col-4 text-center align-content-center'>
                                                 <div class='row justify-content-center'>
                                                     <div class='col-12'>
-                                                    <svg version='1.0' xmlns='http://www.w3.org/2000/svg' width='70' height='70' class='icon border rounded px-1 btn' ondblclick='co2Modal()' ontouchstart='co2Modal()' viewBox='0 0 1920.000000 1080.000000' preserveAspectRatio='xMidYMid meet'>
+                                                    
+                                                    <svg version='1.0' xmlns='http://www.w3.org/2000/svg' width='70' height='70' class='icon-params icon px-1 btn' ondblclick='co2Modal()' ontouchstart='co2Modal()' viewBox='0 0 1920.000000 1080.000000' preserveAspectRatio='xMidYMid meet'>
                                                         <g transform='translate(0.000000,1080.000000) scale(0.100000,-0.100000)'
                                                         fill='green' stroke='none'>
                                                         <path d='M11467 10043 c-15 -16 -27 -32 -27 -36 0 -8 -71 -111 -145 -212 -24
@@ -694,7 +706,7 @@
                                                         </svg>
                                                     </div>
                                                     <div class='col-12'>
-                                                        <h6 class='mt-2'>CO2</h6>
+                                                        <h6 class='mt-2 text-params'>CO2</h6>
                                                     </div>
                                                 </div>
                                             </td>
@@ -702,19 +714,19 @@
                                                 <div class='d-flex flex-column align-items-center'>
                                                     <div class='d-flex align-items-center'>
                                                         <p class='value-icon' id='co2_icon_{$val->telemetria_id}'><i class='bi bi-arrows me-2 align-items-center mb-1 text-primary value-icon'></i></p>
-                                                        <p class='value-co2 {$co2_color} align-items-center mb-1' id='co2_{$val->telemetria_id}'>{$co2}</p>
+                                                        <p class='value-parameter {$co2_color} align-items-center mb-1' id='co2_{$val->telemetria_id}'>{$co2}</p>
                                                     </div>
                                                     <small>ppm</small>
                                                 </div>
                                             </td>
                                             <td class='col-4 align-content-center'>
                                                 <div class='d-flex flex-column align-items-center'>
-                                                    <p class='me-2 align-items-center mb-1'>Set Point</p>
-                                                    <p class='me-2 align-items-center fw-bold mb-1'>CO2</p>            
+                                                    <p class='me-2 align-items-center mb-1 text-control'>Set Point</p>
+                                                    <p class='me-2 align-items-center fw-bold mb-1 text-control'>CO2</p>            
                                                 </div>
                                                 <div class='row justify-content-center g-2'>
-                                                    <input type='text' id='sp_co2_{$val->telemetria_id}' class='col-8 w-50 form-control text-center px-0 mx-0' placeholder={$sp_co2} readonly>
-                                                    <small class='col-4 align-content-center sp_co2'>ppm</small>
+                                                    <input type='text' id='sp_co2_{$val->telemetria_id}' class='input col-8 w-50 form-control text-center px-0 mx-0' placeholder={$sp_co2} readonly>
+                                                    <small class='col-4 align-content-center text-control-si'>ppm</small>
                                                 </div>
                                             </td>
                                         </tr>
@@ -723,7 +735,7 @@
                                                 <div class='row justify-content-center'>
                                                     <div class='col-12'>
                                                         <svg version='1.0' xmlns='http://www.w3.org/2000/svg'
-                                                            width='70' height='70' class='icon border rounded px-1' ondblclick='humidityModal()' ontouchstart='humidityModal()' viewBox='0 0 720.000000 720.000000' preserveAspectRatio='xMidYMid meet'>
+                                                            width='70' height='70' class='icon-params icon px-1' ondblclick='humidityModal()' ontouchstart='humidityModal()' viewBox='0 0 720.000000 720.000000' preserveAspectRatio='xMidYMid meet'>
 
                                                             <g transform='translate(0.000000,720.000000) scale(0.100000,-0.100000)'
                                                             fill='#0070fc' stroke='none'>
@@ -861,7 +873,7 @@
                                                             </svg>
                                                     </div>
                                                     <div class='col-12'>
-                                                        <h6 class='mt-2'>Humidity</h6>
+                                                        <h6 class='mt-2 text-params'>Humidity</h6>
                                                     </div>
                                                 </div>
                                             </td>
@@ -869,19 +881,19 @@
                                                 <div class='d-flex flex-column align-items-center'>
                                                     <div class='d-flex align-items-center'>
                                                         <p class='value-icon' id='humidity_icon_{$val->telemetria_id}'><i class='bi bi-arrows me-2 align-items-center mb-1 text-primary value-icon'></i></p>
-                                                        <p class='value-humedad {$humedad_color} align-items-center mb-1' id='humd_{$val->telemetria_id}'>{$humedad}</p>
+                                                        <p class='value-parameter {$humedad_color} align-items-center mb-1' id='humd_{$val->telemetria_id}'>{$humedad}</p>
                                                     </div>
                                                     <small>%</small>
                                                 </div>
                                             </td>
                                             <td class='col-4 align-content-center'>
                                                 <div class='d-flex flex-column align-items-center'>
-                                                    <p class='me-2 align-items-center mb-1'>Set Point</p>
-                                                    <p class='me-2 align-items-center fw-bold mb-1'>Humidity</p>            
+                                                    <p class='me-2 align-items-center mb-1 text-control'>Set Point</p>
+                                                    <p class='me-2 align-items-center fw-bold mb-1 text-control'>Humidity</p>            
                                                 </div>
                                                 <div class='row justify-content-center g-2'>
-                                                    <input type='text' id='sp_humd_{$val->telemetria_id}' class='col-10 w-50 form-control text-center px-0 mx-0' placeholder={$sp_humedad} readonly>
-                                                    <small class='col-2 align-content-center sp_co2'>%</small>
+                                                    <input type='text' id='sp_humd_{$val->telemetria_id}' class='input col-10 w-50 form-control text-center px-0 mx-0' placeholder={$sp_humedad} readonly>
+                                                    <small class='col-2 align-content-center text-control-si'>%</small>
                                                 </div>
                                             </td>
                                         </tr>
@@ -890,7 +902,7 @@
                                                 <div class='row justify-content-center'>
                                                     <div class='col-12'>
                                                         <svg version='1.0' xmlns='http://www.w3.org/2000/svg'
-                                                        width='70' height='70' class='border rounded px-1 btn' ondblclick='injectionModal()' ontouchstart='injectionModal()' viewBox='0 0 720.000000 720.000000'
+                                                        width='70' height='70' class='icon-params px-1 btn' ondblclick='injectionModal()' ontouchstart='injectionModal()' viewBox='0 0 720.000000 720.000000'
                                                         preserveAspectRatio='xMidYMid meet'>
 
                                                         <g transform='translate(0.000000,720.000000) scale(0.100000,-0.100000)'
@@ -946,15 +958,17 @@
                                                         </svg>
                                                     </div>
                                                     <div class='col-12'>
-                                                        <h6 class='mt-2'>Injection Hours</h6>
+                                                        <h6 class='mt-2 text-params'>Injection Hours</h6>
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td class='value-h-inyeccion col-4 text-center align-content-center' id='h_inyeccion_{$val->telemetria_id}'>{$h_inyeccion}</td>
+                                            <td class='value-parameter col-4 text-center align-content-center' id='h_inyeccion_{$val->telemetria_id}'>{$h_inyeccion}</td>
                                             <td class='col-4 align-content-center'>
+                                                <div class='d-flex flex-column align-items-center'>
+                                                    <p class='me-2 align-items-center mb-1 text-control'>I. Hours:</p>
+                                                </div>
                                                 <div class='row justify-content-center g-2'>
-                                                    <label for='' class='col-auto align-content-center sp_injection'>I. Hours:</label>
-                                                    <input type='text' class='col-auto w-25 form-control text-center px-0 mx-0' placeholder='' readonly>
+                                                     <input type='text' class='input col-8 w-50 form-control text-center px-0 mx-0' placeholder='' readonly>
                                                 </div>
                                             </td>
                                         </tr>
@@ -962,10 +976,10 @@
                                             <td class='col-4 text-center align-content-center'>
                                                 <div class='row justify-content-center'>
                                                     <div class='col-12'>
-                                                        <i class='ri-windy-line border rounded px-3 btn btn-outline-secondary fs-1' ondblclick='supplyModal()' ontouchstart='supplyModal()'></i>
+                                                        <i class='ri-windy-line px-3 fs-1 text-secondary' ondblclick='supplyModal()' ontouchstart='supplyModal()'></i>
                                                     </div>
                                                     <div class='col-12'>
-                                                        <h6 class='mt-2'>Supply</h6>
+                                                        <h6 class='mt-2 text-params'>Supply</h6>
                                                     </div>
                                                 </div>
                                             </td>
@@ -973,19 +987,19 @@
                                                 <div class='d-flex flex-column align-items-center'>
                                                     <div class='d-flex align-items-center'>
                                                         <p class='value-icon' id='tmp_icon_{$val->telemetria_id}'><i class='bi bi-arrows me-2 align-items-center mb-1 text-primary value-icon'></i></p>
-                                                        <p class='value-supply {$supply_color} align-items-center mb-1' id='temp1_{$val->telemetria_id}'>{$supply}</p>
+                                                        <p class='value-parameter {$supply_color} align-items-center mb-1' id='temp1_{$val->telemetria_id}'>{$supply}</p>
                                                     </div>
                                                     <small>°C</small>
                                                 </div>
                                             </td>
                                             <td class='col-4 align-content-center'>
                                                 <div class='d-flex flex-column align-items-center'>
-                                                    <p class='me-2 align-items-center mb-1'>Set Point</p>
-                                                    <p class='me-2 align-items-center fw-bold mb-1'>Tmp</p>            
+                                                    <p class='me-2 align-items-center mb-1 text-control'>Set Point</p>
+                                                    <p class='me-2 align-items-center fw-bold mb-1 text-control'>Tmp</p>            
                                                 </div>
                                                 <div class='row justify-content-center g-2'>
-                                                    <input type='text' id='sp_temp_{$val->telemetria_id}' class='col-8 w-50 form-control text-center px-0 mx-0' placeholder={$val->set_point} readonly>
-                                                    <small class='col-4 align-content-center sp_co2'>°C</small>
+                                                    <input type='text' id='sp_temp_{$val->telemetria_id}' class='input col-8 w-50 form-control text-center px-0 mx-0' placeholder={$val->set_point} readonly>
+                                                    <small class='col-4 align-content-center text-control-si'>°C</small>
                                                 </div>
                                             </td>
                                         </tr>
@@ -994,7 +1008,7 @@
                                                 <div class='row justify-content-center'>
                                                     <div class='col-12'>
                                                         <svg version='1.0' xmlns='http://www.w3.org/2000/svg'
-                                                        width='70' height='70' class='border rounded px-1 btn' ondblclick='apertureModal()' ontouchstart='apertureModal()' viewBox='0 0 802.000000 643.000000'
+                                                        width='70' height='70' class='icon-params px-1 btn' ondblclick='apertureModal()' ontouchstart='apertureModal()' viewBox='0 0 802.000000 643.000000'
                                                         preserveAspectRatio='xMidYMid meet'>
 
                                                         <g transform='translate(0.000000,643.000000) scale(0.100000,-0.100000)'
@@ -1052,11 +1066,11 @@
                                                         </svg>
                                                     </div>
                                                     <div class='col-12'>
-                                                        <h6>Aperture Level</h6>
+                                                        <h6 class='text-params'>Aperture Level</h6>
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td class='value-n-apertura col-4 text-center align-content-center' id='n_apertura_{$val->telemetria_id}'>{$n_apertura}</td>
+                                            <td class='value-parameter col-4 text-center align-content-center' id='n_apertura_{$val->telemetria_id}'>{$n_apertura}</td>
                                             <td class='col-4 text-center align-content-center' id='defrost_prueba_{$val->telemetria_id}'>I: {$i}</td>
                                         </tr>
                                         <tr>
@@ -1064,7 +1078,7 @@
                                                 <div class='row justify-content-center'>
                                                     <div class='col-12'>
                                                     <svg version='1.0' xmlns='http://www.w3.org/2000/svg'
-                                                        width='70' height='70' class='border rounded px-1 btn' ondblclick='compressorModal()' ontouchstart='compressorModal()' viewBox='0 0 172.000000 123.000000'
+                                                        width='70' height='70' class='icon-params px-1 btn' ondblclick='compressorModal()' ontouchstart='compressorModal()' viewBox='0 0 172.000000 123.000000'
                                                         preserveAspectRatio='xMidYMid meet'>
                                                         <metadata>
                                                         Created by potrace 1.16, written by Peter Selinger 2001-2019
@@ -1092,18 +1106,18 @@
                                                     </svg>
                                                     </div>
                                                     <div class='col-12'>
-                                                        <h6 class='mt-2'>Compressor</h6>
+                                                        <h6 class='mt-2 text-params'>Compressor</h6>
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td class='value-compresor col-4 text-center align-content-center' id='compresor_{$val->telemetria_id}'>{$compresor}</td>
+                                            <td class='value-parameter col-4 text-center align-content-center' id='compresor_{$val->telemetria_id}'>{$compresor}</td>
                                             <td class='col-4 text-center'>
                                                 <div class='row justify-content-center'>
                                                     <div class='col-auto'>
-                                                        <label for='' class='col-form-label'>Defrost:</label>
+                                                        <label for='' class='col-form-label text-control'>Defrost:</label>
                                                     </div>
                                                     <div class='col-auto'>
-                                                        <button type='button' class='btn btn-block btn-success'>ACTIVE</button>
+                                                        <button type='button' class='btn btn-block btn-success text-control'>ACTIVE</button>
                                                     </div>
                                                 </div>
                                             </td>
@@ -1112,6 +1126,10 @@
                                 </table>
                             </div>
                             <!-- FIN TABLA-->
+                            <div class='col-12' id='btnToSave2' hidden>
+                                <button type='button' id='btnSaveData2' class='btn btn-primary col-12' onclick='guardarDatos()'>SAVE</button>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>

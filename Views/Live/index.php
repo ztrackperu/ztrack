@@ -314,7 +314,6 @@ const swiper = new Swiper(".card-slider", {
         <div style="padding: 5px; margin-top:10px; margin-right:10px">
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-
       </div>
       <div class="modal-body" style="padding: 5px ;margin-top:1px;">
                 <div class="row justify-content-center " style="padding: 5px; margin-top:1px;">
@@ -327,7 +326,6 @@ const swiper = new Swiper(".card-slider", {
                             <option value=1 >F°</option>
                         </select>
                     </div>
-
                     <div class="col-6 col-lg-2" style="padding-left: 15px; margin-top:10px;">
                         <h5 ><strong>From :</strong></h5>
                         <input class='form-control'  id="fechaInicial" type="datetime-local">	
@@ -343,17 +341,37 @@ const swiper = new Swiper(".card-slider", {
                 <!--<div class="container "> -->
                 <div id="legend-container" class="container" style="padding-left: 2px;padding-right: 2px;"></div> 
                 <!--</div> -->
-                
                 <canvas align ="center" id="graficaFinal" style="" width="1200" height="700"></canvas>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <!--<button type="button" class="btn btn-primary" id="a">Graph</button>-->
         <a id="bajarGraph" class="btn btn-outline-success btn-lg btn-block">DOWNLOAD GRAPH</a>
-
       </div>
     </div>
   </div>
+</div>
+
+<!--MODAL PARA ACCESS CONTROL -->
+<div class='modal fade' id='accessModal' tabindex='-1' aria-labelledby='my-modal-title' aria-hidden='true'>
+    <div class='modal-dialog'>
+        <div class='modal-content'>
+            <div class='modal-header'>
+                <h5 class='modal-title' id='title'>Access Control</h5>
+                <button class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+            </div>
+            <div class='modal-body'>
+                <div class='mt-2'>
+                <h6 class='fw-bold'>Are you sure to activate control mode?</h6>
+                </div>
+                <div class='mt-2'>
+                    <label for='access'>Enter your password</label>
+                    <input type='password' class='form-control' id='access' name='access' required>
+                    <button type='button' class='btn btn-primary mt-2' onClick='btnAccess()'>SAVE</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!--MODAL PARA TARJETAS-->

@@ -164,43 +164,17 @@ function compressorModal(){
 }
 
 
+
+
 $(document).ready(function(){
+    $('#btnAccess').click(function(){
+        $('#accessModal').modal('hide');
+    })
     // INICIALIZANDO TOOLTIP PARA QUE SE PUEDA VISUALIZAR EN LA PÁGINA
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
+       
     })
-    /*
-    const url = base_url + "Live/ListaD";
-    const request = new XMLHttpRequest();
-    request.open("GET", url);
-    request.send();
-    request.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            var data = JSON.parse(this.responseText);
-            console.log(data);
-
-            // Contar la cantidad de cada estado
-            let onlineCount = 0;
-            let waitCount = 0;
-            let offlineCount = 0;
-
-            data.estados.forEach(item => {
-                if (item.estado === 'Online') {
-                    onlineCount++;
-                } else if (item.estado === 'Wait') {
-                    waitCount++;
-                } else if (item.estado === 'Offline') {
-                    offlineCount++;
-                }
-            });
-
-            // Actualizar los datos del gráfico
-            myDoughnutChart.data.datasets[0].data = [onlineCount, waitCount, offlineCount];
-            myDoughnutChart.update();
-        }
-    }*/
-
-    
     
     // SEARCH INPUT PARA BUSCAR LOS EQUIPOS DENTRO DE LOS SLIDER
     document.getElementById('search-button').addEventListener('click', function() {
@@ -287,6 +261,26 @@ document.addEventListener("DOMContentLoaded", async function(){
 function saludos(){
     console.log("oli pablito");
 }
+async function accessModal(id){
+    $("#accessModal").modal("show");
+    
+}
+
+function btnAccess(){
+    $('#controlMode').html("<svg version='1.0' xmlns='http://www.w3.org/2000/svg' width='50px' height='50px' viewBox='0 0 226.000000 114.000000' preserveAspectRatio='xMidYMid meet'><g transform='translate(0.000000,118.000000) scale(0.100000,-0.100000)' fill='#000000' stroke='none'><path fill='gray' d='M1091 1125 c-66 -19 -111 -46 -146 -86 -31 -37 -31 -53 -3 -73 33 -23 64 -20 111 12 100 68 199 68 282 0 66 -55 78 -105 55 -240 l-13 -78 -323 0 c-311 0 -325 -1 -344 -20 -19 -19 -20 -33 -20 -314 0 -254 2 -297 16 -310 13 -14 66 -16 424 -16 l409 0 15 22 c14 19 16 66 16 310 0 268 -1 289 -19 307 -10 10 -24 20 -31 23 -10 3 -10 17 -1 69 18 107 14 168 -15 227 -32 65 -106 132 -171 155 -70 25 -176 30 -242 12z m96 -807 c27 -25 28 -42 9 -89 -8 -20 -13 -59 -11 -96 l3 -63 -59 0 -59 0 0 84 c0 47 -4 88 -10 91 -17 11 -11 48 12 72 28 30 83 31 115 1z'/></g></svg>");
+    $('#btnToSave1').attr('hidden', false);
+    $('#btnToSave2').attr('hidden', false);
+    $('.input').attr('readonly', false);
+    $('#accessModal').modal('hide');  
+}
+
+function guardarDatos(){
+    $('#btnToSave1').attr('hidden', true);
+    $('#btnToSave2').attr('hidden', true);
+    $('.input').attr('readonly', true);
+    $('#controlMode').html("<svg version='1.0' xmlns='http://www.w3.org/2000/svg' width='30px' height='30px' class='mt-2' viewBox='0 0 118.000000 118.000000' preserveAspectRatio='xMidYMid meet'><g transform='translate(0.000000,118.000000) scale(0.100000,-0.100000)' fill='#000000' stroke='none'><path fill='green' d='M499 1165 c-63 -20 -136 -72 -171 -121 -40 -56 -58 -132 -58 -251 l0 -103 -38 0 c-27 0 -45 -7 -58 -21 -18 -20 -19 -40 -19 -326 l0 -305 24 -19 c22 -18 44 -19 411 -19 367 0 389 1 411 19 l24 19 0 305 c0 286 -1 306 -19 326 -13 14 -31 21 -58 21 l-38 0 0 104 c0 185 -50 285 -175 347 -77 38 -165 47 -236 24z m178 -122 c46 -21 101 -85 110 -130 4 -21 8 -78 8 -128 l0 -90 -205 0 -205 0 1 100 c0 121 12 159 63 209 63 62 147 76 228 39z m-52 -563 c15 -6 32 -24 41 -46 14 -33 14 -39 -5 -74 -17 -34 -19 -47 -11 -97 6 -32 10 -59 10 -60 0 -2 -31 -3 -70 -3 -38 0 -70 1 -70 3 0 1 4 28 10 60 8 50 6 63 -11 97 -19 35 -19 41 -5 74 20 49 60 65 111 46z'/></g></svg>");
+}
+
 //graficaM
 async function graficaM(id){
     //console.log(id);
@@ -324,6 +318,11 @@ async function obtenerCambio() {
     return result;
 }
 
+
+
+
+
+
 let previousValues = {};
 let co2Values = {};
 let humidityValues = {};
@@ -348,7 +347,7 @@ function tarjeta(res){
     $('#eti_icon_' + res.telemetria_id).html(evaluacionEti);
 
     // Actualiza los valores anteriores
-    previousValues[res.telemetria_id] = res.ethylene;
+    //previousValues[res.telemetria_id] = res.ethylene;
 
     if (co2Values[res.telemetria_id] === undefined){
         co2Values[res.telemetria_id] = res.co2_reading;
@@ -363,7 +362,7 @@ function tarjeta(res){
 
     $('#co2_icon_' + res.telemetria_id).html(evaluacionCo2);
 
-    co2Values[res.telemetria_id] = res.co2_reading;
+    //co2Values[res.telemetria_id] = res.co2_reading;
 
     
     if(humidityValues[res.telemetria_id] === undefined){
@@ -379,7 +378,7 @@ function tarjeta(res){
 
     $('#humidity_icon_'+res.telemetria_id).html(evaluacionHumidity);
 
-    humidityValues[res.telemetria_id] = res.relative_humidity;
+    //humidityValues[res.telemetria_id] = res.relative_humidity;
 
     if(supplyValues[res.telemetria_id] === undefined){
         supplyValues[res.telemetria_id] = res.temp_supply_1;
@@ -394,8 +393,7 @@ function tarjeta(res){
 
     $('#tmp_icon_'+res.telemetria_id).html(evaluacionTmp);
 
-    supplyValues[res.telemetria_id] = res.temp_supply_1;
-    
+    //supplyValues[res.telemetria_id] = res.temp_supply_1;
     //$('#eti_icon_'+res.telemetria_id).html(iconSuccess);
     $('#fechita_'+res.telemetria_id).text(res.ultima_fecha);
     $('#temp1_'+res.telemetria_id).text(res.temp_supply_1);
