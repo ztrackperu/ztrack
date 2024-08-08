@@ -323,7 +323,80 @@ async function obtenerCambio() {
 
     return result;
 }
+
+let previousValues = {};
+let co2Values = {};
+let humidityValues = {};
+let supplyValues = {};
 function tarjeta(res){
+    let iconSuccess = "<i class='bi bi-arrow-up-short me-2 align-items-center mb-1 text-success value-icon'></i>";
+    let iconDown = "<i class='bi bi-arrow-down-short me-2 align-items-center mb-1 text-danger value-icon'></i>";
+    
+    //en caso no haya valor
+    if (previousValues[res.telemetria_id] === undefined) {
+        previousValues[res.telemetria_id] = res.ethylene;
+    }
+
+    let evaluacionEti;
+    if (res.ethylene > previousValues[res.telemetria_id]) {
+        evaluacionEti = iconSuccess;
+    } else if (res.ethylene < previousValues[res.telemetria_id]) {
+        evaluacionEti = iconDown;
+    }
+
+    // Actualiza el icono
+    $('#eti_icon_' + res.telemetria_id).html(evaluacionEti);
+
+    // Actualiza los valores anteriores
+    previousValues[res.telemetria_id] = res.ethylene;
+
+    if (co2Values[res.telemetria_id] === undefined){
+        co2Values[res.telemetria_id] = res.co2_reading;
+    }
+
+    let evaluacionCo2;
+    if (res.co2_reading > co2Values[res.telemetria_id]){
+        evaluacionCo2 = iconSuccess;
+    }else if (res.co2_reading < co2Values[res.telemetria_id]){
+        evaluacionCo2 = iconDown;
+    }
+
+    $('#co2_icon_' + res.telemetria_id).html(evaluacionCo2);
+
+    co2Values[res.telemetria_id] = res.co2_reading;
+
+    
+    if(humidityValues[res.telemetria_id] === undefined){
+        humidityValues[res.telemetria_id] = res.relative_humidity;
+    }
+
+    let evaluacionHumidity;
+    if (res.relative_humidity > humidityValues[res.telemetria_id]){
+        evaluacionHumidity = iconSuccess;
+    }else if(res.relative_humidity < humidityValues[res.telemetria_id]){
+        evaluacionHumidity = iconDown;
+    }
+
+    $('#humidity_icon_'+res.telemetria_id).html(evaluacionHumidity);
+
+    humidityValues[res.telemetria_id] = res.relative_humidity;
+
+    if(supplyValues[res.telemetria_id] === undefined){
+        supplyValues[res.telemetria_id] = res.temp_supply_1;
+    }
+
+    let evaluacionTmp;
+    if(res.temp_supply_1 > supplyValues[res.telemetria_id]){
+        evaluacionTmp = iconSuccess;
+    }else if(res.temp_supply_1 < supplyValues[res.telemetria_id]){
+        evaluacionTmp = iconDown;
+    }
+
+    $('#tmp_icon_'+res.telemetria_id).html(evaluacionTmp);
+
+    supplyValues[res.telemetria_id] = res.temp_supply_1;
+    
+    //$('#eti_icon_'+res.telemetria_id).html(iconSuccess);
     $('#fechita_'+res.telemetria_id).text(res.ultima_fecha);
     $('#temp1_'+res.telemetria_id).text(res.temp_supply_1);
     $('#return_'+res.telemetria_id).text(res.return_air);

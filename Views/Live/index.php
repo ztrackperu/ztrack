@@ -30,6 +30,9 @@ body {
 .swiper {
     padding-top: 30px;
 }
+.icono{
+    fill:red;
+}
 
 .card-content {
     text-align: center;

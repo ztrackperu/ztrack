@@ -42,9 +42,62 @@
     .sp_temp{
         font-size: 14px;
     }
+    .value-etileno{
+        font-size: 14px;
+    }
+    .value-co2{
+        font-size:14px;
+    }
+    .value-humedad{
+        font-size:14px;
+    }
+    .value-h-inyeccion{
+        font-size:14px;
+    }
+    .value-supply{
+        font-size:14px;
+    }
+    .value-n-apertura{
+        font-size:14px;
+    }
+    .value-compresor{
+        font-size:14px;
+    }
+    .value-icon{
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+    
     
 }
 @media (min-width: 375px) and (max-width: 768px) {
+    .value-etileno{
+        font-size: 15px;
+    }
+    .value-co2{
+        font-size:15px;
+    }
+    .value-humedad{
+        font-size:15px;
+    }
+    .value-h-inyeccion{
+        font-size:15px;
+    }
+    .value-supply{
+        font-size:15px;
+    }
+    .value-n-apertura{
+        font-size:15px;
+    }
+    .value-compresor{
+        font-size:15px;
+    }
+    .value-icon{
+        font-size: 15px;
+        margin-bottom: 10px;
+    }
+}
+@media (min-width: 767px) and (max-width: 1024px) {
     .value-etileno{
         font-size: 20px;
     }
@@ -66,8 +119,12 @@
     .value-compresor{
         font-size:20px;
     }
+    .value-icon{
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
 }
-@media (min-width: 767px) and (max-width: 1024px) {
+@media (min-width: 1025px) and (max-width: 1440px) {
     .value-etileno{
         font-size: 30px;
     }
@@ -89,50 +146,35 @@
     .value-compresor{
         font-size:30px;
     }
-}
-@media (min-width: 1025px) and (max-width: 1440px) {
-    .value-etileno{
-        font-size: 40px;
-    }
-    .value-co2{
-        font-size:40px;
-    }
-    .value-humedad{
-        font-size:40px;
-    }
-    .value-h-inyeccion{
-        font-size:40px;
-    }
-    .value-supply{
-        font-size:40px;
-    }
-    .value-n-apertura{
-        font-size:40px;
-    }
-    .value-compresor{
-        font-size:40px;
+    .value-icon{
+        font-size: 30px;
+        margin-bottom: 10px;
     }
 }
 @media (min-width: 1441px) {
     .value-etileno{
-        font-size: 40px;
+        font-size: 30px;
     }
     .value-co2{
-        font-size:40px;
+        font-size:30px;
     }
     .value-humedad{
-        font-size:40px;
+        font-size:30px;
     }
     .value-h-inyeccion{
-        font-size:40px;
+        font-size:30px;
     }
     .value-supply{
-        font-size:40px;
+        font-size:30px;
     }
     .value-n-apertura{
-        font-size:40px;
+        font-size:30px;
     }
     .value-compresor{
-        font-size:40px;
+        font-size:30px;
+    }
+    .value-icon{
+        font-size: 30px;
+        margin-bottom: 10px;
     }
 }
