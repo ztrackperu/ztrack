@@ -105,165 +105,154 @@ body {
 
  
 </style>
+
 <div class="loader"></div>
 <div>
     <div>
-        <div>
-            <div class="container-fluid px-3">         
-               <div class="row mt-1 sm-mt-1 " style='padding-top:10px ;'>
-                   <div class="col-sm-12 col-md-12 col-lg-8">
+        <div>       
+            <div class="container-fluid px-3">
+             
+                <div class="row mt-1 sm-mt-1 " style='padding-top:10px ;'>
+                    <div class="col-sm-12 col-md-12 col-lg-8">
+                    <div class="row">
+                            <div class="col-4 col-md-4 col-sm-4 col-lg-4 col-xl-4 sm-mb-3 mt-2">
+                            <div class="card">
+                                <div class="card-body text-center text-success">
+                                <h6>Online</h6>
+                                <h4 id="cardOnline"></h4>
+                                </div>
+                            </div>
+                            </div>
+
+                            <div class="col-4 col-md-4 col-sm-4 col-lg-4 col-xl-4 sm-mb-3 mt-2">
+                            <div class="card">
+                                <div class="card-body text-center text-warning">
+                                <h6>Wait</h6>
+                                <h4 id="cardWait"></h4>
+                                </div>
+                            </div>
+                            </div>
+
+                            <div class="col-4 col-md-4 col-sm-4 col-lg-4 col-xl-4 sm-mb-3 mt-2">
+                            <div class="card">
+                                <div class="card-body text-center text-danger">
+                                <h6>Offline</h6>
+                                <h4 id="cardOffline"></h4>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="mt-2 border rounded">
+                            <div class="col-10 m-2 align-content-center">
+                                <div class="input-group">
+                                    <input class="form-control border" type="search" placeholder="search" id="example-search-input">
+                                    <button type="button" class="btn btn-primary" id="search-button"><i class="ri-search-line"></i></button>
+                                    <button type="button" class="btn btn-primary" id="refresh-button"><i class="ri-restart-line"></i></button>
+                                </div>
+                            </div>
+                        </div>
                         <!-- bar chart -->
-                        <div class="row  mt-2">
+                        <div class="row">
+                            <div class="card border-0" style='padding-right:5px ; padding-left:5px;'>
+                                <div class="card-body">
+                                    <section id="cards" style='padding-top:15px ;' >
                             
-                                <div class="card" style='padding-right:5px ; padding-left:5px;'>
-                                    <div class="card-body">
- 
+                                        <div class="wrapper">
+                                            <!-- Slider main container -->
+                                            <div class="swiper" style='padding-top:15px ;' >
+                                                <div class="card-slider">
+                                                    
+                                                    <!-- Additional required wrapper -->
+                                                    <div  id="carruselExtra" class="swiper-wrapper">
+                                                        
+                                                        <!-- Slides -->
+                                                        <!--<div id="carruselExtra"></div>-->
 
-                    <section id="cards" style='padding-top:15px ;' >
-        <div class="wrapper">
-            <h2>
-                <strong>Equipos disponibles ztrack</strong>
-                <div class="mt-2">
-                    <div class="col-md-5 mx-auto">
-                        <div class="input-group">
-                            <input class="form-control border" type="search" placeholder="search" id="example-search-input">
-                            <button type="button" class="btn btn-primary" id="search-button"><i class="ri-search-line"></i></button>
-                            <button type="button" class="btn btn-primary" id="refresh-button"><i class="ri-restart-line"></i></button>
+                                                    </div>
+                                                    <!-- Swiper wrapper ends -->
+                                                    <div class="arrow">
+                                                        <div class="prevArrowBtn"> 
+                                                            Pass
+                                                        </div>
+                                                        <div class="nextArrowBtn">
+                                                            Next
+                                                        </div>
+                                                        <ul class="swiper-pagination"></ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </h2>
-            <!-- Slider main container -->
-            <div class="swiper" style='padding-top:15px ;' >
-                <div class="card-slider">
-                    
-                    <!-- Additional required wrapper -->
-                    <div  id="carruselExtra" class="swiper-wrapper">
-                        
-                        <!-- Slides -->
-                        <!--<div id="carruselExtra"></div>-->
-
-                    </div>
-                    <!-- Swiper wrapper ends -->
-                    <div class="arrow">
-                        <div class="prevArrowBtn"> 
-                            Pass
+                    <!-- boxes ends -->
+                    <!-- map -->
+                    <div class="col-lg-4 sm-mt-3 ">
+                        <div class="card mt-2">
+                            <div class="card-body d-flex justify-content-center align-items-center" style="height: 300px;">
+                                <canvas id="grfAlarma" style="width: 100%; height: 100%; max-width: 400px; max-height: 400px;"></canvas>                   
+                            </div>
                         </div>
-                        <div class="nextArrowBtn">
-                            Next
-                        </div>
-                        <ul class="swiper-pagination"></ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-                    
-
-                    </div>
-                  
-                </div>
-              </div>
-            </div>
-            <!-- boxes ends -->
-
-            <!-- map -->
-            <div class="col-lg-4 sm-mt-3 ">
-                <div class="row">
-                    <div class="col-4 col-md-4 col-sm-4 col-lg-4 col-xl-4 sm-mb-3 mt-2">
-                    <div class="card">
-                        <div class="card-body text-center text-success">
-                        <h6>Online</h6>
-                        <h4 id="cardOnline"></h4>
+                        <div class="card mt-2">
+                            <div class="card-body">
+                                <div id="map" style="width: 100%; height: 470px"></div> 
+                            </div>
                         </div>
                     </div>
-                    </div>
-
-                    <div class="col-4 col-md-4 col-sm-4 col-lg-4 col-xl-4 sm-mb-3 mt-2">
-                    <div class="card">
-                        <div class="card-body text-center text-warning">
-                        <h6>Wait</h6>
-                        <h4 id="cardWait"></h4>
-                        </div>
-                    </div>
-                    </div>
-
-                    <div class="col-4 col-md-4 col-sm-4 col-lg-4 col-xl-4 sm-mb-3 mt-2">
-                    <div class="card">
-                        <div class="card-body text-center text-danger">
-                        <h6>Offline</h6>
-                        <h4 id="cardOffline"></h4>
-                        </div>
-                    </div>
-                    </div>
+                    <!-- map ends -->
                 </div>
-                <div class="card mt-2">
-                    <div class="card-body d-flex justify-content-center align-items-center" style="height: 300px;">
-                        <canvas id="grfAlarma" style="width: 100%; height: 100%; max-width: 400px; max-height: 400px;"></canvas>                   
-                    </div>
                 </div>
-                <div class="card mt-2">
-                    <div class="card-body">
-                        <div id="map" style="width: 100%; height: 470px"></div> 
+                <!-- Success Alert -->
+                <div id="noti"></div>        
+                <div class="alert alert-success alert-dismissible fade show d-none">
+                        <strong>Success!</strong> Your message has been sent successfully.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                     </div>
-                </div>
-            </div>
-            <!-- map ends -->
-          </div>
-    </div>
-
-
-
-
-           <!-- Success Alert -->
-           <div id="noti"></div>        
-           <div class="alert alert-success alert-dismissible fade show d-none">
-                <strong>Success!</strong> Your message has been sent successfully.
-                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            </div>
-            <!-- Error Alert -->
-            <div class="alert alert-danger alert-dismissible fade show d-none">
-                <strong>Error!</strong> A problem has been occurred while submitting your data.
-                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            </div>
-            <!-- Warning Alert -->
-            <div class="alert alert-warning alert-dismissible fade show d-none">
-                <strong>Warning!</strong> There was a problem with your network connection.
-                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    <!-- Error Alert -->
+                    <div class="alert alert-danger alert-dismissible fade show d-none">
+                        <strong>Error!</strong> A problem has been occurred while submitting your data.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                    <!-- Warning Alert -->
+                    <div class="alert alert-warning alert-dismissible fade show d-none">
+                        <strong>Warning!</strong> There was a problem with your network connection.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
             </div>
         </div>
     </div>
-</div>
-<!-- MODAL -->
+    <!-- MODAL -->
     <div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="myModalLabel">Ingresar Correo y Contraseña</h5>
-                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form id="frmRegistrar">
-                            <div class="form-group">
-                                <label for="correo">Correo</label>
-                                <input type="hidden" id="id" name="id">
-                                <input type="hidden" id="correo_admin" value="zgroupsistemas@gmail.com">
-                                <input type="email" class="form-control" id="email" name="email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="password">Contraseña</label>
-                                <input type="password" class="form-control" id="pass_email" name="pass_email" required>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                        <button type="button" type="submit" onclick="registrarRespuesta(event)" id="btnAccion" class="btn btn-primary">Guardar cambios</button>
-                    </div>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myModalLabel">Ingresar Correo y Contraseña</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="frmRegistrar">
+                        <div class="form-group">
+                            <label for="correo">Correo</label>
+                            <input type="hidden" id="id" name="id">
+                            <input type="hidden" id="correo_admin" value="zgroupsistemas@gmail.com">
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Contraseña</label>
+                            <input type="password" class="form-control" id="pass_email" name="pass_email" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" type="submit" onclick="registrarRespuesta(event)" id="btnAccion" class="btn btn-primary">Guardar cambios</button>
                 </div>
             </div>
+        </div>
     </div>
 <script src="<?php echo base_url; ?>Assets/js/swiper-bundle.min.js"></script>
 <script>
@@ -360,15 +349,8 @@ const swiper = new Swiper(".card-slider", {
                 <h5 class='modal-title' id='title'>Access Control</h5>
                 <button class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
             </div>
-            <div class='modal-body'>
-                <div class='mt-2'>
-                <h6 class='fw-bold'>Are you sure to activate control mode?</h6>
-                </div>
-                <div class='mt-2'>
-                    <label for='access'>Enter your password</label>
-                    <input type='password' class='form-control' id='access' name='access' required>
-                    <button type='button' class='btn btn-primary mt-2' onClick='btnAccess()'>SAVE</button>
-                </div>
+            <div class='modal-body' id="formularioDeAcceso">
+               
             </div>
         </div>
     </div>

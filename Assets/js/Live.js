@@ -261,24 +261,144 @@ document.addEventListener("DOMContentLoaded", async function(){
 function saludos(){
     console.log("oli pablito");
 }
-async function accessModal(id){
-    $("#accessModal").modal("show");
+let estado = 0;
+
+function bloqueoInput(id){
+    $('#btnToSave1_'+id).attr('hidden', true);
+    $('#btnToSave2_'+id).attr('hidden', true);
+    // Cambiar el icono del candado
+    let candadoIcon = $('#candado_'+id);
+    candadoIcon.removeClass('ri-lock-unlock-fill'); 
+    candadoIcon.addClass('ri-lock-2-fill');
+    // Cambiar el color del icono del candado
+    let btnIconAccess = $('#btnIconAccess_'+id);
+    btnIconAccess.removeClass('btn-outline-secondary');
+    btnIconAccess.addClass('btn-outline-success');
+
+    $('#sp_etileno_'+id).attr('readonly', true);
+    $('#sp_co2_'+id).attr('readonly', true);
+    $('#sp_humd_'+id).attr('readonly', true);
+    //falta injection hours
+    $('#sp_temp_'+id).attr('readonly', true);
+    
     
 }
 
-function btnAccess(){
-    $('#controlMode').html("<svg version='1.0' xmlns='http://www.w3.org/2000/svg' width='50px' height='50px' viewBox='0 0 226.000000 114.000000' preserveAspectRatio='xMidYMid meet'><g transform='translate(0.000000,118.000000) scale(0.100000,-0.100000)' fill='#000000' stroke='none'><path fill='gray' d='M1091 1125 c-66 -19 -111 -46 -146 -86 -31 -37 -31 -53 -3 -73 33 -23 64 -20 111 12 100 68 199 68 282 0 66 -55 78 -105 55 -240 l-13 -78 -323 0 c-311 0 -325 -1 -344 -20 -19 -19 -20 -33 -20 -314 0 -254 2 -297 16 -310 13 -14 66 -16 424 -16 l409 0 15 22 c14 19 16 66 16 310 0 268 -1 289 -19 307 -10 10 -24 20 -31 23 -10 3 -10 17 -1 69 18 107 14 168 -15 227 -32 65 -106 132 -171 155 -70 25 -176 30 -242 12z m96 -807 c27 -25 28 -42 9 -89 -8 -20 -13 -59 -11 -96 l3 -63 -59 0 -59 0 0 84 c0 47 -4 88 -10 91 -17 11 -11 48 12 72 28 30 83 31 115 1z'/></g></svg>");
-    $('#btnToSave1').attr('hidden', false);
-    $('#btnToSave2').attr('hidden', false);
-    $('.input').attr('readonly', false);
-    $('#accessModal').modal('hide');  
+function accessModal(id){
+    let candadoIcon = $('#candado_'+id);
+    let textCandado = candadoIcon[0];
+    
+    // Obtener la lista de clases como una cadena
+    let comparar = textCandado.className;
+    
+    //comparar = 'ri-lock-unlock-fill';
+    
+    if(estado == 0){
+        // Verificar si la clase está incluida en la lista
+        if(comparar.includes('ri-lock-2-fill')){
+            let title = document.getElementById('title');
+            title.textContent = id;
+            const url = base_url + "Live/obtenerFormulario/" + id;
+            const http = new XMLHttpRequest();
+            http.open("GET",url,true);
+            http.send();
+            http.onreadystatechange = function(){
+                if(http.readyState == 4 && http.status == 200){
+                    const response = JSON.parse(http.responseText);
+                    console.log(response);
+                    console.log(url);
+                    let formulario = document.getElementById('formularioDeAcceso');
+                    formulario.innerHTML = response.text;
+                }
+            }
+            $('#accessModal').modal('show');
+        }else{
+            bloqueoInput(id);
+        }
+        
+    }else{
+        if(comparar.includes('ri-lock-unlock-fill')){
+            estado = 0;
+            bloqueoInput(id);
+        }else{
+            alert('Ya hay un modal abierto');
+        }
+    }
+
 }
 
-function guardarDatos(){
-    $('#btnToSave1').attr('hidden', true);
-    $('#btnToSave2').attr('hidden', true);
-    $('.input').attr('readonly', true);
-    $('#controlMode').html("<svg version='1.0' xmlns='http://www.w3.org/2000/svg' width='30px' height='30px' class='mt-2' viewBox='0 0 118.000000 118.000000' preserveAspectRatio='xMidYMid meet'><g transform='translate(0.000000,118.000000) scale(0.100000,-0.100000)' fill='#000000' stroke='none'><path fill='green' d='M499 1165 c-63 -20 -136 -72 -171 -121 -40 -56 -58 -132 -58 -251 l0 -103 -38 0 c-27 0 -45 -7 -58 -21 -18 -20 -19 -40 -19 -326 l0 -305 24 -19 c22 -18 44 -19 411 -19 367 0 389 1 411 19 l24 19 0 305 c0 286 -1 306 -19 326 -13 14 -31 21 -58 21 l-38 0 0 104 c0 185 -50 285 -175 347 -77 38 -165 47 -236 24z m178 -122 c46 -21 101 -85 110 -130 4 -21 8 -78 8 -128 l0 -90 -205 0 -205 0 1 100 c0 121 12 159 63 209 63 62 147 76 228 39z m-52 -563 c15 -6 32 -24 41 -46 14 -33 14 -39 -5 -74 -17 -34 -19 -47 -11 -97 6 -32 10 -59 10 -60 0 -2 -31 -3 -70 -3 -38 0 -70 1 -70 3 0 1 4 28 10 60 8 50 6 63 -11 97 -19 35 -19 41 -5 74 20 49 60 65 111 46z'/></g></svg>");
+function btnAccess(id){
+    validacion =false
+    //aqui hcaer la validacion 
+    //cpturamos el text del input 
+    let val = $('#access_'+id).val();
+    console.log(val);
+    const url = base_url + "Live/Validar/" + val;
+    const http = new XMLHttpRequest();
+    http.open("GET",url,true);
+    http.send();
+    http.onreadystatechange = function(){
+        if(http.readyState == 4 && http.status == 200){
+            const response = JSON.parse(http.responseText);
+            console.log(response);
+            if(response == 'ok'){
+                validacion = true;
+                if(validacion){
+
+                    $('#sp_etileno_'+id).attr('readonly', false);
+                    $('#sp_co2_'+id).attr('readonly', false);
+                    $('#sp_humd_'+id).attr('readonly', false);
+                    //falta injection hours
+                    $('#sp_temp_'+id).attr('readonly', false);
+                
+                    $('#btnToSave1_'+id).attr('hidden', false);
+                    $('#btnToSave2_'+id).attr('hidden', false);
+                
+                    // Cambiar el icono del candado
+                    let candadoIcon = $('#candado_'+id);
+                    candadoIcon.removeClass('ri-lock-2-fill');
+                    candadoIcon.addClass('ri-lock-unlock-fill');
+                
+                    // Cambiar el color del icono del candado
+                    let btnIconAccess = $('#btnIconAccess_'+id);
+                    btnIconAccess.removeClass('btn-outline-success');
+                    btnIconAccess.addClass('btn-outline-secondary');
+                
+                
+                    //ENVIAR CONTRASEÑA PARA QUE EL BACK EVALUE SI PROCEDE O NO A PODER EDITAR LA TARJETA
+                
+                    // Cerrar el modal
+                    $('#accessModal').modal('hide');   
+                    estado= 1;
+                    }
+            }
+
+        }
+    }
+
+ 
+    
+}
+
+function guardarDatos(id){
+    $('#sp_etileno_'+id).attr('readonly', true);
+    $('#sp_co2_'+id).attr('readonly', true);
+    $('#sp_humd_'+id).attr('readonly', true);
+    //falta injection hours
+    $('#sp_temp_'+id).attr('readonly', true);
+    $('#btnToSave1_'+id).attr('hidden', true);
+    $('#btnToSave2_'+id).attr('hidden', true);
+    // Cambiar el icono del candado
+    let candadoIcon = $('#candado_'+id);
+    candadoIcon.removeClass('ri-lock-unlock-fill');
+    candadoIcon.addClass('ri-lock-2-fill');
+
+    // Cambiar el color del icono del candado
+    let btnIconAccess = $('#btnIconAccess_'+id);
+    btnIconAccess.removeClass('btn-outline-secondary');
+    btnIconAccess.addClass('btn-outline-success');
+    estado = 0;
+   
 }
 
 //graficaM
@@ -327,6 +447,9 @@ let previousValues = {};
 let co2Values = {};
 let humidityValues = {};
 let supplyValues = {};
+let injectionValues = {};
+let compressorValues = {};
+let apertureValues = {};
 function tarjeta(res){
     let iconSuccess = "<i class='bi bi-arrow-up-short me-2 align-items-center mb-1 text-success value-icon'></i>";
     let iconDown = "<i class='bi bi-arrow-down-short me-2 align-items-center mb-1 text-danger value-icon'></i>";
@@ -393,6 +516,42 @@ function tarjeta(res){
 
     $('#tmp_icon_'+res.telemetria_id).html(evaluacionTmp);
 
+    if(injectionValues[res.telemetria_id] === undefined){
+        injectionValues[res.telemetria_id] = res.ripener_prueba;
+    }
+
+    let evaluacionInj;
+    if(res.ripener_prueba > injectionValues[res.telemetria]){
+        evaluacionInj = iconSuccess;
+    }else if(res.ripener_prueba < injectionValues[res.telemetria_id]){
+        evaluacionInj = iconDown;
+    }   
+    $('#inj_icon_'+res.telemetria_id).html(evaluacionInj);
+
+    if(compressorValues[res.telemetria_id] === undefined){
+        compressorValues[res.telemetria_id] = res.compress_coil_1;
+    }
+
+    let evaluacionComp;
+    if(res.compress_coil_1 > compressorValues[res.telemetria_id]){
+        evaluacionComp = iconSuccess;
+    }else if(res.compress_coil_1 < compressorValues[res.telemetria_id]){
+        evaluacionComp = iconDown;
+    }
+    $('#comp_icon_'+res.telemetria_id).html(evaluacionComp);
+
+
+    if(apertureValues[res.telemetria_id] === undefined){
+        apertureValues[res.telemetria_id] = res.avl;
+    }
+
+    let apertureComp;
+    if(res.avl > apertureValues[res.telemetria_id]){
+        apertureComp = iconSuccess;
+    }else if(res.avl < apertureValues[res.telemetria_id]){
+        apertureComp = iconDown;
+    }
+    $('#aperture_icon_'+res.telemetria_id).html(apertureComp);
     //supplyValues[res.telemetria_id] = res.temp_supply_1;
     //$('#eti_icon_'+res.telemetria_id).html(iconSuccess);
     $('#fechita_'+res.telemetria_id).text(res.ultima_fecha);
@@ -410,7 +569,7 @@ function tarjeta(res){
     $('#sp_etileno_'+res.telemetria_id).val(res.sp_ethyleno);
     $('#co2_'+res.telemetria_id).text(res.co2_reading);
     $('#sp_co2_'+res.telemetria_id).val(res.set_point_co2);
-    $('#h_inyeccion_'+res.telemetria_id).text(res.relative_humidity);
+    $('#h_inyeccion_'+res.telemetria_id).text(res.ripener_prueba);
     $('#n_apertura_'+res.telemetria_id).text(res.avl);
     $('#compresor_'+res.telemetria_id).text(res.compress_coil_1);
     $('#defrost_prueba_'+res.telemetria_id).text(res.defrost_prueba);

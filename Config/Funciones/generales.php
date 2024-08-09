@@ -375,6 +375,21 @@
         );
         return $result;
     }
+    function formularioPlantilla($val,$id){
+        $text = " <div class='mt-2' id='form_{$id}'>
+        <h6 class='fw-bold'>Are you sure to activate control mode {$val->nombre_contenedor}?</h6>
+        </div>
+        <div class='mt-2'>
+            <label for='access_{$val->telemetria_id}'>Enter your password</label>
+            <input type='password' class='form-control' id='access_{$val->telemetria_id}' name='access' required>
+            <button type='button' class='btn btn-primary mt-2' onClick='btnAccess({$val->telemetria_id})'>SAVE</button>
+        </div>";
+        $result = array(
+            'text'=>$text,
+        );
+        return $result;
+        
+    }
 
     function ContenedorMadurador($val, $url){   
         //validacion de informacion
@@ -390,6 +405,14 @@
         $n_apertura = $datosDepurados['avl'];
         $compresor = $datosDepurados['compress_coil_1'];
         $i = $datosDepurados['defrost_prueba'];
+
+        if($compresor<90){
+            $compresor_color = "text-success";
+        }else if($compresor>=90 && $compresor<=99){
+            $compresor_color = "text-warning";
+        }else if ($compresor>100){
+            $compresor_color = "text-danger";
+        }
         
         $temp1 =tempNormal($val->temp_supply_1) ; 
         $return =tempNormal($val->return_air) ; 
@@ -449,32 +472,26 @@
 
         $text ="
         <div class='swiper-slide' data-title='card_{$val->nombre_contenedor}'>
-            <div class='card'  >
+            <div class='card '>
                 <div class='card-body'>
                     <div class='container '>
                         <div class='row py-4' style='padding-right:5px ; padding-left:5px;'>
                             <!--POWER ON/OFF -->
-                            <div class='col-2' style='padding-right:5px ; padding-left:5px;' data-toggle='tooltip' data-placement='top' title='Turn ON/OFF'>         
-                                <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='4' stroke='currentColor' width='30px' height='30px' class='mt-2 {$power_state}'>
+                            <div class='col-2 text-center' style='padding-right:5px ; padding-left:5px;' data-toggle='tooltip' data-placement='top' title='Turn ON/OFF'>         
+                                <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='4' stroke='currentColor' width='27px' height='27px' class='mt-2    {$power_state}'>
                                     <path stroke-linecap='round' stroke-linejoin='round' d='M5.636 5.636a9 9 0 1 0 12.728 0M12 3v9' />
                                 </svg>
                             </div>
                             <div class='col-8 '><h4 id='nombre_contenedor_{$val->telemetria_id}' class='text-center mt-3 fw-bold'> {$val->nombre_contenedor}</h4></div>
-                            <div class='col-2 text-right' id='controlMode' onclick='accessModal({$valR})' style='padding-right:5px ; padding-left:5px' data-toggle='tooltip' data-placement='top' title='Access Control'>
-                                <svg version='1.0' xmlns='http://www.w3.org/2000/svg' width='30px' height='30px' class='mt-2' viewBox='0 0 118.000000 118.000000' preserveAspectRatio='xMidYMid meet'>
-                                    <g transform='translate(0.000000,118.000000) scale(0.100000,-0.100000)' fill='#000000' stroke='none'>
-                                    <path fill='green' d='M499 1165 c-63 -20 -136 -72 -171 -121 -40 -56 -58 -132 -58 -251 l0 -103 -38 0 c-27 0 -45 -7 -58 -21 -18 -20 -19 -40 -19 -326 l0 -305 24 -19
-                                            c22 -18 44 -19 411 -19 367 0 389 1 411 19 l24 19 0 305 c0 286 -1 306 -19 326 -13 14 -31 21 -58 21 l-38 0 0 104 c0 185 -50 285 -175 347 -77 38 -165
-                                            47 -236 24z m178 -122 c46 -21 101 -85 110 -130 4 -21 8 -78 8 -128 l0 -90 -205 0 -205 0 1 100 c0 121 12 159 63 209 63 62 147 76 228 39z m-52 -563 c15
-                                            -6 32 -24 41 -46 14 -33 14 -39 -5 -74 -17 -34 -19 -47 -11 -97 6 -32 10 -59 10 -60 0 -2 -31 -3 -70 -3 -38 0 -70 1 -70 3 0 1 4 28 10 60 8 50 6 63 -11 97
-                                        -19 35 -19 41 -5 74 20 49 60 65 111 46z'/>
-                                    </g>
-                                </svg>
+                            <div class='col-2 text-center' style='padding-right:5px ; padding-left:5px;'>
+                                <button type='button' id='btnIconAccess_{$val->telemetria_id}' onclick='accessModal({$val->telemetria_id})' class='px-0  btn btn-block btn-outline-success border-0' data-toggle='tooltip' data-placement='top' title='Access Control'>
+                                    <i class='ri-lock-2-fill fs-2' id='candado_{$val->telemetria_id}'></i>
+                                </button>
                             </div>
                             <div class='col-12 '><h5 class='text-center mt-2'>{$val->descripcionC}</h5> </div>
-                            <div class='col-12 mt-1 p-1'>
+                            <div class='col-12'>
                                 <div class='row'>
-                                    <i class='ri-time-line col-3 text-end align-content-center fs-2 text-primary'></i>
+                                    <i class='ri-time-line col-3 text-end align-content-center fs-1 text-primary'></i>
                                     <h6 id='fechita_{$val->telemetria_id}' class='col-9 align-content-center px-0 m-0'> {$fechita}</h6>
                                 </div>
                             </div>
@@ -484,8 +501,8 @@
                             <div class='col-3 p-2 text-center'><button type='button' class='mt-1 btn btn-block btn-outline-success' data-toggle='tooltip' data-placement='top' title='Correo'><i class='ri-mail-line fs-5'></i></button> </div>
                             <div class='col-3 p-2 text-center'><button type='button' class='mt-1 btn btn-block btn-outline-info' data-toggle='tooltip' data-placement='top' title='Reporte'><i class='ri-file-chart-line fs-5'></i></button></div>
 
-                            <div class='col-12' id='btnToSave1' hidden>
-                                <button type='button' id='btnSaveData1' class='btn btn-primary col-12' onclick='guardarDatos()'>SAVE</button>
+                            <div class='col-12' id='btnToSave1_{$val->telemetria_id}' hidden>
+                                <button type='button' id='btnSaveData1' class='btn btn-primary col-12' onclick='guardarDatos({$val->telemetria_id})'>SAVE</button>
                             </div>
                             <!-- TABLA -->
                             <div class='table-responsive mt-3 px-0 mx-0'>
@@ -524,8 +541,7 @@
                                             </td>
                                             <td class='col-4 align-content-center'>
                                                 <div class='d-flex flex-column align-items-center'>
-                                                    <p class='me-2 text-center mb-1 text-control'>Set Point</p>
-                                                    <p class='me-2 text-center fw-bold mb-1 text-control'>Ethy</p>
+                                                    <p class='me-2 text-center mb-1 text-control'>SP <span class='fw-bold'>Ethy</span></p>
                                                 </div>
                                                 <div class='row justify-content-center g-2'>
                                                     <input type='text' class='input col-8 w-50 form-control text-center align-content-center px-0 mx-0' id='sp_etileno_{$val->telemetria_id}' placeholder={$sp_ethyleno} readonly>
@@ -716,13 +732,12 @@
                                                         <p class='value-icon' id='co2_icon_{$val->telemetria_id}'><i class='bi bi-arrows me-2 align-items-center mb-1 text-primary value-icon'></i></p>
                                                         <p class='value-parameter {$co2_color} align-items-center mb-1' id='co2_{$val->telemetria_id}'>{$co2}</p>
                                                     </div>
-                                                    <small>ppm</small>
+                                                    <small>%</small>
                                                 </div>
                                             </td>
                                             <td class='col-4 align-content-center'>
                                                 <div class='d-flex flex-column align-items-center'>
-                                                    <p class='me-2 align-items-center mb-1 text-control'>Set Point</p>
-                                                    <p class='me-2 align-items-center fw-bold mb-1 text-control'>CO2</p>            
+                                                    <p class='me-2 align-items-center mb-1 text-control'>SP <span class='fw-bold'>CO2</span></p>            
                                                 </div>
                                                 <div class='row justify-content-center g-2'>
                                                     <input type='text' id='sp_co2_{$val->telemetria_id}' class='input col-8 w-50 form-control text-center px-0 mx-0' placeholder={$sp_co2} readonly>
@@ -888,8 +903,7 @@
                                             </td>
                                             <td class='col-4 align-content-center'>
                                                 <div class='d-flex flex-column align-items-center'>
-                                                    <p class='me-2 align-items-center mb-1 text-control'>Set Point</p>
-                                                    <p class='me-2 align-items-center fw-bold mb-1 text-control'>Humidity</p>            
+                                                    <p class='me-2 align-items-center mb-1 text-control'>SP <span class='fw-bold'>Hum</span></p>       
                                                 </div>
                                                 <div class='row justify-content-center g-2'>
                                                     <input type='text' id='sp_humd_{$val->telemetria_id}' class='input col-10 w-50 form-control text-center px-0 mx-0' placeholder={$sp_humedad} readonly>
@@ -962,13 +976,22 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td class='value-parameter col-4 text-center align-content-center' id='h_inyeccion_{$val->telemetria_id}'>{$h_inyeccion}</td>
                                             <td class='col-4 align-content-center'>
                                                 <div class='d-flex flex-column align-items-center'>
-                                                    <p class='me-2 align-items-center mb-1 text-control'>I. Hours:</p>
+                                                    <div class='d-flex align-items-center'>
+                                                        <p class='value-icon' id='inj_icon_{$val->telemetria_id}'><i class='bi bi-arrows me-2 align-items-center mb-1 text-primary value-icon'></i></p>
+                                                        <p class='value-parameter align-items-center mb-1' id='h_inyeccion_{$val->telemetria_id}'>{$h_inyeccion}</p>
+                                                    </div>
+                                                    <small>Hours</small>
+                                                </div>
+                                            </td>
+                                            <td class='col-4 align-content-center'>
+                                                <div class='d-flex flex-column align-items-center'>
+                                                    <p class='me-2 align-items-center mb-1 text-control'>I. <span class='fw-bold'>Hours:</span></p>
                                                 </div>
                                                 <div class='row justify-content-center g-2'>
-                                                     <input type='text' class='input col-8 w-50 form-control text-center px-0 mx-0' placeholder='' readonly>
+                                                     <input type='text' class='input col-8 w-50 form-control text-center px-0 mx-0' placeholder={$h_inyeccion} readonly>
+                                                     <small class='col-4 align-content-center text-control'>H</small>
                                                 </div>
                                             </td>
                                         </tr>
@@ -994,8 +1017,7 @@
                                             </td>
                                             <td class='col-4 align-content-center'>
                                                 <div class='d-flex flex-column align-items-center'>
-                                                    <p class='me-2 align-items-center mb-1 text-control'>Set Point</p>
-                                                    <p class='me-2 align-items-center fw-bold mb-1 text-control'>Tmp</p>            
+                                                    <p class='me-2 align-items-center mb-1 text-control'>SP <span class='fw-bold'>Tmp</span></p>
                                                 </div>
                                                 <div class='row justify-content-center g-2'>
                                                     <input type='text' id='sp_temp_{$val->telemetria_id}' class='input col-8 w-50 form-control text-center px-0 mx-0' placeholder={$val->set_point} readonly>
@@ -1070,7 +1092,15 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td class='value-parameter col-4 text-center align-content-center' id='n_apertura_{$val->telemetria_id}'>{$n_apertura}</td>
+                                            <td class='col-4 align-content-center'>
+                                                <div class='d-flex flex-column align-items-center'>
+                                                    <div class='d-flex align-items-center'>
+                                                        <p class='value-icon' id='aperture_icon_{$val->telemetria_id}'><i class='bi bi-arrows me-2 align-items-center mb-1 text-primary value-icon'></i></p>
+                                                        <p class='value-parameter align-items-center mb-1' id='n_apertura_{$val->telemetria_id}'>{$n_apertura}</p>
+                                                    </div>
+                                                    <small>%</small>
+                                                </div>
+                                            </td>
                                             <td class='col-4 text-center align-content-center' id='defrost_prueba_{$val->telemetria_id}'>I: {$i}</td>
                                         </tr>
                                         <tr>
@@ -1110,7 +1140,15 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td class='value-parameter col-4 text-center align-content-center' id='compresor_{$val->telemetria_id}'>{$compresor}</td>
+                                            <td class='col-4 align-content-center'>
+                                                <div class='d-flex flex-column align-items-center'>
+                                                    <div class='d-flex align-items-center'>
+                                                        <p class='value-icon' id='comp_icon_{$val->telemetria_id}'><i class='bi bi-arrows me-2 align-items-center mb-1 text-primary value-icon'></i></p>
+                                                        <p class='value-parameter align-items-center mb-1 {$compresor_color}' id='compresor_{$val->telemetria_id}'>{$compresor}</p>
+                                                    </div>
+                                                    <small>°C</small>
+                                                </div>
+                                            </td>
                                             <td class='col-4 text-center'>
                                                 <div class='row justify-content-center'>
                                                     <div class='col-auto'>
@@ -1126,8 +1164,8 @@
                                 </table>
                             </div>
                             <!-- FIN TABLA-->
-                            <div class='col-12' id='btnToSave2' hidden>
-                                <button type='button' id='btnSaveData2' class='btn btn-primary col-12' onclick='guardarDatos()'>SAVE</button>
+                            <div class='col-12' id='btnToSave2_{$val->telemetria_id}' hidden>
+                                <button type='button' id='btnSaveData2' class='btn btn-primary col-12' onclick='guardarDatos({$val->telemetria_id})'>SAVE</button>
                             </div>
                             
                         </div>

@@ -63,6 +63,22 @@ class Live extends Controller
         echo json_encode($dif , JSON_UNESCAPED_UNICODE);
 
     }
+
+    public function Validar($val){
+        $respuesta = 'mal';
+        if($val != ''){
+            $usuario = $_SESSION['usuario_ztrack'];
+            $data = $this->model->getHash($usuario); 
+            $resultadoPass = json_decode($data);
+            $resultadoPass = $resultadoPass->data->password;
+            if (password_verify($val,$resultadoPass)) {
+            $respuesta = 'ok';
+
+            }
+        }
+        echo json_encode($respuesta , JSON_UNESCAPED_UNICODE);
+
+    }
     public function GraficaInicial($param){
     
         if($param!=""){
@@ -211,6 +227,25 @@ class Live extends Controller
         die();
 
     }   
+    public function obtenerFormulario($id){
+        $data = $this->model->ListaDispositivoEmpresa($_SESSION['empresa_id']);
+        $data = json_decode($data);
+        $data = $data->data;
+        $text = "";
+        foreach($data as $val){
+            if($val->telemetria_id == $id){
+                $enlace = formularioPlantilla($val,$id);
+                $text.=$enlace['text'];
+                break;
+            }
+        }
+        $data1 =array(
+            'text'=>$text
+        );
+        echo json_encode($data1, JSON_UNESCAPED_UNICODE);
+        die();
+
+    }
 
     public function ListaD() {
         $data = $this->model->ListaDispositivoEmpresa($_SESSION['empresa_id']);
