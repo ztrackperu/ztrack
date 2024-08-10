@@ -284,6 +284,30 @@ function bloqueoInput(id){
     
 }
 
+function mostrarContenido(id){
+    let flechaMostrar = $('#icon_mostrar_contenido_'+id);
+    let textFlecha = flechaMostrar[0];
+
+    let comparar = textFlecha.className;
+
+    if(comparar.includes('ri-arrow-down-circle-line')){
+        $('#row_injection_'+id).attr('hidden', false);
+        $('#row_aperture_'+id).attr('hidden', false);
+        $('#row_compressor_'+id).attr('hidden', false);
+
+        flechaMostrar.removeClass('ri-arrow-down-circle-line');
+        flechaMostrar.addClass('ri-arrow-up-circle-line');
+
+    }else{
+        flechaMostrar.removeClass('ri-arrow-up-circle-line');
+        flechaMostrar.addClass('ri-arrow-down-circle-line');
+        $('#row_injection_'+id).attr('hidden', true);
+        $('#row_aperture_'+id).attr('hidden', true);
+        $('#row_compressor_'+id).attr('hidden', true);
+    }
+}
+
+
 function accessModal(id){
     let candadoIcon = $('#candado_'+id);
     let textCandado = candadoIcon[0];
@@ -321,7 +345,11 @@ function accessModal(id){
             estado = 0;
             bloqueoInput(id);
         }else{
-            alert('Ya hay un modal abierto');
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Parece que existe otro proceso ejecutándose!',
+            });
         }
     }
 

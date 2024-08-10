@@ -31,6 +31,10 @@
         margin-bottom: 8px;
     }
 
+    .value-icon-co2{
+        font-size:20px;
+    }
+
     .value-si{
         font-size:10px;
     }
@@ -40,6 +44,11 @@
         height:40px;
     }
 
+    .icon-params-co2{
+        width:75px;
+        height:50px;
+        
+    }
     .text-params{
         font-size:10px;
     }
@@ -51,42 +60,63 @@
     .text-control-si{
         display: none;
     }
+
+    .value-small{
+        font-size:10px;
+    }
     
     
 }
 @media (min-width: 375px) and (max-width: 768px) {
     .value-parameter{
-        font-size: 15px;
+        font-size: 25px;
     }
     .value-icon{
-        font-size: 15px;
-        margin-bottom: 10px;
+        font-size: 19px;
+        margin-bottom: 8px;
     }
+    
+    .value-small{
+        font-size:12px;
+    }
+    
 }
 @media (min-width: 767px) and (max-width: 1024px) {
     .value-parameter{
-        font-size: 20px;
+        font-size: 30px;
     }
     .value-icon{
-        font-size: 20px;
-        margin-bottom: 10px;
+        font-size: 24px;
+        margin-bottom: 8px;
+    }
+    
+    .value-small{
+        font-size:12px;
     }
 }
 @media (min-width: 1025px) and (max-width: 1440px) {
     .value-parameter{
-        font-size: 30px;
+        font-size: 35px;
     }
     .value-icon{
-        font-size: 30px;
-        margin-bottom: 10px;
+        font-size: 29px;
+        margin-bottom: 8px;
+    }
+    
+    .value-small{
+        font-size:12px;
     }
 }
 @media (min-width: 1441px) {
     .value-parameter{
-        font-size: 30px;
+        font-size: 40px;
     }
     .value-icon{
-        font-size: 30px;
-        margin-bottom: 10px;
+        font-size: 34px;
+        margin-bottom: 8px;
+    }
+    
+    .value-small{
+        font-size:12px;
     }
 }

@@ -142,7 +142,7 @@ body {
                             </div>
                             </div>
                         </div>
-                        <div class="mt-2 border rounded">
+                        <div class="mt-4 border rounded">
                             <div class="col-10 m-2 align-content-center">
                                 <div class="input-group">
                                     <input class="form-control border" type="search" placeholder="search" id="example-search-input">
