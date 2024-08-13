@@ -9,11 +9,15 @@
     <link rel="stylesheet" href="<?php echo base_url; ?>Assets/css/navbar-1.css">
     <link rel="stylesheet" href="<?php echo base_url; ?>Assets/css/stylenav.css" />
     <!--<link rel="stylesheet" href="<?php echo base_url; ?>Assets/css/main.css" />-->
-    <link rel="stylesheet" href="<?php echo base_url; ?>Assets/css/dataTables.dataTables.min.css">
     <link rel="stylesheet" href="<?php echo base_url; ?>Assets/css/select2.min.css"  />
     <link rel="stylesheet" href="<?php echo base_url; ?>Assets/css/fonts/remixicon.css" />
     <!-- BOOTSTRAP ICONS-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+    <!-- DataTables CSS CDN -->
+    <link href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.11.6/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css">
+    
     <title>ZTRACK | LIVE TELEMATIC</title>
 </head>
 <body>

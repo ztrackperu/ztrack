@@ -499,9 +499,13 @@
                             </div>
                           
                             <div class='col-3 p-2 text-center'><button type='button' onclick='graficaM({$valR})' class='mt-1 btn btn-block btn-outline-primary' data-toggle='tooltip' data-placement='top' title='Gráfico'><i class='ri-line-chart-line fs-5'></i></button></div>
-                            <div class='col-3 p-2 text-center'><button type='button' class='mt-1 btn btn-block btn-outline-secondary' data-toggle='tooltip' data-placement='top' title='Datos'><i class='ri-layout-horizontal-line fs-5'></i></button></div>
+                            <div class='col-3 p-2 text-center'><button type='button' onclick='tablaDeDatos($valR)' class='mt-1 btn btn-block btn-outline-secondary' data-toggle='tooltip' data-placement='top' title='Datos'><i class='ri-layout-horizontal-line fs-5'></i></button></div>
                             <div class='col-3 p-2 text-center'><button type='button' class='mt-1 btn btn-block btn-outline-success' data-toggle='tooltip' data-placement='top' title='Correo'><i class='ri-mail-line fs-5'></i></button> </div>
-                            <div class='col-3 p-2 text-center'><button type='button' class='mt-1 btn btn-block btn-outline-info' data-toggle='tooltip' data-placement='top' title='Reporte'><i class='ri-file-chart-line fs-5'></i></button></div>
+                            <div class='col-3 p-2 text-center'>
+                                <button type='button' class='mt-1 btn btn-block btn-outline-info' data-toggle='tooltip' data-placement='top' title='Reporte' onclick='generarPDF({$valR})'>
+                                    <i class='ri-file-chart-line fs-5'></i>
+                                </button>
+                            </div>
 
                             <div class='col-12' id='btnToSave1_{$val->telemetria_id}' hidden>
                                 <button type='button' id='btnSaveData1' class='btn btn-primary col-12' onclick='guardarDatos({$val->telemetria_id})'>SAVE</button>
@@ -579,7 +583,7 @@
                                                 </div>
                                                 <div class='row justify-content-center g-2'>
                                                     <input type='text' id='sp_co2_{$val->telemetria_id}' class='input col-8 w-50 form-control text-center px-0 mx-0' placeholder={$sp_co2} readonly>
-                                                    <small class='col-4 align-content-center text-control-si'>ppm</small>
+                                                    <small class='col-4 align-content-center text-control-si'>%</small>
                                                 </div>
                                             </td>
                                         </tr>

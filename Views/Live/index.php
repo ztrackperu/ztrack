@@ -356,6 +356,40 @@ const swiper = new Swiper(".card-slider", {
     </div>
 </div>
 
+<!--MODAL PARA TABLA DE DATOS -->
+<div class='modal fade' id='dataModal' tabindex='-1' aria-labelledby='my-modal-title' aria-hidden='true'>
+    <div class='modal-dialog modal-xl'>
+        <div class='modal-content'>
+            <div class='modal-header'>
+                <h5 class='modal-title' id='titleTabla'></h5>
+                <button class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+            </div>
+            <div class='modal-body'>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover" style="width:100%" id="tblDatos">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Created At</th>
+                                <th>Set Point</th>
+                                <th>Return Air</th>
+                                <th>Temp Supply</th>
+                                <th>Relative Humidity</th>
+                                <th>Cargo 1</th>
+                                <th>Ambient Air</th>
+                                <th>Evaporation Coil</th>
+                                <th>Power State</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Aquí irán tus filas de datos -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!--MODAL PARA TARJETAS-->
 <!-- ETHYLENE MODAL -->
 <div class="modal fade" id="ethyModal" tabindex="-1" aria-labelledby="my-modal-title" aria-hidden="true">
