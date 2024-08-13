@@ -129,6 +129,86 @@ class Live extends Controller
 
     }
 
+    public function DataReporte($param){
+    
+        if($param!=""){
+            $pros = explode(",",$param);
+            $telemetria = $pros[0];
+            $fechaI =(isset($pros[1])) ? $pros[1] :"0" ;
+            $fechaF =(isset($pros[2])) ? $pros[2] :"0" ;
+            // consultar para nombre_contenedor y ultima fecha 
+            $consultaUltima = $this->model->ContenedorData($telemetria);
+            $resultadoL = json_decode($consultaUltima);
+            $resultadoL = $resultadoL->data;
+            $ultimaFecha = $resultadoL[0]->ultima_fecha;
+            if($fechaI=="0" && $fechaF=="0"){
+                $cadena = array(
+                    'device'=>$telemetria,
+                    'ultima'=>gmtFecha($ultimaFecha),
+                    'utc'=>$_SESSION['utc']
+                );
+            }else{
+                if(fechaGrafica($fechaI,$fechaF)=="ok"){
+                    $cadena = array(
+                        'device'=>$telemetria,
+                        'ultima'=>gmtFecha($ultimaFecha),
+                        //'fechaI'=>$fechaI.":00",
+                        //'fechaF'=>$fechaF.":00"
+                        'fechaI'=> validateDate($fechaI),
+                        'fechaF'=> validateDate($fechaF),
+                        'utc'=>$_SESSION['utc']
+                        
+                    );
+                    //validateDate($fechaI, $format = 'Y-m-d H:i:s')
+                }else{
+                    $cadena = array();
+                }
+            }
+            if(count($cadena) != 0){
+                // Hacer petición de data en el servidor 
+                $dataMadurador = $this->model->DatosGraficaTabla($cadena);
+                $resultadoMadurador = json_decode($dataMadurador);
+                $resultadoMadurador = $resultadoMadurador->data;
+            
+                // Procesar created_at para mostrar solo 12 filas por hora
+                $res = $resultadoMadurador->graph;
+                $d = $res->created_at;
+                $ingresando_data = $d->data;
+                $horasVistas = [];
+                $filteredIndices = [];
+            
+                foreach ($ingresando_data as $index => $fecha) {
+                    $dateTime = new DateTime($fecha);
+                    $hora = $dateTime->format('Y-m-d H'); 
+                    if (!isset($horasVistas[$hora])) {
+                        $horasVistas[$hora] = true;
+                        $filteredIndices[] = $index;
+                        
+                    }
+                }
+            
+                // Filtrar todos los datos en resultadoMadurador
+                foreach ($resultadoMadurador->graph as $key => $value) {
+                    $filteredData = [];
+                    foreach ($filteredIndices as $index) {
+                        $filteredData[] = $value->data[$index];
+                    }
+                    $resultadoMadurador->graph->$key->data = $filteredData;
+                }
+            
+                // Ahora $resultadoMadurador contiene solo 12 filas por hora en todos los campos
+                //echo json_encode($resultadoMadurador, JSON_UNESCAPED_UNICODE);
+            
+            } else {
+                $resultadoMadurador = fechaGrafica($fechaI, $fechaF);
+            }
+        }else{
+            $resultadoMadurador ="";
+        }
+        echo json_encode($resultadoMadurador , JSON_UNESCAPED_UNICODE);
+
+    }
+
     //LiveData
     public function LiveData()
     {
