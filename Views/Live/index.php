@@ -543,7 +543,35 @@ const swiper = new Swiper(".card-slider", {
     </div>
 </div>
 <!-- FIN MODAL PARA TARTEJAS-->
-
+<!-- MODAL PARA REPORTE POR FECHA -->
+<div class="modal fade" id="reportePorFecha" tabindex="-1" aria-labelledby="my-modal-title" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="titleReporte">TEST-12345</h5>
+                <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="d-flex justify-content-center flex-wrap">
+                    <div class="col-12">
+                        <h5 >Search by Date :</h5>
+                    </div>
+                    <div class="text-center">
+                        <h5 ><strong>From :</strong></h5>
+                        <input class='form-control'  id="fechaInicialReporte" type="datetime-local">	
+                    </div>
+                    <div class="text-center">
+                        <h5 ><strong>To :</strong></h5>
+                        <input class='form-control' id="fechaFinReporte" type="datetime-local">
+                    </div>
+                    <div class="mt-2">
+                        <button type="button"  id="fechaPer" onclick="procesarReporte()" class="btn btn-primary btn-lg">Generate Report </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <?php include "Views/templates/footerLive.php"; ?>
 <?php include "Views/templates/footer.php"; ?>

@@ -501,10 +501,14 @@
                             <div class='col-3 p-2 text-center'><button type='button' onclick='graficaM({$valR})' class='mt-1 btn btn-block btn-outline-primary' data-toggle='tooltip' data-placement='top' title='Gráfico'><i class='ri-line-chart-line fs-5'></i></button></div>
                             <div class='col-3 p-2 text-center'><button type='button' onclick='tablaDeDatos($valR)' class='mt-1 btn btn-block btn-outline-secondary' data-toggle='tooltip' data-placement='top' title='Datos'><i class='ri-layout-horizontal-line fs-5'></i></button></div>
                             <div class='col-3 p-2 text-center'><button type='button' class='mt-1 btn btn-block btn-outline-success' data-toggle='tooltip' data-placement='top' title='Correo'><i class='ri-mail-line fs-5'></i></button> </div>
-                            <div class='col-3 p-2 text-center'>
-                                <button type='button' class='mt-1 btn btn-block btn-outline-info' data-toggle='tooltip' data-placement='top' title='Reporte' onclick='generarPDF({$valR})'>
+                            <div class='col-3 p-2 text-center dropstart'>
+                                <button type='button' class='mt-1 btn btn-block btn-outline-info dropdown-toggle' data-toggle='tooltip' data-placement='top' title='Reporte' id='reporteDropdown_{$val->telemetria_id}' data-bs-toggle='dropdown' aria-expanded='false'>
                                     <i class='ri-file-chart-line fs-5'></i>
                                 </button>
+                                <ul class='dropdown-menu px-0 py-0' aria-labelledby='reporteDropdown_{$val->telemetria_id}'>
+                                    <li><button type='button' class='dropdown-item' onclick='generarPDF($valR)'><i class='ri-time-line'></i>Día</button></li>
+                                    <li><button type='button' class='dropdown-item' onclick='generarPorFecha($valR)'><i class='ri-calendar-line'></i>Fecha</button></li>
+                                </ul>
                             </div>
 
                             <div class='col-12' id='btnToSave1_{$val->telemetria_id}' hidden>

@@ -35,7 +35,7 @@
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-end flex-grow-1">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#!">Inicio</a>
+            <a class="nav-link active" aria-current="page" href="<?php echo base_url?>Live">Inicio</a>
           </li>  
           <li class="nav-item dropdown d-none">
             <a class="nav-link dropdown-toggle" id="usuarioDropdown" role="button" data-bs-toggle="dropdown" aria-current="page">Usuarios</a>
@@ -89,11 +89,13 @@
           <li class="nav-item dropdown">
             <a class="nav-link nav-icon-hover dropdown-toggle" href="javascript:void(0)" id="accountDropdown" data-bs-toggle="dropdown" aria-expanded="false"><img src="<?php echo base_url; ?>Assets/img/user1.jpg" alt="" width="30" height="30" class="rounded-circle">Usuario</a>
             <ul class="dropdown-menu border-0 shadow bsb-zoomIn" aria-labelledby="accountDropdown">
-                <li><a class="dropdown-item" href="#!">Perfil</a></li>
+                <li><a class="dropdown-item" href="<?php echo base_url; ?>Profile/index">My Profile</a></li>
+                <li><a class="dropdown-item" href="#!">My Settings</a></li>
+                <li><a class="dropdown-item" href="#!">Change Password</a></li>
                 <li>
                     <hr class="dropdown-divider">
                 </li> 
-                <li><a class="dropdown-item" href="<?php echo base_url; ?>Usuarios/salir">Cerrar sesión</a></li>
+                <li><a class="dropdown-item" href="<?php echo base_url; ?>Usuarios/salir">Log out</a></li>
             </ul>
             </li>
         </ul>

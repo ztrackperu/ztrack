@@ -327,7 +327,6 @@ async function tablaDeDatos(id) {
 
 
 async function graficaMPDF(id){
-    console.log(tituloGrafica)
     const response = await fetch(base_url + "Live/DataReporte/"+id, {method: "GET", });
     let result = await response.json();
     let recorrer = result.graph;
@@ -346,14 +345,22 @@ async function graficaMPDF(id){
         let evaporationCoil = recorrer['evaporation_coil'].data[i];
         let powerState = recorrer['power_state'].data[i];
         //createdAt: 2024-08-11T22:21:23.333000	
-        
+          
+        let formattedDate = new Intl.DateTimeFormat('es-ES', {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+        }).format(new Date(createdAt));
         // Si el valor de la humedad relativa es nulo, asignar 'N/A'
         if(relativeHumidity == null){
             relativeHumidity = 'N/A';
         }
 
         datosTabla.push({
-            created_at: createdAt,
+            created_at: formattedDate,
             set_point: setPoint,
             return_air: returnAir,
             temp_supply_1: tempSupply1,
@@ -364,10 +371,9 @@ async function graficaMPDF(id){
             power_state: powerState
         });
     }
-    console.log(datosTabla);
     const canvas = document.createElement('canvas');
-    canvas.width = 320;
-    canvas.height= 120;
+    canvas.width = 900;
+    canvas.height= 400;
     document.body.appendChild(canvas);
     let labels = [datosTabla.map(item => item.created_at)];
     let setPoint = [datosTabla.map(item => item.set_point)]
@@ -377,9 +383,9 @@ async function graficaMPDF(id){
     let cargo1 = [datosTabla.map(item => item.cargo_1_temp)]
     let ambientAir = [datosTabla.map(item => item.ambient_air)]
     let evaporationCoil= [datosTabla.map(item => item.evaporation_coil)]
-    console.log('SET POOOINT')
-    console.log(labels);
-    console.log(setPoint)
+    let powerStatee = [datosTabla.map(item => item.power_state)]
+    let temp1 = 0;
+    
     //let tituloGrafica = id;
     const textCenter = {
         id: 'textCenter',
@@ -403,95 +409,221 @@ async function graficaMPDF(id){
             ctx.restore();
         }
     };
+    
     //GENERAR GRÁFICO
     const ctx = canvas.getContext('2d');
     new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: labels,
+        type : 'line',
+        plugins:[ChartDataLabels],
+		data : {
+			labels : labels[0],
             datasets: [
                 {
-                    label: 'SET',
-                    data: setPoint,
+                    label: 'Set',
+                    data: setPoint[0],
                     borderColor: '#fdc204',
+                    backgroundColor: '#fdc204',
                     borderWidth: 3, 
                     fill: false,
-                    pointRadius: 3,
-                    pointBackgroundColor: '#fdc204'
+                    hidden:false,
+                    pointRadius: 0,
+                    spanGaps: true,
+                    tension: -0.2,
+                    yAxisID: "y",
+                    cubicInterpolationMode: 'monotone',
+                    pointBackgroundColor: '#fdc204',
+                    datalabels:{
+                        display:"false",
+                        align: "start",
+                        clamp: "true",
+                        clip: "true",
+                    }
                 },
                 {
-                    label: 'RETURN',
-                    data: returnAir,
+                    label: 'Return',
+                    data: returnAir[0],
                     borderColor: '#ff685a',
+                    backgroundColor: '#ff685a',
                     borderWidth: 3,
                     fill: false,
-                    pointRadius: 3,
-                    pointBackgroundColor: '#ff685a'
+                    hidden: false,
+                    pointRadius: 0,
+                    spanGaps: true,
+                    tension: -0.2,
+                    yAxisID: "y",
+                    cubicInterpolationMode: 'monotone',
+                    pointBackgroundColor: '#ff685a',
+                    datalabels:{
+                        display: "auto",
+                        align: "start",
+                        clamp: "true",
+                        clip: "true",
+                    }
                 },
                 {
-                    label: 'TEMP',
-                    data: tempSupply,
+                    label: 'Temp',
+                    data: tempSupply[0],
                     borderColor: '#ecc0f2',
+                    backgroundColor: '#ecc0f2',
                     borderWidth: 3,
                     fill: false,
-                    pointRadius: 3,
-                    pointBackgroundColor: '#ecc0f2'
+                    pointRadius: 0,
+                    spanGaps: true,
+                    yAxisID: "y",
+                    tension: -0.2,
+                    hidden: false,
+                    cubicInterpolationMode: 'monotone',
+                    pointBackgroundColor: '#ecc0f2',
+                    datalabels:{
+                        display: "auto",
+                        align: "start",
+                        clamp: "true",
+                        clip: "true",
+                    }
                 },
                 {
-                    label: 'RELATIVE',
-                    data: relativeHumidity,
+                    label: 'Relative',
+                    data: relativeHumidity[0],
                     borderColor: '#8dcd6b',
+                    backgroundColor: '#8dcd6b',
                     borderWidth: 3,
                     fill: false,
-                    pointRadius: 3,
-                    pointBackgroundColor: '#8dcd6b'
+                    hidden: false,
+                    pointRadius: 0,
+                    tension: -0.2,
+                    spanGaps: true,
+                    yAxisID: "y1",
+                    cubicInterpolationMode: 'monotone',
+                    pointBackgroundColor: '#8dcd6b',
+                    datalabels:{
+                        display: "auto",
+                        align: "start",
+                        clamp: "true",
+                        clip: "true",
+                    }
                 },
                 {
-                    label: 'CARGO',
-                    data: cargo1,
-                    borderColor: '#00b167',
+                    //#ffffff
+                    //#00b167
+                    label: 'Cargo',
+                    data: cargo1[0],
+                    borderColor: '#ffffff',
+                    backgroundColor: '#ffffff',
                     borderWidth: 3,
                     fill: false,
-                    pointRadius: 3,
-                    pointBackgroundColor: '#00b167'
+                    hidden: false,
+                    pointRadius: 0,
+                    spanGaps: true,
+                    tension: -0.2,
+                    yAxisID: "y",
+                    cubicInterpolationMode: 'monotone',
+                    pointBackgroundColor: '#ffffff',
+                    datalabels:{
+                        display: "auto",
+                        align: "start",
+                        clamp: "true",
+                        clip: "true",
+                    }
                 },
                 {
-                    label: 'AMBIENT AIR',
-                    data: ambientAir,
+                    label: 'Ambient',
+                    data: ambientAir[0],
                     borderColor: '#90a6a7',
+                    backgroundColor: '#90a6a7',
                     borderWidth: 3,
                     fill: false,
-                    pointRadius: 3,
-                    pointBackgroundColor: '#90a6a7'
+                    pointRadius: 0,
+                    hidden: false,
+                    tension: -0.2,
+                    yAxisID: "y",
+                    cubicInterpolationMode: 'monotone',
+                    pointBackgroundColor: '#90a6a7',
+                    datalabels:{
+                        display: "auto",
+                        align: "start",
+                        clamp: "true",
+                        clip: "true",
+                    }
                 },
                 {
-                    label: 'EVAPORATION COIL',
-                    data: evaporationCoil,
+                    label: 'Evaporation',
+                    data: evaporationCoil[0],
                     borderColor: '#efecec',
+                    backgroundColor: '#efecec',
                     borderWidth: 3,
                     fill: false,
-                    pointRadius: 3,
-                    pointBackgroundColor: '#efecec'
+                    hidden: false,
+                    pointRadius: 0,
+                    spanGaps:true,
+                    tension:-0.2,
+                    yAxisID: "y",
+                    cubicInterpolationMode: 'monotone',
+                    pointBackgroundColor: '#efecec',
+                    cubicInterpolationMode: 'monotone',
+                    datalabels:{
+                        display: "auto",
+                        align: "start",
+                        clamp: "true",
+                        clip: "true",
+                    }
+                },
+                {
+                    label: 'Power',
+                    data: powerStatee[0],
+                    borderColor: '#00b167',
+                    backgroundColor: '#00b167',
+                    backgroundColor: '#00b167',
+                    borderWidth: 3,
+                    fill: true,
+                    hidden:false,
+                    spanGaps: true,
+                    tension: -0.2,
+                    yAxisID: "y1",
+                    pointRadius: 0,
+                    cubicInterpolationMode: 'monotone',
+                    datalabels:{
+                        display: false,
+                        align: "start",
+                        clamp: "true",
+                        clip: "true",
+                    }
                 }
             ]
-        },
-        options: {
+		},
+		options: {
+            
             responsive: true,
             scales: {
                 x: {
-                    type: 'time',
                     title: {
                         display: true,
                         text: 'ZTRACK - Live Telematic',
                         color: '#212529',
-                        font: {
-                            size:20,
-                            style:'normal',
+                        font: { 
+                            size: 20,
+                            style: 'normal',
                             lineHeight: 1.1
                         },
-                        
+                        padding: {top: -5, left: 0, right: 0, bottom: 0}
+                      },
+                    //offset:true,
+                    alignToPixels:true,
+                    time:{
+                        minUnit:'minute',
                     },
-                   
+                    clip :false,
+                    ticks:{
+                        major:{
+                            enabled:true,
+                            width:4
+                        },
+                        font :(context)=>{
+                            //console.log(context.tick && context.tick.major)
+                            const boldedTicks = context.tick && context.tick.major ? 'bold' :'';
+                            return {weight:boldedTicks}
+                        },
+                        //padding:15,
+                    }
                 },
                 y: {
                     type: 'linear',
@@ -505,22 +637,82 @@ async function graficaMPDF(id){
                         font: {     
                             size: 20,
                             style: 'normal',
-                            
+                            lineHeight: 1.2
                         },
                         padding: {top: 30, left: 0, right: 0, bottom: 0}
                     },
                     ticks:{
                         color:"blue",
                         callback :(value,index,ticks) =>{
-                            return `${value}\u00B0`;
+                            return `${value}${c_f(temp1)}\u00B0`;
                         }
                     },
+                    suggestedMin: c_f(temp1,10),
+                    suggestedMax: c_f(temp1,20)
+                },
+                y1: {
+                    type: 'linear',
+                    display: false,
+                    position: 'right',
+                    beginAtZero: true,
+                    title: {
+                        display: false,
+                        text: 'Ethylene(ppm)',
+                        color: '#1a2c4e',
+                        font: { 
+                            size: 20,
+                            style: 'bold',
+                            lineHeight: 1.2
+                        },
+                        padding: {top: 30, left: 0, right: 0, bottom: 0}
+                      },
+                      suggestedMin: 0,
+                      suggestedMax: 10,
+                      grid: {
+                        drawOnChartArea: false, // only want the grid lines for one axis to show up
+                      },
+                 }, y2: {
+                    type: 'linear',
+                    display: true,
+                    position: 'right',
+                    beginAtZero: true,
+                    title: {
+                        display: false,
+                        text: 'Percentage (%)',
+                        color: '#1a2c4e',
+                        font: {                      
+                            size: 20,
+                            style: 'normal',
+                            lineHeight: 1.2
+                        },
+                        padding: {top: 30, left: 0, right: 0, bottom: 0}
+                    },
+                    ticks:{
+                        color:"red",
+                        callback :(value,index,ticks) =>{
+                            return `${value}\u2052`;
+                        }
+                    },
+                    grid: {
+                        drawOnChartArea: false, // only want the grid lines for one axis to show up
+                    },
                     suggestedMin: 0,
-                    suggestedMax: 40
-                }
-            }
-        },
-        plugins: [textCenter, plugin]
+                    suggestedMax: 100,
+                },
+            },
+            plugins:{
+                datalabels: {
+                    color: function(context) {
+                      return context.dataset.backgroundColor;
+                    },
+                    font: {
+                      weight: 'bold'
+                    },          
+                    padding: 6,
+                  }
+            },
+            plugins : [ChartDataLabels, textCenter, plugin],
+        }
     });
     await new Promise(resolve=>setTimeout(resolve,1000));
     const base64Image = canvas.toDataURL('image/png');
@@ -528,7 +720,7 @@ async function graficaMPDF(id){
     return base64Image;
     
 }
-//graficaMPDF("ZGRU1090804");
+
 
 async function generarPDF(id) {
     let title = id;
@@ -701,6 +893,537 @@ async function generarPDF(id) {
     };
 }
 
+
+function generarPorFecha(id){
+    $('#titleReporte').html(id);
+    $('#reportePorFecha').modal('show');
+}
+
+
+
+async function procesarReporte(){
+    //OBTENIENDO DATOS
+    let titleReporte = document.getElementById('titleReporte');
+    let fechaInicialReporte = document.getElementById('fechaInicialReporte');
+    let fechaFinReporte = document.getElementById('fechaFinReporte');
+    let contenedor = titleReporte.textContent; //ZGRU1090804
+    let fechaInicialR = fechaInicialReporte.value; 
+    let fechaFinR = fechaFinReporte.value;
+   
+    const cabecera = await base64_Header();
+    const pie_de_pagina = await base64_Footer();
+   
+    if(fechaInicialR == '' || fechaFinR == ''){
+        alert('No se ha seleccionado la fecha');
+    }else{
+        id = contenedor + "/" + fechaInicialR + "/" + fechaFinR;
+        const response = await fetch(base_url + "Live/GraficaInicial/"+id,{method: 'GET'});
+        const data = await response.json();
+        if(data=="mal"){
+            alert("Fecha Inicial mayor a Fecha Mayor!");
+        }else if(data=="rango"){
+            alert("Búsqueda fuera de Rango , contacta al Administrador");
+        }else{
+            //ACA HAGO LA MAGIA
+            let recorrer = data.graph;
+            //console.log(recorrer);
+            let datosTabla = [];
+            // Obtener la longitud del array de datos
+            let dataLength = recorrer['set_point'].data.length;
+
+            // Iterar sobre los arrays de datos
+            for (let i = 0; i < dataLength; i++) {
+                let createdAt = recorrer['created_at'].data[i];
+                let setPoint = recorrer['set_point'].data[i];
+                let returnAir = recorrer['return_air'].data[i];
+                let tempSupply1 = recorrer['temp_supply_1'].data[i];
+                let relativeHumidity = recorrer['relative_humidity'].data[i];
+                let cargo1Temp = recorrer['cargo_1_temp'].data[i];
+                let ambientAir = recorrer['ambient_air'].data[i];
+                let evaporationCoil = recorrer['evaporation_coil'].data[i];
+                let powerState = recorrer['power_state'].data[i];
+                //createdAt: 2024-08-11T22:21:23.333000	
+                
+                let formattedDate = new Intl.DateTimeFormat('es-ES', {
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit'
+                }).format(new Date(createdAt));
+
+                // Si el valor de la humedad relativa es nulo, asignar 'N/A'
+                if(relativeHumidity == null){
+                    relativeHumidity = 'N/A';
+                }
+
+                datosTabla.push({
+                    created_at: formattedDate,
+                    set_point: setPoint,
+                    return_air: returnAir,
+                    temp_supply_1: tempSupply1,
+                    relative_humidity: relativeHumidity,
+                    cargo_1_temp: cargo1Temp,
+                    ambient_air: ambientAir,
+                    evaporation_coil: evaporationCoil,
+                    power_state: powerState
+                });
+            }
+            // Crear la estructura de la tabla
+            let tableBody = [
+                // Encabezados de la tabla
+                [
+                    { text: 'Fecha', style: 'tableHeader' },
+                    { text: 'Set Point', style: 'tableHeader' },
+                    { text: 'Return Air', style: 'tableHeader' },
+                    { text: 'Temp Supply 1', style: 'tableHeader' },
+                    { text: 'Relative Humidity', style: 'tableHeader' },
+                    { text: 'Cargo 1 Temp', style: 'tableHeader' },
+                    { text: 'Ambient Air', style: 'tableHeader' },
+                    { text: 'Evaporation Coil', style: 'tableHeader' },
+                    { text: 'Power State', style: 'tableHeader' }
+                ]
+            ];
+            // Agregar filas de datos a la tabla
+            datosTabla.forEach(function (item) {
+                tableBody.push([
+                    item.created_at,
+                    item.set_point,
+                    item.return_air,
+                    item.temp_supply_1,
+                    item.relative_humidity,
+                    item.cargo_1_temp,
+                    item.ambient_air,
+                    item.evaporation_coil,
+                    item.power_state
+                ]);
+            });
+
+            //CREAR LINE CHART CON LA DATA
+            const canvas = document.createElement('canvas');
+            canvas.width = 900;
+            canvas.height= 400;
+            document.body.appendChild(canvas);
+            let labels = [datosTabla.map(item => item.created_at)];
+            let setPoint = [datosTabla.map(item => item.set_point)]
+            let returnAir = [datosTabla.map(item => item.return_air)]
+            let tempSupply = [datosTabla.map(item => item.temp_supply_1)]
+            let relativeHumidity = [datosTabla.map(item => item.relative_humidity)]
+            let cargo1 = [datosTabla.map(item => item.cargo_1_temp)]
+            let ambientAir = [datosTabla.map(item => item.ambient_air)]
+            let evaporationCoil= [datosTabla.map(item => item.evaporation_coil)]
+            let powerStatee = [datosTabla.map(item => item.power_state)]
+            let temp1 = 0;
+            
+            //let tituloGrafica = id;
+            const textCenter = {
+                id: 'textCenter',
+                afterDatasetsDraw(chart, args, plugins) {
+                    const { ctx, chartArea: { top, bottom, left, right, width, height } } = chart;
+                    ctx.save();
+                    ctx.font = 'bold 15px sans-serif';
+                    ctx.fillStyle = 'grey';
+                    //ctx.fillText(tituloGrafica.textContent, (width * 45) / 100, (height * 9) / 10);
+                }
+            };
+            
+            const plugin = {
+                id: 'customCanvasBackgroundColor',
+                beforeDraw: (chart, args, options) => {
+                    const { ctx } = chart;
+                    ctx.save();
+                    ctx.globalCompositeOperation = 'destination-over';
+                    ctx.fillStyle = options.color || '#ffffff';
+                    ctx.fillRect(0, 0, chart.width, chart.height);
+                    ctx.restore();
+                }
+            };
+            
+            //GENERAR GRÁFICO
+            const ctx = canvas.getContext('2d');
+            new Chart(ctx, {
+                type : 'line',
+                plugins:[ChartDataLabels],
+                data : {
+                    labels : labels[0],
+                    datasets: [
+                        {
+                            label: 'Set',
+                            data: setPoint[0],
+                            borderColor: '#fdc204',
+                            backgroundColor: '#fdc204',
+                            borderWidth: 3, 
+                            fill: false,
+                            hidden:false,
+                            pointRadius: 0,
+                            spanGaps: true,
+                            tension: -0.2,
+                            yAxisID: "y",
+                            cubicInterpolationMode: 'monotone',
+                            pointBackgroundColor: '#fdc204',
+                            datalabels:{
+                                display:"false",
+                                align: "start",
+                                clamp: "true",
+                                clip: "true",
+                            }
+                        },
+                        {
+                            label: 'Return',
+                            data: returnAir[0],
+                            borderColor: '#ff685a',
+                            backgroundColor: '#ff685a',
+                            borderWidth: 3,
+                            fill: false,
+                            hidden: false,
+                            pointRadius: 0,
+                            spanGaps: true,
+                            tension: -0.2,
+                            yAxisID: "y",
+                            cubicInterpolationMode: 'monotone',
+                            pointBackgroundColor: '#ff685a',
+                            datalabels:{
+                                display: "auto",
+                                align: "start",
+                                clamp: "true",
+                                clip: "true",
+                            }
+                        },
+                        {
+                            label: 'Temp',
+                            data: tempSupply[0],
+                            borderColor: '#ecc0f2',
+                            backgroundColor: '#ecc0f2',
+                            borderWidth: 3,
+                            fill: false,
+                            pointRadius: 0,
+                            spanGaps: true,
+                            yAxisID: "y",
+                            tension: -0.2,
+                            hidden: false,
+                            cubicInterpolationMode: 'monotone',
+                            pointBackgroundColor: '#ecc0f2',
+                            datalabels:{
+                                display: "auto",
+                                align: "start",
+                                clamp: "true",
+                                clip: "true",
+                            }
+                        },
+                        {
+                            label: 'Relative',
+                            data: relativeHumidity[0],
+                            borderColor: '#8dcd6b',
+                            backgroundColor: '#8dcd6b',
+                            borderWidth: 3,
+                            fill: false,
+                            hidden: false,
+                            pointRadius: 0,
+                            tension: -0.2,
+                            spanGaps: true,
+                            yAxisID: "y1",
+                            cubicInterpolationMode: 'monotone',
+                            pointBackgroundColor: '#8dcd6b',
+                            datalabels:{
+                                display: "auto",
+                                align: "start",
+                                clamp: "true",
+                                clip: "true",
+                            }
+                        },
+                        {
+                            //#ffffff
+                            //#00b167
+                            label: 'Cargo',
+                            data: cargo1[0],
+                            borderColor: '#ffffff',
+                            backgroundColor: '#ffffff',
+                            borderWidth: 3,
+                            fill: false,
+                            hidden: false,
+                            pointRadius: 0,
+                            spanGaps: true,
+                            tension: -0.2,
+                            yAxisID: "y",
+                            cubicInterpolationMode: 'monotone',
+                            pointBackgroundColor: '#ffffff',
+                            datalabels:{
+                                display: "auto",
+                                align: "start",
+                                clamp: "true",
+                                clip: "true",
+                            }
+                        },
+                        {
+                            label: 'Ambient',
+                            data: ambientAir[0],
+                            borderColor: '#90a6a7',
+                            backgroundColor: '#90a6a7',
+                            borderWidth: 3,
+                            fill: false,
+                            pointRadius: 0,
+                            hidden: false,
+                            tension: -0.2,
+                            yAxisID: "y",
+                            cubicInterpolationMode: 'monotone',
+                            pointBackgroundColor: '#90a6a7',
+                            datalabels:{
+                                display: "auto",
+                                align: "start",
+                                clamp: "true",
+                                clip: "true",
+                            }
+                        },
+                        {
+                            label: 'Evaporation',
+                            data: evaporationCoil[0],
+                            borderColor: '#efecec',
+                            backgroundColor: '#efecec',
+                            borderWidth: 3,
+                            fill: false,
+                            hidden: false,
+                            pointRadius: 0,
+                            spanGaps:true,
+                            tension:-0.2,
+                            yAxisID: "y",
+                            cubicInterpolationMode: 'monotone',
+                            pointBackgroundColor: '#efecec',
+                            cubicInterpolationMode: 'monotone',
+                            datalabels:{
+                                display: "auto",
+                                align: "start",
+                                clamp: "true",
+                                clip: "true",
+                            }
+                        },
+                        {
+                            label: 'Power',
+                            data: powerStatee[0],
+                            borderColor: '#00b167',
+                            backgroundColor: '#00b167',
+                            backgroundColor: '#00b167',
+                            borderWidth: 3,
+                            fill: true,
+                            hidden:false,
+                            spanGaps: true,
+                            tension: -0.2,
+                            yAxisID: "y1",
+                            pointRadius: 0,
+                            cubicInterpolationMode: 'monotone',
+                            datalabels:{
+                                display: false,
+                                align: "start",
+                                clamp: "true",
+                                clip: "true",
+                            }
+                        }
+                    ]
+                },
+                options: {
+                    
+                    responsive: true,
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'ZTRACK - Live Telematic',
+                                color: '#212529',
+                                font: { 
+                                    size: 20,
+                                    style: 'normal',
+                                    lineHeight: 1.1
+                                },
+                                padding: {top: -5, left: 0, right: 0, bottom: 0}
+                            },
+                            //offset:true,
+                            alignToPixels:true,
+                            time:{
+                                minUnit:'minute',
+                            },
+                            clip :false,
+                            ticks:{
+                                major:{
+                                    enabled:true,
+                                    width:4
+                                },
+                                font :(context)=>{
+                                    //console.log(context.tick && context.tick.major)
+                                    const boldedTicks = context.tick && context.tick.major ? 'bold' :'';
+                                    return {weight:boldedTicks}
+                                },
+                                //padding:15,
+                            }
+                        },
+                        y: {
+                            type: 'linear',
+                            position: 'left',
+                            display: true,
+                            title: {
+                                display: false,
+                                text: 'temperature',
+                                color: '#1a2c4e',
+                                //reverse:true,
+                                font: {     
+                                    size: 20,
+                                    style: 'normal',
+                                    lineHeight: 1.2
+                                },
+                                padding: {top: 30, left: 0, right: 0, bottom: 0}
+                            },
+                            ticks:{
+                                color:"blue",
+                                callback :(value,index,ticks) =>{
+                                    return `${value}${c_f(temp1)}\u00B0`;
+                                }
+                            },
+                            suggestedMin: c_f(temp1,10),
+                            suggestedMax: c_f(temp1,20)
+                        },
+                        y1: {
+                            type: 'linear',
+                            display: false,
+                            position: 'right',
+                            beginAtZero: true,
+                            title: {
+                                display: false,
+                                text: 'Ethylene(ppm)',
+                                color: '#1a2c4e',
+                                font: { 
+                                    size: 20,
+                                    style: 'bold',
+                                    lineHeight: 1.2
+                                },
+                                padding: {top: 30, left: 0, right: 0, bottom: 0}
+                            },
+                            suggestedMin: 0,
+                            suggestedMax: 10,
+                            grid: {
+                                drawOnChartArea: false, // only want the grid lines for one axis to show up
+                            },
+                        }, y2: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            beginAtZero: true,
+                            title: {
+                                display: false,
+                                text: 'Percentage (%)',
+                                color: '#1a2c4e',
+                                font: {                      
+                                    size: 20,
+                                    style: 'normal',
+                                    lineHeight: 1.2
+                                },
+                                padding: {top: 30, left: 0, right: 0, bottom: 0}
+                            },
+                            ticks:{
+                                color:"red",
+                                callback :(value,index,ticks) =>{
+                                    return `${value}\u2052`;
+                                }
+                            },
+                            grid: {
+                                drawOnChartArea: false, // only want the grid lines for one axis to show up
+                            },
+                            suggestedMin: 0,
+                            suggestedMax: 100,
+                        },
+                    },
+                    plugins:{
+                        datalabels: {
+                            color: function(context) {
+                            return context.dataset.backgroundColor;
+                            },
+                            font: {
+                            weight: 'bold'
+                            },          
+                            padding: 6,
+                        }
+                    },
+                    plugins : [ChartDataLabels, textCenter, plugin],
+                }
+            });
+            await new Promise(resolve=>setTimeout(resolve,1000));
+            const base64Image = canvas.toDataURL('image/png');
+            document.body.removeChild(canvas);
+            // Definir el contenido del PDF
+            let img_header = cabecera;
+            let img_footer = pie_de_pagina;  
+            var docDefinition = 
+                {
+                    //pageMargins
+                    pageMargins: [ 40, 60, 40, 60 ],
+                    header: {
+                        columns: [
+                            {
+                                image: img_header, 
+                                alignment: 'center',
+                                width: 575,
+                                height:50,
+                                
+                            }
+                        ],
+                        margin:[10,5]
+                    },
+                    footer:{
+                        columns: [
+                            {
+                                image: img_footer,
+                                alignment: 'center',
+                                width: 575,
+                                height:50
+                            }
+                        ],
+                        margin:[10,0,10,0]
+                    },
+                    content:[    
+                        {
+                            text: title,
+                            alignment: 'center',
+                            margin: [0, 20, 0, 20] // Margen inferior para separar el texto de la tabla
+                        },
+                        {
+                            image: base64Image,
+                            width: 500,
+                            height: 300,
+                            alignment: 'center',
+                        },
+                        {
+                            alignment: 'center',
+                            table: {
+                                headerRows: 1,
+                                body: tableBody,
+                            },
+                            //layout: 'exampleLayout',
+                            margin: [0, 50, 0, 50],
+                            layout: 'exampleLayout',
+                            pageBreakBefore: function(currentNode, followingNodesOnPage, nodesOnNextPage, previousNodesOnPage) {
+                                return currentNode.headlineLevel === 1 && followingNodesOnPage.length === 0;
+                            }
+                        }   
+                    ],   
+                }
+            pdfMake.tableLayouts = {
+            exampleLayout: {
+                hLineColor: function (i, node) {
+                    return (i === 0 || i === node.table.body.length) ? 'black' : 'black';
+                },
+                vLineColor: function (i, node) {
+                    return (i === 0 || i === node.table.widths.length) ? 'black' : 'black';
+                },
+                paddingLeft: function (i, node) { return 4; },
+                paddingRight: function (i, node) { return 4; },
+                paddingTop: function (i, node) { return 4; },
+                paddingBottom: function (i, node) { return 4; },
+                fillColor: function (rowIndex, node, columnIndex) { return null; }
+            }
+            };
+            // Generar y descargar el PDF
+            pdfMake.createPdf(docDefinition).open();
+        }
+    }
+}
 $(document).ready(function(){
     
     $('#btnAccess').click(function(){
