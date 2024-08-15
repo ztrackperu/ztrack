@@ -27,15 +27,20 @@ function frmLogin(e) {
         http.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) { 
                 const res = JSON.parse(this.responseText);
+                console.log('aca toy');
+                console.log(res);
                 if (res.icono == "success") {
                     alertas(res.msg, res.icono);
-                    //console.log("se acepto el ingreso")
-                    setTimeout(function(){                  
-                        window.location = base_url + "Live";       
+                    // Verificar el estado y redirigir en consecuencia
+                    setTimeout(function () {
+                        if (res.estado == 1) {
+                            window.location = base_url + "Live";
+                        } else if (res.estado == 0) {
+                            window.location = base_url + "AdminPage";
+                        }
                     }, 1000);
                 } else {
                     alertas(res.msg, res.icono);
-                    //console.log("no hay  el ingreso")
                 }
             }
         }

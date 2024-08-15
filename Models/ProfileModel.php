@@ -25,5 +25,17 @@ class ProfileModel extends Query{
         //alterar estructura para trabajar con apis       
     }
     //ListaContenedores
-    
+
+    public function ListaDispositivoEmpresa($id)
+    {
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, urlapiMysql."/contenedores/ListaDispositivoEmpresa/".$id);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $res = curl_exec($ch);
+        curl_close($ch);   
+        return $res;
+    }
+
+   
+
 }

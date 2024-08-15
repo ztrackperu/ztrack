@@ -17,13 +17,15 @@
     <link href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.11.6/css/jquery.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css">
+    <!-- BANDERAS CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css"/>
     
     <title>ZTRACK | LIVE TELEMATIC</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg bsb-navbar bsb-navbar-hover bsb-navbar-caret">
   <div class="container">
-    <a class="navbar-brand" href="index.html"> <img src="<?php echo base_url; ?>Assets/img/image.png" alt="logo__zgroup" width="135" height="44"></a>
+    <a class="navbar-brand" href="<?php echo base_url; ?>Live"> <img src="<?php echo base_url; ?>Assets/img/image.png" alt="logo__zgroup" width="135" height="44"></a>
     <button type="button" class="navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -91,7 +93,7 @@
             <ul class="dropdown-menu border-0 shadow bsb-zoomIn" aria-labelledby="accountDropdown">
                 <li><a class="dropdown-item" href="<?php echo base_url; ?>Profile/index">My Profile</a></li>
                 <li><a class="dropdown-item" href="#!">My Settings</a></li>
-                <li><a class="dropdown-item" href="#!">Change Password</a></li>
+                <li><a class="dropdown-item" href="<?php echo base_url; ?>Profile/Password">Change Password</a></li>
                 <li>
                     <hr class="dropdown-divider">
                 </li> 

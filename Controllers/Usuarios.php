@@ -86,7 +86,7 @@ class Usuarios extends Controller{
                 $_SESSION['utc'] = $utc;
                 //$_SESSION['data'] = $this->model->ExtraerDatos($_SESSION['empresa_id']);
 
-                $msg = array('msg' => 'Bienvenido  '.$_SESSION['nombres_ztrack'].' a ztrack !', 'icono' => 'success');
+                $msg = array('msg' => 'Bienvenido  '.$_SESSION['nombres_ztrack'].' a ztrack !', 'icono' => 'success', 'estado' => 0);
             }else{
                 $msg = array('msg' => 'Usuario o contraseña incorrecta', 'icono' => 'warning');
             }
