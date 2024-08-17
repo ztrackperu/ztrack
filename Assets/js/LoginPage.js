@@ -27,8 +27,8 @@ function frmLogin(e) {
         http.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) { 
                 const res = JSON.parse(this.responseText);
-                console.log('aca toy');
-                console.log(res);
+                //console.log('aca toy');
+                //console.log(res);
                 if (res.icono == "success") {
                     alertas(res.msg, res.icono);
                     // Verificar el estado y redirigir en consecuencia

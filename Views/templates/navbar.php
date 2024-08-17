@@ -19,6 +19,9 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css">
     <!-- BANDERAS CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css"/>
+    <!-- SHOELACE COLOR PICKER -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.57/dist/themes/light.css">
+
     
     <title>ZTRACK | LIVE TELEMATIC</title>
 </head>
@@ -92,7 +95,7 @@
             <a class="nav-link nav-icon-hover dropdown-toggle" href="javascript:void(0)" id="accountDropdown" data-bs-toggle="dropdown" aria-expanded="false"><img src="<?php echo base_url; ?>Assets/img/user1.jpg" alt="" width="30" height="30" class="rounded-circle">Usuario</a>
             <ul class="dropdown-menu border-0 shadow bsb-zoomIn" aria-labelledby="accountDropdown">
                 <li><a class="dropdown-item" href="<?php echo base_url; ?>Profile/index">My Profile</a></li>
-                <li><a class="dropdown-item" href="#!">My Settings</a></li>
+                <li><a class="dropdown-item" href="<?php echo base_url; ?>Profile/settings">My Settings</a></li>
                 <li><a class="dropdown-item" href="<?php echo base_url; ?>Profile/Password">Change Password</a></li>
                 <li>
                     <hr class="dropdown-divider">

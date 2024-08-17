@@ -64,7 +64,21 @@
     .value-small{
         font-size:10px;
     }
-    
+
+    .button_pannel_frow{
+        font-size: 14px;
+    }
+    .button_pannel_srow{
+        font-size:10px;
+    }
+    .button_pannel_trow{
+        font-size:10px;
+    }
+
+    .icon_trow{
+        width:38px;
+        height:38px;
+    }
     
 }
 @media (min-width: 375px) and (max-width: 768px) {
@@ -78,6 +92,21 @@
     
     .value-small{
         font-size:12px;
+    }
+
+    .button_pannel_frow{
+        font-size: 20px;
+    }
+    .button_pannel_srow{
+        font-size:12px;
+    }
+    .button_pannel_trow{
+        font-size:10px;
+    }
+
+    .icon_trow{
+        width:38px;
+        height:38px;
     }
     
 }
@@ -93,6 +122,22 @@
     .value-small{
         font-size:12px;
     }
+
+    
+    .button_pannel_frow{
+        font-size: 19px;
+    }
+    .button_pannel_srow{
+        font-size:13px;
+    }
+    .button_pannel_trow{
+        font-size:10px;
+    }
+
+    .icon_trow{
+        width:38px;
+        height:38px;
+    }
 }
 @media (min-width: 1025px) and (max-width: 1440px) {
     .value-parameter{
@@ -105,6 +150,10 @@
     
     .value-small{
         font-size:12px;
+    }
+    .icon_trow{
+        width:43px;
+        height:43px;
     }
 }
 @media (min-width: 1441px) {
@@ -119,4 +168,40 @@
     .value-small{
         font-size:12px;
     }
+
+    
+    .button_pannel_frow{
+        font-size: 19px;
+    }
+    .button_pannel_srow{
+        font-size:13px;
+    }
+    .button_pannel_trow{
+        font-size:10px;
+    }
+
+    .icon_trow{
+        width:42px;
+        height:42px;
+    }
 }
+
+/* Estilos básicos para el modal y el multiselect */
+#multiselect-left, #multiselect-right {
+  
+    margin: 0 10px;
+    overflow: hidden;
+    outline-width: 0px !important;
+    outline-style: inherit;
+}
+
+#multiselect-left-datos, #multiselect-right-datos {
+  
+    margin: 0 10px;
+    overflow: hidden;
+    outline-width: 0px !important;
+    outline-style: inherit;
+}
+
+
+

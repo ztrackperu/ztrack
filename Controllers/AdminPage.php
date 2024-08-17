@@ -120,6 +120,8 @@ class AdminPage extends Controller
         echo $par;*/
 
     }
+
+    
     
 
     public function PanelControlInformation() {
@@ -148,67 +150,67 @@ class AdminPage extends Controller
         $html = "";
         $html .= "
             <div class='row'>
-                <div class='col-lg-4 mt-2'>
+                <div class='col-4 col-lg-4 mt-2'>
                     <div class='card'>
                         <button type='button' class='btn btn-outline-success px-2 py-3'>
-                            <h5 class='text-center'>ONLINE: ({$array['online']['count']})</h5>
+                            <h5 class='text-center button_pannel_frow'>ONLINE: ({$array['online']['count']})</h5>
                         </button>
                     </div>
                 </div>
-                <div class='col-lg-4 mt-2'>
+                <div class='col-4 col-lg-4 mt-2'>
                     <div class='card'>
                         <button type='button' class='btn btn-outline-warning px-2 py-3'>
-                            <h5 class='text-center'>WAIT: ({$array['wait']})</h5>
+                            <h5 class='text-center button_pannel_frow'>WAIT: ({$array['wait']})</h5>
                         </button>
                     </div>
                 </div>
-                <div class='col-lg-4 mt-2'>
+                <div class='col-4 col-lg-4 mt-2'>
                     <div class='card'>
                         <button type='button' class='btn btn-outline-danger px-2 py-3'>
-                            <h5 class='text-center'>OFFLINE: ({$array['offline']})</h5>
+                            <h5 class='text-center button_pannel_frow'>OFFLINE: ({$array['offline']})</h5>
                         </button>
                     </div>
                 </div>
             </div>
             <div class='row mt-2'>
-                <div class='col-lg-4 mt-2'>
+                <div class='col-4 col-lg-4 mt-2'>
                     <div class='card'>
                         <button type='button' class='btn btn-outline-secondary px-2 py-3'>
                             <div class='text-center'>
                                 <i class='ri-notification-fill fs-3'></i>
-                                <h5>ALARMAS: ({$array['alarmas']})</h5>
+                                <h5 class='button_pannel_srow'>ALARMAS: ({$array['alarmas']})</h5>
                             </div>
                         </button>
                     </div>
                 </div>
-                <div class='col-lg-4 mt-2'>
+                <div class='col-4 col-lg-4 mt-2'>
                     <div class='card'>
                         <button type='button' class='btn btn-outline-primary px-2 py-3'>
                             <div class='text-center'>
-                                <i class='ri-notification-fill fs-3'></i>
-                                <h5>USUARIOS: ({$array['usuarios']})</h5>
+                                <i class='bi bi-people-fill fs-3'></i>
+                                <h5 class='button_pannel_srow'>USUARIOS: ({$array['usuarios']})</h5>
                             </div>
                         </button>
                     </div>
                 </div>
-                <div class='col-lg-4 mt-2'>
+                <div class='col-4 col-lg-4 mt-2'>
                     <div class='card'>
                         <button type='button' class='btn btn-outline-info px-2 py-3'>
                             <div class='text-center'>
-                                <i class='ri-timer-2-line fs-3'></i>
-                                <h5>DIAS RESTANTES: ({$array['dias_restantes']})</h5>
+                                <i class='bi bi-person-vcard fs-3'></i>
+                                <h5 class='button_pannel_srow'>MEMBRESÍA: ({$array['dias_restantes']})</h5>
                             </div>
                         </button>
                     </div>
                 </div>
             </div>
             <div class='row'>
-                <div class='col-lg-4 mt-2'>
+                <div class='col-4 col-lg-4 mt-2'>
                     <div class='card border-secondary'> 
                         <button type='button' class='btn px-2 py-3 border-0'>
                             <div class='text-center'>
                               <svg version='1.0' xmlns='http://www.w3.org/2000/svg'
-                                    width='42' height='42' viewBox='0 0 100.000000 56.000000'
+                                    class='icon_trow' viewBox='0 0 100.000000 56.000000'
                                     preserveAspectRatio='xMidYMid meet'>
 
                                     <g transform='translate(0.000000,56.000000) scale(0.100000,-0.100000)' fill='#000000' stroke='none'>
@@ -229,29 +231,29 @@ class AdminPage extends Controller
                                     -11z'/>
                                     </g>
                                 </svg>
-                                <h5 class='text-uppercase'>Reefer: ({$array['reefer']})</h5>
+                                <h5 class='text-uppercase button_pannel_trow'>Reefer: ({$array['reefer']})</h5>
                             </div>
                         </button>
                     </div>
                 </div>
-                <div class='col-lg-4 mt-2'>
+                <div class='col-4 col-lg-4 mt-2'>
                     <div class='card border-success'>
                         <button type='button' class='btn px-2 py-3 border-0'>
                             <div class='text-center'>
-                                <svg class='icon' width='42' height='42'>
+                                <svg class='icon icon_trow'>
                                 <use xlink:href='sprite.svg#ripener_icon'></use>
                                 </svg>
-                                <h5 class='text-success text-uppercase'>Ripener: ({$array['ripener']})</h5>
+                                <h5 class='text-success text-uppercase button_pannel_trow'>Ripener: ({$array['ripener']})</h5>
                             </div>
                         </button>
                     </div>
                 </div>
-                <div class='col-lg-4 mt-2'>
+                <div class='col-4 col-lg-4 mt-2'>
                     <div class='card'>
                         <button type='button' class='btn btn-outline-primary px-2 py-3'>
                             <div class='text-center'>
                                 <i class='bi bi-lightning-charge-fill fs-3'></i>
-                                <h5 class='text-uppercase'>Genset: ({$array['genset']})</h5>
+                                <h5 class='text-uppercase button_pannel_trow'>Genset: ({$array['genset']})</h5>
                             </div>
                         </button>
                     </div>

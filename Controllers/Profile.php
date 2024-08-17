@@ -33,6 +33,9 @@ class Profile extends Controller
 
     }
 
+    public function Settings(){
+        $this->views->getView($this, "settings");
+    }
     public function Password(){
         $this->views->getView($this, "password");
     }
@@ -188,6 +191,94 @@ class Profile extends Controller
           );
     
         echo json_encode($r);
+    }
+    public function DataFormularioSettings(){
+        $html = "";
+        $html .= "
+                <div class='mt-2 d-flex justify-content-center align-items-center gap-5'>
+                    <label id='test' for='typeInput'>Tipo:</label>
+                    <select class='form-select w-50' id='typeInput' name='type'>
+                        <option value='1' selected>Genset</option>
+                        <option value='2'>Reefer</option>
+                        <option value='3'>Madurador</option>
+                        <option value='4'>Tunel</option>
+                    </select>
+                </div>
+                <div class='mt-4 d-flex justify-content-center align-items-center gap-5'>
+                    <label for='gmtInput'>GMT:</label>
+                    <select class='form-select w-50' id='gmtInput' name='gmt'>
+                        <option value='1' selected>GMT-5</option>
+                    </select>
+                </div>
+                 <!--two sides-->
+                <div class='mt-4 d-flex justify-content-center align-items-center gap-4 flex-column flex-md-row'>
+                    <div class='d-flex justify-content-center'>
+                        <label for='grafico'>Gráfica:</label>
+                    </div>
+                    <div class='w-100 w-md-25 d-flex justify-content-center align-items-center flex-wrap'>
+                        <select multiple size='10' id='multiselect-left' class='rounded border-muted w-100'>
+                            <!-- Left side options -->   
+                        </select>
+                    </div>
+                    <div class='w-100 w-md-25 d-flex justify-content-center align-items-center flex-wrap mt-3 mt-md-0'>
+                       <sl-color-picker id='color-picker' size='small' inline></sl-color-picker>
+                    </div>
+                    <div class='d-flex justify-content-center align-items-center mt-3 mt-md-0'>
+                        <button class='btn border-0' type='button' data-bs-toggle='modal' data-bs-target='#addModal' onclick='btnGrafica()'>
+                            <i class='bi bi-plus-circle-fill'></i>
+                        </button>
+                    </div>
+                </div>
+                <div class='mt-4 d-flex justify-content-center align-items-center gap-4 flex-column flex-md-row'>
+                    <div class='d-flex justify-content-center'>
+                        <label for='datos'>Datos:</label>
+                    </div>
+                     <div class='w-100 w-md-25 d-flex justify-content-center align-items-center flex-wrap'>
+                        <select multiple size='10' id='multiselect-left-datos' class='rounded border-muted w-100'>
+                            <!-- Left side options -->
+                        </select>
+                    </div>
+                    <div class='w-100 w-md-25 d-flex justify-content-center align-items-center flex-wrap mt-3 mt-md-0'>
+                        <select multiple size='10' id='multiselect-right-datos' class='rounded border-muted w-100'>
+                            <!-- Right side options -->
+                        </select>
+                    </div>
+                    <div class='d-flex justify-content-center align-items-center mt-3 mt-md-0'>
+                        <button class='btn border-0' type='button' onclick='btnDatos()'>
+                            <i class='bi bi-plus-circle-fill'></i>
+                        </button>
+                    </div>
+                </div>
+                <div class='mt-4 d-flex justify-content-center align-items-center gap-5'>
+                    <label for='tmpInput'>Temperatura:</label>
+                    <select class='form-select w-50' id='tmpInput' name='gmt'>
+                        <option value='1' selected>C°</option>
+                        <option value='2' selected>F°</option>
+                        <option value='3' selected>K°</option>
+                    </select>
+                </div>
+                <div class='mt-4 d-flex justify-content-center'>
+                    <button onclick='test()' class='btn btn-primary mt-4'>Guardar</button>
+                </div>
+            ";
+        $response = array(
+            'html' => $html
+        );
+    
+        echo json_encode($response);
+    }
+
+    public function obtenerValoresSelect(){
+
+        $val = array(
+            ["value" => "1", "text" => "Humidity"],
+            ["value" => "2", "text" => "Return"],
+            ["value" => "3", "text" => "Supply"],
+            ["value" => "4", "text" => "Ethylene"],
+            ["value" => "5", "text" => "Cargo"],
+            ["value" => "6", "text" => "Evaporador"],
+            ["value"=>"7", "text" => "ambiente"]
+        );
     }
 }
 
